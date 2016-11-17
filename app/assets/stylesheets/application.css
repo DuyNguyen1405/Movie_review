@@ -9,17 +9,5 @@
  * compiled file so the styles you add here take precedence over styles defined in any styles
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
- *= require animate
- *= require application
- *= require bootstrap.min
- *= require font-awesome.min
- *= require font
- *= require jquery.fancybox
- *= require li-scroller
- *= require slick
- *= require style
- *= require theme
- *= require films
- *= require scaffolds
  *= require_tree .
  */
