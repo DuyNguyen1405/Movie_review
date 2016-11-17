@@ -7,6 +7,9 @@
 default: &default
   adapter: postgresql
   pool: 5
+  host: localhost
+  username: duy
+  password: duy
   timeout: 5000
 
 development:
