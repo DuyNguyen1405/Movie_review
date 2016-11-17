@@ -20,6 +20,6 @@
  *= require style
  *= require theme
  *= require_tree .
- *= require_self
+
 
  */
