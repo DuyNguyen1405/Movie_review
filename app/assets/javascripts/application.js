@@ -14,14 +14,4 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require bootstrap
-//= require slick.min
-//= require bootstrap.min
-//= require html5shiv.min
-//= require wow.min
-//= require custom
-//= require jquery.fancybox.pack
-//= require jquery.newsTicker.min
-//= require jquery.min
-//= require jquery.li-scroller.1.0
-//= require respond.min
 //= require_tree  .
