@@ -19,7 +19,8 @@
  *= require slick.css
  *= require style.css
  *= require theme.css
- *= require_tree .
  *= require_self
+ *= require_tree .
+
 
  */
