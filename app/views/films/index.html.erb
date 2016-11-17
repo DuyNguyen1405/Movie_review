@@ -1,76 +1,6 @@
-<!--<p id="notice"><%= notice %></p>
-
-<h1>Listing Films</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Date</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @films.each do |film| %>
-      <tr>
-        <td>
-        <div class="single_post_content_left">
-              <ul class="business_catgnav  wow fadeInDown">
-                <li>
-                  <figure class="bsbig_fig"> <a href="pages/single_page.html" class="featured_img"> <%= image_tag("featured_img1.jpg",   alt: "Film logo") %> <span class="overlay"></span> </a>
-                    <figcaption> <b><a href="pages/single_page.html"><%= film.name %></a> </b></figcaption>
-                    <p><%= film.date %></p>
-                    <p>Nunc tincidunt, elit non cursus euismod, lacus augue ornare metus, egestas imperdiet nulla nisl quis mauris. Suspendisse a phare...</p>
-                  </figure>
-                </li>
-              </ul>
-            </div>
-        
-
-
-        <figure> <a href=""> <%= image_tag("featured_img1.jpg",  width: '250', alt: "Film logo") %>  </a>
-                    <figcaption> <a href="pages/single_page.html"><%= film.name %></a> </figcaption>
-                    <p><%= film.date %></p>
-                    <p>Nunc tincidunt, elit non cursus euismod, lacus augue ornare metus, egestas imperdiet nulla nisl quis mauris. Suspendisse a phare...</p>
-                  </figure>
-
-
-
-                  </td> 
-        <td><%= link_to 'Show', film %></td>
-        <td><%= link_to 'Edit', edit_film_path(film) %></td>
-        <td><%= link_to 'Destroy', film, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Film', new_film_path %>
--->
-
 <!DOCTYPE html>
 <html>
 <head>
-<!--<title>NewsFeed</title>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href="assets/css/font-awesome.min.css">
-<link rel="stylesheet" type="text/css" href="assets/css/animate.css">
-<link rel="stylesheet" type="text/css" href="assets/css/font.css">
-<link rel="stylesheet" type="text/css" href="assets/css/li-scroller.css">
-<link rel="stylesheet" type="text/css" href="assets/css/slick.css">
-<link rel="stylesheet" type="text/css" href="assets/css/jquery.fancybox.css">
-<link rel="stylesheet" type="text/css" href="assets/css/theme.css">
-<link rel="stylesheet" type="text/css" href="assets/css/style.css">
-<!--[if lt IE 9]>
-<script src="assets/js/html5shiv.min.js"></script>
-<script src="assets/js/respond.min.js"></script>
-<![endif]-->
 
 
 </head>
@@ -156,7 +86,7 @@
 
             <% @films.each do |film| %>
 
-            <!--<div class="single_post_content_left">-->
+    
 
               <ul class="business_catgnav  wow fadeInDown">
                 <li>
@@ -216,13 +146,6 @@
     </div>
   </footer>
 </div>
-<script src="assets/js/jquery.min.js"></script> 
-<script src="assets/js/wow.min.js"></script> 
-<script src="assets/js/bootstrap.min.js"></script> 
-<script src="assets/js/slick.min.js"></script> 
-<script src="assets/js/jquery.li-scroller.1.0.js"></script> 
-<script src="assets/js/jquery.newsTicker.min.js"></script> 
-<script src="assets/js/jquery.fancybox.pack.js"></script> 
-<script src="assets/js/custom.js"></script>
+
 </body>
 </html>
