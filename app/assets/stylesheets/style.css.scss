@@ -75,7 +75,7 @@ img:hover{opacity:0.75}
 .social_nav{ text-align:right}
 .social_nav li{ display:block; float:left}
 .social_nav li a{ display:block; float:left; height:30px; text-indent:-9999px; width:30px; border-left:1px solid #ccc; -webkit-transition:all 0.5s; -moz-transition:all 0.5s; -ms-transition:all 0.5s;  -o-transition:all 0.5s; transition:all 0.5s}
-.social_nav li.facebook a{ background-image:url(asset-path('socials.png')); background-position:0 -30px; background-size:270px 60px}
+.social_nav li.facebook a{ background-image:url(asset-path('news_thumbnail2.png')); background-position:0 -30px; background-size:270px 60px}
 .social_nav li.facebook a:hover{ background-position:0 0px; background-size:270px 60px; background-color:#436eac}
 .social_nav li.twitter a{ background-image:url(asset-path('socials.png')); background-position:-30px -30px; background-size:270px 60px}
 .social_nav li.twitter a:hover{ background-position:-30px 0px; background-size:270px 60px; background-color:#0598c9}
