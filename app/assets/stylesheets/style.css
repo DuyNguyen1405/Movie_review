@@ -225,7 +225,18 @@ figure.effect-layla:hover figcaption::after, figure.effect-layla:hover h2, figur
 .contact_form input[type="text"], .contact_form input[type="email"], .contact_form textarea{border-radius:0; margin-bottom:30px}
 .contact_form input[type="submit"]{border:medium none; color:#fff; height:35px; padding:5px 10px; -webkit-transition:all 0.5s; -o-transition:all 0.5s; transition:all 0.5s}
 .contact_form input[type="submit"]:hover{border:1px solid #d083cf}
-
+.nav-slit a{position:fixed; top:50%; display:block; outline:none; text-align:left; z-index:1000; -webkit-transform:translateY(-50%); transform:translateY(-50%)}
+.nav-slit a.prev{left:0}
+.nav-slit a.next{right:0}
+.nav-slit .icon-wrap{position:relative; display:block; padding:45px 5px}
+.nav-slit .icon-wrap i{color:#fff; font-size:40px; display:inline-block}
+.nav-slit div{position:absolute; top:0; width:200px; height:100%; background-color:#939a9f; -webkit-transition:-webkit-transform 0.3s 0.3s; transition:transform 0.3s 0.3s; -webkit-perspective:1000px; perspective:1000px}
+.nav-slit a.prev div{left:0; -webkit-transform:translateX(-100%); transform:translateX(-100%)}
+.nav-slit a.next div{right:0; text-align:right; -webkit-transform:translateX(100%); transform:translateX(100%)}
+.nav-slit h3{position:absolute; top:100%; margin:0; padding:0 20px; height:30%; color:#fff; text-transform:uppercase; letter-spacing:1px; font-weight:500; font-size:0.75em; line-height:2.75; width:200px; text-align:left; overflow:hidden; padding-top:4px; -webkit-transition:-webkit-transform 0.3s; transition:transform 0.3s; -webkit-transform:rotateX(-90deg); transform:rotateX(-90deg); -webkit-transform-origin:50% 0; transform-origin:50% 0; -webki-backface-visibility:hidden; -webkit-backface-visibility:hidden; backface-visibility:hidden}
+.nav-slit img{left:0; position:absolute; top:0; width:100%; width:200px; height:130px}
+.nav-slit a:hover div{-webkit-transform:translateX(0); transform:translateX(0)}
+.nav-slit a:hover h3{-webkit-transition-delay:0.6s; transition-delay:0.6s; -webkit-transform:rotateX(0deg); transform:rotateX(0deg)}
 @media(max-width:1199px ){.logo_area{width:34%}.add_banner{width:580px}.nav-tabs > li{width:32.3%}.photograph_nav li{width:31.5%}
 @media(max-width:991px ){.add_banner{display:none}.logo_area{width:100%}.nav > li > a{padding:8px 8px}.latest_post_container{height:380px;overflow:hidden}#next-button{bottom:-2px}.single_iteam{height:415px}.photograph_nav li{width:47.7%}.related_post .spost_nav li{width:100%}.nav-tabs > li{width:31.9%}.nav-tabs > li > a{font-size:13px;padding-left:0 !important;padding-right:0 !important;text-align:center}}
 @media(max-width:767px ){.navbar-collapse{padding-left:15px}.mobile-show{display:block}.desktop-home{display:none}.navbar-inverse .navbar-nav > li > a{display:block}.header_top_left{width:100%}.header_top_right > p{display:none}.social_area{display:none}.single_iteam a{height:100%}.single_iteam a > img{height:100%}.error_page > a{margin-bottom:25px}.nav-tabs > li{width:32.6%}}
