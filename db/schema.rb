@@ -65,6 +65,13 @@ ActiveRecord::Schema.define(version: 20161120185126) do
     t.integer "user_id",  null: false
   end
 
+  create_table "films", force: :cascade do |t|
+    t.string   "name"
+    t.string   "date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "galleries", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -92,11 +99,8 @@ ActiveRecord::Schema.define(version: 20161120185126) do
   add_index "images", ["gallery_id"], name: "index_images_on_gallery_id", using: :btree
 
   create_table "movies", force: :cascade do |t|
-    t.string   "name"
-    t.string   "date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.datetime "add_at"
     t.float    "score"
     t.integer  "ranked"
     t.integer  "episodes"

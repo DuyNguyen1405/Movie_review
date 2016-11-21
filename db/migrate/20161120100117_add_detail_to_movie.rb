@@ -1,7 +1,8 @@
 class AddDetailToMovie < ActiveRecord::Migration
   def change
-  	
-  	add_column :movies, :add_at, :datetime
+  	create_table :movies do |t|
+      t.timestamps null: false
+    end
   	add_column :movies, :score, :float
   	add_column :movies, :ranked, :integer
   	add_column :movies, :episodes, :integer
