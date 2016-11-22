@@ -86,12 +86,12 @@
           <div class="single_post_content">
             <h2><span>Business</span></h2>
 
-           <% @films.each do |film| %>
+           <% @movies.each do |movie| %>
               <ul class="business_catgnav  wow fadeInDown">
                 <li>
                   <figure class="bsbig_fig"> <a href="" class="featured_img"> <%= image_tag("featured_img2.jpg",  alt: "Film logo") %> <span class="overlay"></span> </a>
-                    <figcaption> <a href="pages/single_page.html"><%= film.name %></a> </figcaption>
-                    <p><%= film.date %></p>
+                    <figcaption> <a href="pages/single_page.html"><%= movie.name %></a> </figcaption>
+                    
                     <p>Nunc tincidunt, elit non cursus euismod, lacus augue ornare metus, egestas imperdiet nulla nisl quis mauris. Suspendisse a phare...</p>
                   </figure>
                 </li>
