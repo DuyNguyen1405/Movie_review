@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -41,8 +39,8 @@
       </div>
       <div id="navbar" class="navbar-collapse collapse">
         <ul class="nav navbar-nav main_nav">
-          <li class="active"><%= link_to('Home', root_path)%></li>
-          <li><%= link_to('List by Order', root_path(:order_by => 'name'))%></li>
+          <li class="active"><a href="index.html"><p><br>Home</p></span><span class="mobile-show">Home</span></a></li>
+          <li><a href="#">Technology</a></li>
           <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Mobile</a>
             <ul class="dropdown-menu" role="menu">
               <li><a href="#">Android</a></li>
@@ -86,7 +84,10 @@
           <div class="single_post_content">
             <h2><span>Business</span></h2>
 
-           <% @films.each do |film| %>
+            <% @films.each do |film| %>
+
+    
+
               <ul class="business_catgnav  wow fadeInDown">
                 <li>
                   <figure class="bsbig_fig"> <a href="" class="featured_img"> <%= image_tag("featured_img2.jpg",  alt: "Film logo") %> <span class="overlay"></span> </a>
@@ -99,8 +100,9 @@
                   <p>________________________________________________________________________________________________</p>
                 </li>
               </ul>
+
+
               <% end %>
-           <%= will_paginate %>
             
 
             

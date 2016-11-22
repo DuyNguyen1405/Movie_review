@@ -4,15 +4,7 @@ class MoviesController < ApplicationController
   # GET /movies
   # GET /movies.json
   def index
-
-    if params[:order_by] && params[:order_by] == 'name'
-    sort_params = "name"
-  else
-    sort_params = "id"
-
-  end
-    @movies = Movie.paginate(page: params[:page], per_page: 3).order(sort_params)
-   
+    @movies = Movie.all
   end
 
   # GET /movies/1

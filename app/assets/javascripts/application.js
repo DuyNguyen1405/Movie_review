@@ -12,6 +12,11 @@
 //
 //= require jquery
 //= require jquery_ujs
+
+//= require jquery.min.js
+//= require jquery.li-scroller.1.0.js
+//= require jquery.newsTicker.min.js
+//= require jquery.fancybox.pack.js
 //= require turbolinks
 //= require bootstrap
 //= require slick.min.js
@@ -19,10 +24,7 @@
 //= require html5shiv.min.js
 //= require wow.min.js
 //= require custom.js
-//= require jquery.fancybox.pack.js
-//= require jquery.newsTicker.min.js
-//= require jquery.min.js
-//= require jquery.li-scroller.1.0.js
+
 //= require respond.min.js
 
-//= require_tree  .
+//= require_tree

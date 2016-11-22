@@ -1,10 +1,7 @@
 class AddDetailToMovie < ActiveRecord::Migration
   def change
   	create_table :movies do |t|
-<<<<<<< HEAD
       t.string :name
-=======
->>>>>>> origin/lee
       t.timestamps null: false
     end
   	add_column :movies, :score, :float
@@ -14,8 +11,4 @@ class AddDetailToMovie < ActiveRecord::Migration
   	add_column :movies, :rating, :string
   	add_column :movies, :summary, :text
   end
-<<<<<<< HEAD
 end
-=======
-end
->>>>>>> origin/lee
