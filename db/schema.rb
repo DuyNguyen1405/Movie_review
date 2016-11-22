@@ -99,7 +99,10 @@ ActiveRecord::Schema.define(version: 20161120185126) do
   add_index "images", ["gallery_id"], name: "index_images_on_gallery_id", using: :btree
 
   create_table "movies", force: :cascade do |t|
+<<<<<<< HEAD
     t.string   "name"
+=======
+>>>>>>> origin/lee
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.float    "score"
