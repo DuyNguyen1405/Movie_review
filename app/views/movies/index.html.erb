@@ -1,17 +1,28 @@
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> d689ed52da225f9067712feb5fd926dd6475d658
 <!DOCTYPE html>
 <html>
 <head>
 
 
 </head>
+<<<<<<< HEAD
 
 
 
+=======
+>>>>>>> d689ed52da225f9067712feb5fd926dd6475d658
 <body>
 
 <a class="scrollToTop" href="#"><i class="fa fa-angle-up"></i></a>
 <div class="container">
+<<<<<<< HEAD
 
+=======
+>>>>>>> d689ed52da225f9067712feb5fd926dd6475d658
   <header id="header">
     <div class="row">
       <div class="col-lg-12 col-md-12 col-sm-12">
@@ -30,12 +41,18 @@
       </div>
       <div class="col-lg-12 col-md-12 col-sm-12">
         <div class="header_bottom">
+<<<<<<< HEAD
           <div class="logo_area"> <a href="index.html" class="logo"><%= image_tag("logo.jpg") %></a> </div>
           <div class="add_banner"> <a href="#"><%= image_tag("addbanner_728x90_V1.jpg") %></a> </div>
+=======
+          <div class="logo_area"><a href="index.html" class="logo"><%= image_tag("logo.jpg") %></a></div>
+          <div class="add_banner"><a href="#"><%= image_tag("addbanner_728x90_V1.jpg") %></a></div>
+>>>>>>> d689ed52da225f9067712feb5fd926dd6475d658
         </div>
       </div>
     </div>
   </header>
+<<<<<<< HEAD
 
   <section id="newsSection">
     <div class="row">
@@ -69,6 +86,8 @@
     </div>
   </section>
 
+=======
+>>>>>>> d689ed52da225f9067712feb5fd926dd6475d658
   <section id="navArea">
     <nav class="navbar navbar-inverse" role="navigation">
       <div class="navbar-header">
@@ -76,8 +95,13 @@
       </div>
       <div id="navbar" class="navbar-collapse collapse">
         <ul class="nav navbar-nav main_nav">
+<<<<<<< HEAD
           <li class="active"><a href="index.html"><p><br>Home</p></span><span class="mobile-show">Home</span></a></li>
           <li><a href="#">Technology</a></li>
+=======
+          <li class="active"><%= link_to('Home', root_path)%></li>
+          <li><%= link_to('List by Order', root_path(:order_by => 'name'))%></li>
+>>>>>>> d689ed52da225f9067712feb5fd926dd6475d658
           <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Mobile</a>
             <ul class="dropdown-menu" role="menu">
               <li><a href="#">Android</a></li>
@@ -92,11 +116,30 @@
           <li><a href="pages/contact.html">Contact Us</a></li>
           <li><a href="pages/404.html">404 Page</a></li>
 
+<<<<<<< HEAD
+=======
+
+          <div class="social_area">
+            <ul class="social_nav">
+              <li class="facebook"><a href="#"></a></li>
+              <li class="twitter"><a href="#"></a></li>
+              <li class="flickr"><a href="#"></a></li>
+              <li class="pinterest"><a href="#"></a></li>
+              <li class="googleplus"><a href="#"></a></li>
+              <li class="vimeo"><a href="#"></a></li>
+              <li class="youtube"><a href="#"></a></li>
+              <li class="mail"><a href="#"></a></li>
+            </ul>
+          </div>
+
+
+>>>>>>> d689ed52da225f9067712feb5fd926dd6475d658
         </ul>
       </div>
     </nav>
   </section>
   
+<<<<<<< HEAD
   <div class="row">
     <div class="col-lg-8 col-md-8 col-sm-8">
       <div class="left_content">
@@ -166,4 +209,75 @@
 
 </body>
 
+=======
+  
+  
+  
+    <div class="row">
+      <div class="col-lg-8 col-md-8 col-sm-8">
+        <div class="left_content">
+          <div class="single_post_content">
+            <h2><span>Business</span></h2>
+
+           <% @movies.each do |movie| %>
+              <ul class="business_catgnav  wow fadeInDown">
+                <li>
+                  <figure class="bsbig_fig"> <a href="" class="featured_img"> <%= image_tag("featured_img2.jpg",  alt: "Film logo") %> <span class="overlay"></span> </a>
+                    <figcaption> <a href="pages/single_page.html"><%= movie.name %></a> </figcaption>
+                    
+                    <p>Nunc tincidunt, elit non cursus euismod, lacus augue ornare metus, egestas imperdiet nulla nisl quis mauris. Suspendisse a phare...</p>
+                  </figure>
+                </li>
+                <li>
+                  <p>________________________________________________________________________________________________</p>
+                </li>
+              </ul>
+              <% end %>
+           <%= will_paginate %>
+            
+
+            
+  <footer id="footer">
+    <div class="footer_top">
+      <div class="row">
+        <div class="col-lg-4 col-md-4 col-sm-4">
+          <div class="footer_widget wow fadeInLeftBig">
+            <h2>Flickr Images</h2>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-4">
+          <div class="footer_widget wow fadeInDown">
+            <h2>Tag</h2>
+            <ul class="tag_nav">
+              <li><a href="#">Games</a></li>
+              <li><a href="#">Sports</a></li>
+              <li><a href="#">Fashion</a></li>
+              <li><a href="#">Business</a></li>
+              <li><a href="#">Life &amp; Style</a></li>
+              <li><a href="#">Technology</a></li>
+              <li><a href="#">Photo</a></li>
+              <li><a href="#">Slider</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-4">
+          <div class="footer_widget wow fadeInRightBig">
+            <h2>Contact</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+            <address>
+            Perfect News,1238 S . 123 St.Suite 25 Town City 3333,USA Phone: 123-326-789 Fax: 123-546-567
+            </address>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer_bottom">
+      <p class="copyright">Copyright &copy; 2045 <a href="index.html">NewsFeed</a></p>
+      
+    </div>
+  </footer>
+</div>
+
+</body>
+>>>>>>> d689ed52da225f9067712feb5fd926dd6475d658
 </html>
