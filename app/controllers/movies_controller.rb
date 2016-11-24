@@ -16,7 +16,6 @@ class MoviesController < ApplicationController
   # GET /movies/1.json
   def show
     @reviews = Review.where(movie_id: @movie.id)
-    
   end
 
   # GET /movies/new

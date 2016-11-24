@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161120185126) do
+ActiveRecord::Schema.define(version: 20161124141240) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,21 +26,10 @@ ActiveRecord::Schema.define(version: 20161120185126) do
 
   add_index "actors", ["gallery_id"], name: "index_actors_on_gallery_id", using: :btree
 
-  create_table "actors_movies", id: false, force: :cascade do |t|
-    t.integer "movie_id",  null: false
-    t.integer "actor_id",  null: false
-    t.string  "character"
-  end
-
   create_table "categories", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "categories_movies", id: false, force: :cascade do |t|
-    t.integer "movie_id",    null: false
-    t.integer "category_id", null: false
   end
 
   create_table "comments", force: :cascade do |t|
@@ -55,14 +44,18 @@ ActiveRecord::Schema.define(version: 20161120185126) do
   add_index "comments", ["review_id"], name: "index_comments_on_review_id", using: :btree
   add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
-  create_table "favorite_actor", id: false, force: :cascade do |t|
-    t.integer "actor_id", null: false
-    t.integer "user_id",  null: false
+  create_table "favorite_actors", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "actor_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  create_table "favorite_movie", id: false, force: :cascade do |t|
-    t.integer "movie_id", null: false
-    t.integer "user_id",  null: false
+  create_table "favorite_movies", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "movie_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "films", force: :cascade do |t|
@@ -83,11 +76,6 @@ ActiveRecord::Schema.define(version: 20161120185126) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "genres_movies", id: false, force: :cascade do |t|
-    t.integer "movie_id", null: false
-    t.integer "genre_id", null: false
-  end
-
   create_table "images", force: :cascade do |t|
     t.string   "name"
     t.string   "link"
@@ -97,6 +85,34 @@ ActiveRecord::Schema.define(version: 20161120185126) do
   end
 
   add_index "images", ["gallery_id"], name: "index_images_on_gallery_id", using: :btree
+
+  create_table "movie_actors", force: :cascade do |t|
+    t.integer  "movie_id"
+    t.integer  "actor_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "movie_categories", force: :cascade do |t|
+    t.integer  "movie_id"
+    t.integer  "category_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "movie_genres", force: :cascade do |t|
+    t.integer  "movie_id"
+    t.integer  "genre_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "movie_producers", force: :cascade do |t|
+    t.integer  "movie_id"
+    t.integer  "producer_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
 
   create_table "movies", force: :cascade do |t|
     t.string   "name"
@@ -112,11 +128,6 @@ ActiveRecord::Schema.define(version: 20161120185126) do
   end
 
   add_index "movies", ["gallery_id"], name: "index_movies_on_gallery_id", using: :btree
-
-  create_table "movies_producers", id: false, force: :cascade do |t|
-    t.integer "movie_id",    null: false
-    t.integer "producer_id", null: false
-  end
 
   create_table "musics", force: :cascade do |t|
     t.string   "name"

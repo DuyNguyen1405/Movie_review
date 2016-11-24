@@ -6,4 +6,9 @@ class User < ActiveRecord::Base
   has_many :rates
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+	
+	has_many :favorite_actors
+	has_many :actors, :through => :favorite_actors
+
+	         
 end
