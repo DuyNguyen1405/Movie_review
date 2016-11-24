@@ -10,21 +10,28 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require jquery
-//= require jquery_ujs
+// = require jquery
+// = require jquery_ujs
 
-//= require jquery.min.js
-//= require jquery.li-scroller.1.0.js
-//= require jquery.newsTicker.min.js
-//= require jquery.fancybox.pack.js
-//= require turbolinks
-//= require bootstrap
-//= require slick.min.js
-//= require bootstrap.min.js
-//= require html5shiv.min.js
-//= require wow.min.js
-//= require custom.js
+// = require jquery.min.js
+// = require jquery.li-scroller.1.0.js
+// = require jquery.newsTicker.min.js
+// = require jquery.fancybox.pack.js
+// = require turbolinks
+// = require bootstrap
+// = require slick.min.js
+// = require bootstrap.min.js
+// = require html5shiv.min.js
+// = require wow.min.js
+// = require custom.js
 
 //= require respond.min.js
 
 //= require_tree
+
+var ready = function() {
+    // do stuff here.
+};
+
+$(document).ready(ready)
+$(document).on('page:load', ready)
