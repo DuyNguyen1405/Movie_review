@@ -35,5 +35,17 @@
   <%= @movie.summary %>
 </p>
 
+<p>
+  <strong>Reviews:</strong>
+  <% @movie.reviews.each do |r| %>
+    <p><%= r.id %></p>
+    <p><%= r.content %></p>
+    <%@comments = r.comments%>
+    <%@comments.each do |c|%>
+      <t><p><%= c.content%></p>
+    <%end%>
+  <%end%>
+</p>
+
 <%= link_to 'Edit', edit_movie_path(@movie) %> |
 <%= link_to 'Back', movies_path %>

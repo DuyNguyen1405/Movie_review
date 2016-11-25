@@ -30,8 +30,7 @@
             <li>
               <figure class="bsbig_fig"> <a href="" class="featured_img"> <%= image_tag("featured_img2.jpg",  alt: "Film logo") %> 
                 <span class="overlay"></span> </a>
-                <figcaption> <a href="pages/single_page.html"><%= movie.name %></a> </figcaption>
-
+                <figcaption> <a href="movies/<%=movie.id%>"><%= movie.name %></a> </figcaption>
                 <p><%= movie.summary %></p>
               </figure>
             </li>
@@ -46,13 +45,3 @@
       </div>
     </div>
   </div>
-<script src="assets/js/jquery.min.js"></script> 
-<script src="assets/js/wow.min.js"></script> 
-<script src="assets/js/bootstrap.min.js"></script> 
-<script src="assets/js/slick.min.js"></script> 
-<script src="assets/js/jquery.li-scroller.1.0.js"></script> 
-<script src="assets/js/jquery.newsTicker.min.js"></script> 
-<script src="assets/js/jquery.fancybox.pack.js"></script> 
-<script src="assets/js/custom.js"></script>
-</body>
-</html>

@@ -5,17 +5,18 @@
   <%= render 'layouts/rails_default'%>
 </head>
 
-<body>
- <%= render 'layouts/header' %>
- <%= render 'layouts/banner' %>    
+<body>  
  <div class="container">
+ 	 <%= render 'layouts/header' %>
+ 	<%= render 'layouts/banner' %>  
   <div class="col-lg-8 col-md-8 col-sm-8">
     <div class="left_content">
      <%= yield %>
    </div>
  </div>
  <%= render 'layouts/side_bar' %>
+ <%= render 'layouts/footer' %>
 </div>
-<%= render 'layouts/footer' %>
+
 </body>
 </html>
