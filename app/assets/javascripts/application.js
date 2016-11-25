@@ -17,7 +17,7 @@
 // = require jquery.li-scroller.1.0.js
 // = require jquery.newsTicker.min.js
 // = require jquery.fancybox.pack.js
-// = require turbolinks
+// = require jquery.turbolinks
 // = require bootstrap
 // = require slick.min.js
 // = require bootstrap.min.js
@@ -28,10 +28,3 @@
 //= require respond.min.js
 
 //= require_tree
-
-var ready = function() {
-    // do stuff here.
-};
-
-$(document).ready(ready)
-$(document).on('page:load', ready)

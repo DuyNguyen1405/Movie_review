@@ -51,12 +51,18 @@ ActiveRecord::Schema.define(version: 20161124141240) do
     t.datetime "updated_at", null: false
   end
 
+  add_index "favorite_actors", ["actor_id"], name: "index_favorite_actors_on_actor_id", using: :btree
+  add_index "favorite_actors", ["user_id"], name: "index_favorite_actors_on_user_id", using: :btree
+
   create_table "favorite_movies", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "movie_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  add_index "favorite_movies", ["movie_id"], name: "index_favorite_movies_on_movie_id", using: :btree
+  add_index "favorite_movies", ["user_id"], name: "index_favorite_movies_on_user_id", using: :btree
 
   create_table "films", force: :cascade do |t|
     t.string   "name"
@@ -93,12 +99,18 @@ ActiveRecord::Schema.define(version: 20161124141240) do
     t.datetime "updated_at", null: false
   end
 
+  add_index "movie_actors", ["actor_id"], name: "index_movie_actors_on_actor_id", using: :btree
+  add_index "movie_actors", ["movie_id"], name: "index_movie_actors_on_movie_id", using: :btree
+
   create_table "movie_categories", force: :cascade do |t|
     t.integer  "movie_id"
     t.integer  "category_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
+
+  add_index "movie_categories", ["category_id"], name: "index_movie_categories_on_category_id", using: :btree
+  add_index "movie_categories", ["movie_id"], name: "index_movie_categories_on_movie_id", using: :btree
 
   create_table "movie_genres", force: :cascade do |t|
     t.integer  "movie_id"
@@ -107,12 +119,18 @@ ActiveRecord::Schema.define(version: 20161124141240) do
     t.datetime "updated_at", null: false
   end
 
+  add_index "movie_genres", ["genre_id"], name: "index_movie_genres_on_genre_id", using: :btree
+  add_index "movie_genres", ["movie_id"], name: "index_movie_genres_on_movie_id", using: :btree
+
   create_table "movie_producers", force: :cascade do |t|
     t.integer  "movie_id"
     t.integer  "producer_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
+
+  add_index "movie_producers", ["movie_id"], name: "index_movie_producers_on_movie_id", using: :btree
+  add_index "movie_producers", ["producer_id"], name: "index_movie_producers_on_producer_id", using: :btree
 
   create_table "movies", force: :cascade do |t|
     t.string   "name"

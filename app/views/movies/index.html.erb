@@ -19,6 +19,7 @@
               <li><a href="index.html">Home</a></li>
               <li><a href="#">About</a></li>
               <li><a href="pages/contact.html">Contact</a></li>
+              <li><a href="#"><%=current_user.email%></a></li>
             </ul>
           </div>
           <div class="header_top_right">
@@ -106,12 +107,11 @@
       <div class="left_content">
         <div class="single_post_content">
           <h2><span>Business</span></h2>
-
           <% @movies.each do |movie| %>
             <ul class="business_catgnav  wow fadeInDown">
               <li>
                 <figure class="bsbig_fig"> <a href="" class="featured_img"> <%= image_tag("featured_img2.jpg",  alt: "Film logo") %> <span class="overlay"></span> </a>
-                  <figcaption> <a href="pages/single_page.html"><%= movie.name %></a> </figcaption>
+                  <figcaption> <a href="movies/<%=movie.id%>"><%= movie.name %></a> </figcaption>
                   <p><%= movie.summary %></p>
                   
                 </figure>

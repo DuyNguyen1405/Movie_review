@@ -5,5 +5,8 @@ class CreateMovieGenres < ActiveRecord::Migration
     	t.integer :genre_id
       t.timestamps null: false
     end
+
+    add_index :movie_genres, :movie_id
+    add_index :movie_genres, :genre_id
   end
 end

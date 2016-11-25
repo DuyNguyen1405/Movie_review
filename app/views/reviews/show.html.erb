@@ -25,5 +25,19 @@
   <%= @review.movie_id %>
 </p>
 
+<p>
+  <strong>Comment:</strong>
+</p>
+
+<ul>
+  <%@review.comments.each do |c|%>
+  <li><%= c.id%> : <%=c.content%> </li>
+  <%end%>
+</ul>
+
+<p id="new_comment"></p>
+
+<%= render 'new_comment'%>
+
 <%= link_to 'Edit', edit_review_path(@review) %> |
 <%= link_to 'Back', reviews_path %>

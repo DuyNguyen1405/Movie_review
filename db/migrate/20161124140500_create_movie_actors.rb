@@ -5,5 +5,8 @@ class CreateMovieActors < ActiveRecord::Migration
     	t.integer :actor_id
       t.timestamps null: false
     end
+
+    add_index :movie_actors, :movie_id
+    add_index :movie_actors, :actor_id
   end
 end
