@@ -1,0 +1,18 @@
+<header class="navbar navbar-fixed-top navbar-inverse">
+    <div class="row">
+      <div class="col-lg-12 col-md-12 col-sm-12">
+        <div class="header_top">
+          <div class="header_top_left">
+            <ul class="top_nav">
+              <li><%= link_to('Home', root_path) %></li>
+              <li><%=link_to('About', '#') %></li>
+              <li><%= link_to('List by Order', root_path(:order_by => 'name'))%></li>
+            </ul>
+          </div>
+          <div class="header_top_right">
+            <p>Friday, December 05, 2045</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
