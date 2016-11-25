@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
   has_many :reviews 
   has_many :rates
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+         :recoverable, :rememberable, :trackable, :validatable, :confirmable
 	
 	has_many :favorite_actors
 	has_many :actors, :through => :favorite_actors
