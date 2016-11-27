@@ -9,8 +9,13 @@
 # from scratch. The latter is a flawed and unsustainable approach (the more migrations
 # you'll amass, the slower it'll run and the greater likelihood for issues).
 #
-# It's strongly recommended that you check this file into your version control system.<<<<<<< HEAD
+# It's strongly recommended that you check this file into your version control system.
+
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20161125161930) do
+=======
+ActiveRecord::Schema.define(version: 20161126052110) do
+>>>>>>> 0cc691ca19e43fe110abd01a48769ea2ec10ca52
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -268,9 +273,12 @@ ActiveRecord::Schema.define(version: 20161125161930) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
+<<<<<<< HEAD
     t.boolean  "admin"
+=======
     t.string   "provider"
     t.string   "uid"
+>>>>>>> 0cc691ca19e43fe110abd01a48769ea2ec10ca52
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
