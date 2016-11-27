@@ -66,3 +66,19 @@ p {
   color: #fff;
   text-decoration: none;
 }
+
+div.col-lg-12:nth-child(2)
+{
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+.movie_gallery div:nth-child(1)
+{
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+ul.spost_nav li {
+  border-bottom: 1px solid #ddd;
+}

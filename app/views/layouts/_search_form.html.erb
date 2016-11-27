@@ -1,0 +1,10 @@
+<%= form_tag searches_path, :method => 'get', :id => "search-form", :class => "form-inline" do |f| %>
+  <p>
+    <%= text_field_tag :q, params[:q], :id =>"search-box", :autocomplete => :off, class: "form-control" %>
+    <%= button_tag "Search", :name => nil, class: "btn btn-theme" %>
+  </p>
+<% end %>
+<div class="dropdown">
+  <div id="search-result" class="dropdown-content">
+  </div>
+</div>

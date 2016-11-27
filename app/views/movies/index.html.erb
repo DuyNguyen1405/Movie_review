@@ -30,7 +30,8 @@
             <li>
               <figure class="bsbig_fig"> <a href="" class="featured_img"> <%= image_tag("featured_img2.jpg",  alt: "Film logo") %> 
                 <span class="overlay"></span> </a>
-                <figcaption> <a href="movies/<%=movie.id%>"><%= movie.name %></a> </figcaption>
+                <figcaption> <%= link_to(movie.name, movie) %></figcaption>
+
                 <p><%= movie.summary %></p>
               </figure>
             </li>
@@ -40,8 +41,9 @@
           </ul>
           <% end %>
           <%= will_paginate %>
-
         </div>
       </div>
     </div>
   </div>
+
+  

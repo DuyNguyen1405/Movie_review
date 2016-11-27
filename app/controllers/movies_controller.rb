@@ -1,16 +1,18 @@
 class MoviesController < ApplicationController
   before_action :set_movie, only: [:show, :edit, :update, :destroy]
-
+  helper_method :sort_column, :sort_direction
   # GET /movies
   # GET /movies.json
   def index
-
   end
 
   # GET /movies/1
   # GET /movies/1.json
   def show
   end
+
+
+
 
   # GET /movies/new
   def new

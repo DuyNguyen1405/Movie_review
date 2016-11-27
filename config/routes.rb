@@ -4,6 +4,16 @@ Rails.application.routes.draw do
   resources :movies
   resources :comments
   resources :reviews
+  
+  resources :searches do
+    get :live_search, on: :collection
+  end
+
+  # Routes for follow favorite movies
+  resources :movies do 
+    resources :favorites_movies, only: [ :create, :destroy ]
+  end
+
   root 'movies#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

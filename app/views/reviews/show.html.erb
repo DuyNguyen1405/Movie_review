@@ -23,6 +23,7 @@
 <p>
   <strong>Movie:</strong>
   <%= @review.movie_id %>
+  <%= link_to( Movie.find(@review.movie_id).name, Movie.find(@review.movie_id))%>
 </p>
 
 <p>

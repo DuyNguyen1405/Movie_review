@@ -49,3 +49,68 @@
 
 <%= link_to 'Edit', edit_movie_path(@movie) %> |
 <%= link_to 'Back', movies_path %>
+
+
+<div class="single_page">
+  <ol class="breadcrumb">
+    <li><%= link_to('Home', root_path) %></li>
+    <li class="active"><%= @movie.name %></li>
+    <li><%= link_to('Reviews', '#') %></li>
+  </ol>
+  <div class="movie_header">
+    <div class="col-lg-8 col-md-8 col-sm-8">
+      <div class="left_content">
+        <div class="movie_title">
+          <%= @movie.name %>
+        </div>
+        <div class="movie_sum">
+          <%= @movie.summary %>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-4">
+      <aside class="right_content">
+        <div class="single_sidebar">
+          <div class="movie_score">
+            <%= @movie.score.to_s + "/7"%>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+  <div class="movie_gallery">
+    <div class="movie_video">
+      <div class="col-lg-6 col-md-6 col-sm-6">
+        <div class="left_content">
+          <h2>Video</h2>
+        </div>
+      </div>
+    </div>
+    <div class="movie_pics">
+      <div class="col-lg-6 col-md-6 col-sm-6">
+        <aside class="right_content">
+            <h2>Picture</h2>
+        </aside>
+      </div>
+    </div>
+  </div>
+  <div class="movie_cast">
+    <h1>Cast</h1>
+    <div class="movie_actor">
+      <div class="col-lg-6 col-md-6 col-sm-6">
+        <div class="left_content">
+          <h2>Actor</h2>
+          <p>Origa</p>
+        </div>
+      </div>
+    </div>
+    <div class="movie_role">
+      <div class="col-lg-6 col-md-6 col-sm-6">
+        <aside class="right_content">
+            <h2>Role</h2>
+            <p>Origa</p>
+        </aside>
+      </div>
+    </div>
+  </div>
+</div>

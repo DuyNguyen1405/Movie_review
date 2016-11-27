@@ -7,12 +7,41 @@
             <li><%= link_to('Home', root_path) %></li>
             <li><%=link_to('About', '#') %></li>
             <li><%= link_to('List by Order', root_path(:order_by => 'name'))%></li>
+            
+
+            <li>
+              <%= render 'layouts/search_form'%>  
+            </li>
+
           </ul>
         </div>
         <div class="header_top_right">
-          <p>Friday, December 05, 2045</p>
+          <ul class="top_nav">
+            <li><%= link_to('Sign up', '#') %></li>
+            <li><%= link_to('Sign in', '#') %></li>
+          </ul>
         </div>
       </div>
     </div>
   </div>
 </header>
+
+
+<script>
+$("#search-box").bind("keyup", function() {
+
+  $("#search-box").addClass("loading"); // show the spinner
+  var form = $("#search-form"); // grab the form wrapping the search bar.
+
+  var url = "/searches/live_search"; // live_search action.   
+  var formData = form.serialize(); // grab the data in the form
+  // console.log(formData);   
+  $.get(url, formData, function(response) { // perform an AJAX get
+    // console.log(response.to_string);
+
+    // $("#search-box").removeClass("loading"); // hide the spinner
+
+    // $("#search-results").html(response); // replace the "results" div with the results
+  });
+});
+</script>
