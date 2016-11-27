@@ -7,7 +7,9 @@
             <li><%= link_to('Home', root_path) %></li>
             <li><%=link_to('About', '#') %></li>
             <li><%= link_to('List by Order', root_path(:order_by => 'name'))%></li>
+<<<<<<< HEAD
             
+=======
             <!-- <li>
               <form class="form-inline" id="search-form" action="<%= searches_path%>" method="GET">
                 <div class="form-group">
@@ -19,6 +21,7 @@
               </form>
               <div id="search-result"></div>
             </li> -->
+>>>>>>> son
 
             <li>
               <%= render 'layouts/search_form'%>  
@@ -45,7 +48,11 @@ $("#search-box").bind("keyup", function() {
   var form = $("#search-form"); // grab the form wrapping the search bar.
 
   var url = "/searches/live_search"; // live_search action.   
+<<<<<<< HEAD
   var formData = form.serialize(); // grab the data in the form
+=======
+  // var formData = form.serialize(); // grab the data in the form
+>>>>>>> son
   // console.log(formData);   
   $.get(url, formData, function(response) { // perform an AJAX get
     // console.log(response.to_string);
