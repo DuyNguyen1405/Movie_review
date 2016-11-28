@@ -5,5 +5,8 @@ class ApplicationController < ActionController::Base
   attr_accessor :sort_type
   attr_accessor :sort_params
 
-
+  rescue_from CanCan::AccessDenied do |exception|
+  	flash[:error] = "Access Denied"
+  	redirect_to root_url
+  end
 end

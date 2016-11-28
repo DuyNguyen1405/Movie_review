@@ -59,3 +59,4 @@ end
 gem 'coffee-script-source', '1.8.0'
 gem 'omniauth'
 gem 'omniauth-facebook'
+gem 'cancancan'

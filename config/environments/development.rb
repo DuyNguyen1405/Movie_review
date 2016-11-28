@@ -27,7 +27,9 @@ Rails.application.configure do
     :user_name => "son.vuhuu18@gmail.com",
     :password => "chicothelaheniken",
     :authentication => "plain",
-    :enable_starttls_auto => true
+    :enable_starttls_auto => true,
+    :address => "smtp.gmail.com",
+    :port => 25
   } 
 
   # Raise an error on page load if there are pending migrations.

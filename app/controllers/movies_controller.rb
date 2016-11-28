@@ -1,5 +1,6 @@
 class MoviesController < ApplicationController
-  before_action :set_movie, only: [:show, :edit, :update, :destroy]
+  # before_action :set_movie, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource
   helper_method :sort_column, :sort_direction
   # GET /movies
   # GET /movies.json
