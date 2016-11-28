@@ -4,7 +4,8 @@ Rails.application.routes.draw do
   resources :movies
   resources :comments
   resources :reviews
-  
+  resources :genres
+  resources :actors
   resources :searches do
     get :live_search, on: :collection
   end

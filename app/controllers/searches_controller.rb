@@ -4,7 +4,15 @@ class SearchesController < ApplicationController
   # GET /searches
   # GET /searches.json
   def index
-    @searches = Movie.where("name LIKE ?", '%' + params[:q] + '%')
+    @option = params[:option].to_i
+    case @option
+    when 2
+      @searches = Movie.where("name LIKE ?", '%' + params[:q] + '%')
+    when 3
+      @searches = Actor.where("name LIKE ?", '%' + params[:q] + '%')
+    when 4
+      @searches = Genre.where("name LIKE ?", '%' + params[:q] + '%')
+    end
   end
 
   # GET /searches/1
