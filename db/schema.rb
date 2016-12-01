@@ -11,11 +11,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 20161126052110) do
-=======
+
 ActiveRecord::Schema.define(version: 20161126140925) do
->>>>>>> 64e6b2164ccb453cdd81ea8383dd360c392fe00d
+
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -77,19 +75,21 @@ ActiveRecord::Schema.define(version: 20161126140925) do
   end
 
 
-  add_index "images", ["movie_id"], name: "index_images_on_movie_id", using: :btree
-
-  create_table "movie_actors", force: :cascade do |t|
-    t.integer "movie_id"
-    t.integer "actor_id"
-  end
   create_table "images", force: :cascade do |t|
     t.string   "name"
     t.string   "link"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "gallery_id"
-=======
+
+  add_index "images", ["movie_id"], name: "index_images_on_movie_id", using: :btree
+
+  create_table "movie_actors", force: :cascade do |t|
+    t.integer "movie_id"
+    t.integer "actor_id"
+  end
+
+
   add_index "movie_actors", ["actor_id"], name: "index_movie_actors_on_actor_id", using: :btree
   add_index "movie_actors", ["movie_id"], name: "index_movie_actors_on_movie_id", using: :btree
 
@@ -112,7 +112,6 @@ ActiveRecord::Schema.define(version: 20161126140925) do
   create_table "movie_producers", force: :cascade do |t|
     t.integer "movie_id"
     t.integer "producer_id"
->>>>>>> 64e6b2164ccb453cdd81ea8383dd360c392fe00d
   end
 
   add_index "movie_producers", ["movie_id"], name: "index_movie_producers_on_movie_id", using: :btree
@@ -167,16 +166,13 @@ ActiveRecord::Schema.define(version: 20161126140925) do
     t.string   "status"
     t.string   "rating"
     t.text     "summary"
-<<<<<<< HEAD
     t.integer  "gallery_id"
   end
 
   add_index "movies", ["gallery_id"], name: "index_movies_on_gallery_id", using: :btree
 
-=======
   end
 
->>>>>>> 64e6b2164ccb453cdd81ea8383dd360c392fe00d
   create_table "musics", force: :cascade do |t|
     t.string  "link"
     t.integer "movie_id"
@@ -240,11 +236,9 @@ ActiveRecord::Schema.define(version: 20161126140925) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
-<<<<<<< HEAD
+
     t.string   "provider"
     t.string   "uid"
-=======
->>>>>>> 64e6b2164ccb453cdd81ea8383dd360c392fe00d
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree

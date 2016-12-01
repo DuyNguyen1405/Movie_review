@@ -1,0 +1,16 @@
+class ApplicationController < ActionController::Base
+  # Prevent CSRF attacks by raising an exception.
+  # For APIs, you may want to use :null_session instead.
+  protect_from_forgery with: :exception
+  attr_accessor :sort_type
+  attr_accessor :sort_params
+
+<<<<<<< HEAD
+  rescue_from CanCan::AccessDenied do |exception|
+  	flash[:error] = "Access Denied"
+  	redirect_to root_url
+  end
+=======
+
+>>>>>>> 64e6b2164ccb453cdd81ea8383dd360c392fe00d
+end

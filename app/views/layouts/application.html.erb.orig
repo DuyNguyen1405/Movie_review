@@ -4,11 +4,11 @@
   <title>Cucai</title>
   <%= render 'layouts/rails_default'%>
 </head>
-
 <<<<<<< HEAD
+
 <body>  
  <div class="container">
- 	 <%= render 'layouts/header' %>
+ 	<%= render 'layouts/header' %>
  	<%= render 'layouts/banner' %>  
   <div class="col-lg-8 col-md-8 col-sm-8">
     <div class="left_content">
@@ -18,11 +18,22 @@
  <%= render 'layouts/side_bar' %>
  <%= render 'layouts/footer' %>
 </div>
-=======
 	<p class="notice"><%= notice %></p>
 	<p class="alert"><%= alert %></p>
-	<%= yield %>
->>>>>>> 0cc691ca19e43fe110abd01a48769ea2ec10ca52
+=======
+>>>>>>> 64e6b2164ccb453cdd81ea8383dd360c392fe00d
 
+<body>
+ <%= render 'layouts/header' %>
+ <%= render 'layouts/banner' %>    
+ <div class="container">
+  <div class="col-lg-8 col-md-8 col-sm-8">
+    <div class="left_content">
+     <%= yield %>
+   </div>
+ </div>
+ <%= render 'layouts/side_bar' %>
+</div>
+<%= render 'layouts/footer' %>
 </body>
 </html>
