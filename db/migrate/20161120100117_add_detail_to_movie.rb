@@ -5,6 +5,7 @@ class AddDetailToMovie < ActiveRecord::Migration
       t.timestamps null: false
     end
   	add_column :movies, :score, :float
+  	add_column :movies, :ranked, :integer
   	add_column :movies, :episodes, :integer
   	add_column :movies, :status, :string
   	add_column :movies, :rating, :string

@@ -4,11 +4,9 @@ class CreateMovieProducers < ActiveRecord::Migration
     	t.integer :movie_id
     	t.integer :producer_id
       t.timestamps null: false
-
     end
 
     add_index :movie_producers, :movie_id
     add_index :movie_producers, :producer_id
-
   end
 end

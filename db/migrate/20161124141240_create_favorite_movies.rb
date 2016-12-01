@@ -4,11 +4,9 @@ class CreateFavoriteMovies < ActiveRecord::Migration
     	t.integer :user_id
     	t.integer :movie_id
       t.timestamps null: false
-    
     end
 
     add_index :favorite_movies, :user_id
     add_index :favorite_movies, :movie_id
-     
   end
 end

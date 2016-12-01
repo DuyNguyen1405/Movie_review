@@ -3,8 +3,8 @@ class CreateActors < ActiveRecord::Migration
     create_table :actors do |t|
       t.string :name
       t.datetime :date_of_birth
-      t.string :avatar
 
+      t.timestamps null: false
     end
   end
 end
