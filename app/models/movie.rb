@@ -2,7 +2,6 @@ class Movie < ActiveRecord::Base
 	has_many :videos
 	has_many :gallery
 	has_many :reviews
-	has_many :rates
 
 	has_many :movie_categories
 	has_many :categories, :through => :movie_categories
@@ -18,5 +17,7 @@ class Movie < ActiveRecord::Base
 
 	has_many :favorite_movies
 	has_many :users, :through => :favorite_movies
+
+	ratyrate_rateable 'score'
 
 end

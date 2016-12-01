@@ -7,3 +7,9 @@ $(document).ready ->
     $("#new_comment").append xhr.responseText
   ).on "ajax:error", (e, xhr, status, error) ->
     $("#new_article").append "<p>ERROR</p>" 
+
+$.ajaxSetup({
+  headers: {
+    'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+  }
+});

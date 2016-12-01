@@ -3,7 +3,6 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
  	has_many :comments
   has_many :reviews 
-  has_many :rates
 	has_many :favorite_actors
 	has_many :actors, :through => :favorite_actors
   devise :database_authenticatable, :registerable,
@@ -12,6 +11,8 @@ class User < ActiveRecord::Base
 	
 	has_many :favorite_actors
 	has_many :actors, :through => :favorite_actors
+
+  ratyrate_rater
 
 	def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|

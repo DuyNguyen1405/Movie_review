@@ -68,3 +68,9 @@ jQuery(window).load(function() { // makes sure the whole site is loaded
     });
 })
 
+$.ajaxSetup({
+  headers: {
+    'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+  }
+});
+
