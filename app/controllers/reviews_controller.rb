@@ -1,5 +1,6 @@
 class ReviewsController < ApplicationController
-  before_action :set_review, only: [:show, :edit, :update, :destroy]
+  # before_action :set_review, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource
 
   # GET /reviews
   # GET /reviews.json
@@ -14,7 +15,7 @@ class ReviewsController < ApplicationController
 
   # GET /reviews/new
   def new
-    @review = Review.new
+    @movie = Movie.find(params[:movie_id])
   end
 
   # GET /reviews/1/edit
@@ -24,7 +25,9 @@ class ReviewsController < ApplicationController
   # POST /reviews
   # POST /reviews.json
   def create
-    @review = Review.new(review_params)
+    @movie = Movie.find(params[:movie_id])
+    @review = @movie.reviews.build review_params
+    @review.user = current_user
 
     respond_to do |format|
       if @review.save
