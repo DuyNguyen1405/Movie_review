@@ -83,6 +83,13 @@ class SearchesController < ApplicationController
     end
   end
 
+  def category_search
+    @categories = Category.where("lower(name) LIKE ?", '%' + params[:q].downcase + '%')
+    respond_to do |format|
+      format.js
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_search

@@ -14,6 +14,15 @@
   <div class="field">
 
     <div class="row">
+
+      <% Genre.all.each do |genre| %>
+      <%= f.check_box :genre_ids, {multiple: true}, genre.id, nil %>
+      <%= genre.name %>
+      <% end %>
+
+    </div>
+
+    <div class="row">
       <div class="col-sm-2">
         <%= label_tag :name, nil, class: "control-label col-sm-2" %>
       </div>
@@ -61,34 +70,59 @@
     </div>
     <br>
 
-    <% Genre.all.each do |genre| %>
-  <%= f.check_box :genre_ids, {multiple: true}, genre.id, nil %>
-  <%= genre.name %>
-  <% end %>
+    <div class="row">
+      <div class="col-sm-2">
+      </div>
+      <div class="col-sm-6">
+        <div id="category-selected"></div>
+      </div>
+    </div>
 
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :episodes %><br>
-    <%= f.text_field :episodes %>
-  </div>
-  <div class="field">
-    <%= f.label :status %><br>
-    <%= f.text_field :status %>
-  </div>
-  <div class="field">
-    <%= f.label :rating %><br>
-    <%= f.text_field :rating %>
-  </div>
-  <div class="field">
-    <%= f.label :summary %><br>
-    <%= f.text_field :summary %>
-  </div>
+    <div class="row">
+      <div class="col-sm-2">
+        <%= label_tag :categories, nil, class: "control-label col-sm-2" %>
+      </div>
+      <div class="col-sm-6">
+        <p><%= text_field_tag :q, params[:q], :id =>"categories", :autocomplete => :off, class: "form-control" %></p>
+        <div id="category-links" style="display: none"></div>
+        <div id="categories-result"></div>
+      </div>
+      <div class="col-sm-2" id="category-addNew">Add New</div>
+    </div>
+
   <div class="actions">
     <%= f.submit %>
-
   </div>
 </div>
-    <% end %>
+</div>
+<% end %>
+
+
+<script>
+$("#categories").bind("keyup", function() {
+  var q = $("#categories").val();
+  if(q) {
+    var url = "/searches/category_search"; // live_search action.   
+    $.get(url, {"q": q}, function(response) { // perform an AJAX get
+      // all process are within category_search.js.erb
+    });
+  } else {
+    $("#categories-result").css("display", "none");
+  }
+});
+
+$("div#category-addNew").bind("click", function() {
+  var query = $("#categories").val();
+  if(query) {
+    console.log($("p#category-selection:contains("+ query +")").length);
+    if($("p#category-selection:contains("+ query +")").length == 0) {
+      // console.log("click");
+      var url = "/categories";
+      $.post(url, {"category[name]": query}, function(response) {
+
+      });
+    }
+  }
+});
+
+</script>

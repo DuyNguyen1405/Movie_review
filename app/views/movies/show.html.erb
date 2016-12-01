@@ -5,6 +5,10 @@
   <%= @movie.name %>
 </p>
 
+    <% Genre.joins(:movie_genres).where("movie_id = ?", @movie.id).all.each do |genre| %>
+  <%= genre.name %>
+  <% end %>
+
 <p>
   <strong>Score:</strong>
   <%= @movie.score %>

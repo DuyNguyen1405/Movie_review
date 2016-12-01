@@ -47,13 +47,14 @@ img:hover{opacity:0.75}
 .top_nav > li > a{display:inline-block; border-right:1px solid #333; color:#fff; font-size:11px; font-weight:bold; padding:20px 15px; text-transform:uppercase; -webkit-transition:all 0.5s; -o-transition:all 0.5s; transition:all 0.5s}
 .top_nav > li > a:hover{background-color:#d083cf}
 .top_nav form{box-sizing: content-box;}
-.top_nav form input{border-radius: 4px 0px 0px 4px; box-sizing: border-box;}
+.top_nav form input{border-radius: 0; box-sizing: border-box; width: 197px;}
 .top_nav form button{margin-bottom: 0px; border-radius: 0px 4px 4px 0px; background-color: #d083cf; border-color: #d083cf; margin-left: -5px;}
 .top_nav form button:hover{background-color: #ce39cc; border-color:#ce39cc;}
 .top_nav form div#result-box{display: none; margin-top: -11px; max-height: 300px; overflow-y: auto; overflow-x: hidden; position: absolute; background-color: #fff; border: 1px solid #d083cf; border-top: 0; width: 197px; max-height: 300px; line-height: 2em; font-size: 14px;}
 .top_nav form div#result-box > a {color: black; display: block; padding-left: 10px;}
 .top_nav form div#result-box > a:hover {color: black; line-height: 1em, font-size: 10px; background-color: #ccc;}
 .header_top_right{float:left; display:inline; width:50%; text-align:right}
+.top_nav select{margin-right: -5px; border-radius: 4px 0 0 4px; padding-left: 10px; -webkit-appearance: none; -moz-appearance: none; appearance: none;}
 .header_top_right > p{color:#fff; display:inline-block; float:right; font:bold 12px sans-serif; margin-bottom:0; padding-bottom:20px; padding-right:8px; padding-top:20px}
 .header_top_right > ul > li {float: right;}
 .header_top_right > ul > li a {border-left: 1px solid #333; border-right: 0px;}
@@ -230,3 +231,6 @@ figure.effect-layla:hover figcaption::after, figure.effect-layla:hover h2, figur
 .breadcrumb li a{color:#fff}
 .movie_full{float:left; display:inline-block; width:100%}
 .movie_sidebar{float:left; display:inline-block; width:100%; background-color: #ddd;}
+#categories_result{display: none; margin-top: -11px; max-height: 300px; overflow-y: auto; overflow-x: hidden; position: absolute; background-color: #fff; border: 1px solid #d083cf; border-top: 0; width: 197px; max-height: 300px; line-height: 2em; font-size: 14px;}
+p#category-selection{display: block; margin: 0;}
+p#category-selection:hover{background-color: #ccc;}
