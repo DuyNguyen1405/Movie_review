@@ -4,7 +4,22 @@ class SearchesController < ApplicationController
   # GET /searches
   # GET /searches.json
   def index
-    @searches = Movie.where("name LIKE ?", '%' + params[:q] + '%')
+    @option = params[:option].to_i
+    case @option
+    when 0
+      @movies = Movie.where("lower(name) LIKE ?", '%' + params[:q].downcase + '%')
+      @actors = Actor.where("lower(name) LIKE ?", '%' + params[:q].downcase + '%')
+      @genres = Genre.where("lower(name) LIKE ?", '%' + params[:q].downcase + '%')
+      @searches = @movies
+    when 2
+      @searches = Movie.where("lower(name) LIKE ?", '%' + params[:q].downcase + '%')
+    when 3
+      @searches = Actor.where("lower(name) LIKE ?", '%' + params[:q].downcase + '%')
+    when 4
+      @searches = Genre.where("lower(name) LIKE ?", '%' + params[:q].downcase + '%')
+    else 
+      @searches = Search.all
+    end
   end
 
   # GET /searches/1
@@ -62,7 +77,7 @@ class SearchesController < ApplicationController
   end
 
   def live_search
-    @movies = Movie.where("name LIKE ?", '%' + params[:q] + '%')
+    @movies = Movie.where("lower(name) LIKE ?", '%' + params[:q].downcase + '%')
     respond_to do |format|
       format.js
     end

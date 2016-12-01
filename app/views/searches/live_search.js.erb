@@ -1,2 +1,6 @@
-console.log("<%= @movies.first.name %>");
-// $('#myDropdown').append("<%= link_to(@movies.first.name, @movies.first) %>")
+$("#result-box").html('');
+$("#result-box").css('display', 'block');
+<% @movies.each do |movie| %>
+	$('#result-box').append('<%= link_to(movie.name, movie)%>' + '<br>');
+	console.log('<%= movie.name %>');
+<% end%>
