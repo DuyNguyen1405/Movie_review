@@ -19,8 +19,4 @@ class Movie < ActiveRecord::Base
 	has_many :favorite_movies
 	has_many :users, :through => :favorite_movies
 
-	def self.search(search) 
-		where('name LIKE ?', "%#{search}%")
-	end
-	
 end

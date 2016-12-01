@@ -1,14 +1,69 @@
 <%= form_for(@movie) do |f| %>
-  <% if @movie.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@movie.errors.count, "error") %> prohibited this movie from being saved:</h2>
+<% if @movie.errors.any? %>
+<div id="error_explanation">
+  <h2><%= pluralize(@movie.errors.count, "error") %> prohibited this movie from being saved:</h2>
 
-      <ul>
-      <% @movie.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+  <ul>
+    <% @movie.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+<div align="center"> 
+  <div class="field">
+
+    <div class="row">
+      <div class="col-sm-2">
+        <%= label_tag :name, nil, class: "control-label col-sm-2" %>
+      </div>
+      <div class="col-sm-6">
+        <%= f.text_field :name , class: "form-control col-sm-10"%>
+      </div>
     </div>
+    <br>
+    <div class="row">
+      <div class="col-sm-2">
+        <%= label_tag :score, nil, class: "control-label col-sm-2" %>
+      </div>
+      <div class="col-sm-2">
+        <%= f.number_field :score, class: "form-control col-sm-10" %>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-sm-2">
+        <%= label_tag :episodes, nil, class: "control-label col-sm-2" %>
+      </div>
+      <div class="col-sm-2">
+        <%= f.number_field :episodes, class: "form-control col-sm-10" %>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-sm-2">
+        <%= label_tag :status, nil, class: "control-label col-sm-2" %>
+      </div>
+      <div class="col-sm-6">
+        <%= f.text_field :status , class: "form-control col-sm-10"%>
+      </div>
+    </div>
+
+    <br>
+    <div class="row">
+      <div class="col-sm-2">
+        <%= label_tag :summary, nil, class: "control-label col-sm-2" %>
+      </div>
+      
+      <div class="col-sm-6">
+        <%= f.text_area :summary, size: "50x5", class: "form-control col-sm-10" %>
+      </div>
+    </div>
+    <br>
+
+    <% Genre.all.each do |genre| %>
+  <%= f.check_box :genre_ids, {multiple: true}, genre.id, nil %>
+  <%= genre.name %>
   <% end %>
 
   <div class="field">
@@ -33,5 +88,7 @@
   </div>
   <div class="actions">
     <%= f.submit %>
+
   </div>
-<% end %>
+</div>
+    <% end %>

@@ -5,6 +5,7 @@ class MoviesController < ApplicationController
   # GET /movies
   # GET /movies.json
   def index
+
   end
 
   # GET /movies/1
@@ -28,11 +29,13 @@ class MoviesController < ApplicationController
   # POST /movies.json
   def create
     @movie = Movie.new(movie_params)
-
+    
     respond_to do |format|
       if @movie.save
+       add_genres
         format.html { redirect_to @movie, notice: 'Movie was successfully created.' }
         format.json { render :show, status: :created, location: @movie }
+
       else
         format.html { render :new }
         format.json { render json: @movie.errors, status: :unprocessable_entity }
@@ -47,6 +50,7 @@ class MoviesController < ApplicationController
       if @movie.update(movie_params)
         format.html { redirect_to @movie, notice: 'Movie was successfully updated.' }
         format.json { render :show, status: :ok, location: @movie }
+
       else
         format.html { render :edit }
         format.json { render json: @movie.errors, status: :unprocessable_entity }
@@ -74,4 +78,11 @@ class MoviesController < ApplicationController
     def movie_params
       params.require(:movie).permit(:name, :score, :ranked, :episodes, :status, :rating, :summary)
     end
+
+    def add_genres()
+      params[:movie][:genre_ids].each {|genre| 
+       MovieGenre.create(:movie_id => @movie.id, :genre_id => genre)
+      }
+    end   
+    
 end
