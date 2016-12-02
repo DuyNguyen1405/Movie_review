@@ -26,3 +26,5 @@
 //= require custom.js
 //= require refreshonce.js
 //= require_tree  .
+//= require jquery.raty.js
+//= require ratyrate

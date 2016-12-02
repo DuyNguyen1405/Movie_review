@@ -29,6 +29,7 @@ class ReviewsController < ApplicationController
     @review = @movie.reviews.build review_params
     @review.user = current_user
 
+  
     respond_to do |format|
       if @review.save
         format.html { redirect_to @review, notice: 'Review was successfully created.' }

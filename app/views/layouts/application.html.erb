@@ -11,14 +11,13 @@
  	<%= render 'layouts/banner' %>  
   <div class="col-lg-8 col-md-8 col-sm-8">
     <div class="left_content">
+     <% flash.each do |key, value| %>
+        <div class="alert alert-<%= key %>"><%= value %></div>
+      <% end %> 
      <%= yield %>
    </div>
  </div>
  <%= render 'layouts/side_bar' %>
  <%= render 'layouts/footer' %>
-</div>
-	<p class="notice"><%= notice %></p>
-	<p class="alert"><%= alert %></p>
-
 </body>
 </html>

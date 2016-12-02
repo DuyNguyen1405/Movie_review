@@ -11,7 +11,6 @@
       </div>
       <% end %>
 
-<<<<<<< HEAD
     </div>
   </div>
   <% end %>
@@ -20,12 +19,26 @@
       <div class="left_content">
         <div class="single_post_content">
           <h2><span>Business</span></h2>
-          <% if params[:order_by] && params[:order_by] == 'name' %>
-          <%sort_params = "name"%>
-          <%else%>
-          <%sort_params = "id"%>
+<<<<<<< HEAD
+          <% if params[:order_by] && params[:order_by] == 'name' && !params[:commit] %>
+          <%@movies = Movie.paginate(page: params[:page], per_page: 3).order(:name)%>
+          <%elsif !params[:order_by] && !params[:commit]%>
+          <%@movies = Movie.paginate(page: params[:page], per_page: 3).order(:id)%>
+=======
+           <% if params[:order_by] && params[:order_by] == 'name' && !params[:commit] %>
+          <%@movies = Movie.paginate(page: params[:page], per_page: 3).order(:name)%>
+          <%elsif !params[:order_by] && !params[:commit]%>
+          <%@movies = Movie.paginate(page: params[:page], per_page: 3).order(id: :desc)%>
+>>>>>>> son
+          <%elsif params[:commit] == 'Search' %>
+          <%@movies = Movie.joins(:movie_genres).where(movie_genres: {genre_id: params[:genre_ids] }).having('count(genre_id) >= ?', params[:genre_ids].count).group("movies.id").paginate(page: params[:page], per_page: 3).order(:id)%>
+
           <%end%>
-          <%@movies = Movie.paginate(page: params[:page], per_page: 3).order(sort_params)%>
+<<<<<<< HEAD
+
+=======
+          
+>>>>>>> son
           <% @movies.each do |movie| %>
           <ul class="business_catgnav  wow fadeInDown">
             <li>
@@ -48,50 +61,3 @@
   </div>
 
   
-=======
-    </div>
-  </div>
-  <% end %>
-  <div class="row">
-    <div class="col-lg-12 col-md-12 col-sm-12">
-      <div class="left_content">
-        <div class="single_post_content">
-          <h2><span>Business</span></h2>
-          <% if params[:order_by] && params[:order_by] == 'name' %>
-          <%sort_params = "name"%>
-          <%else%>
-          <%sort_params = "id"%>
-          <%end%>
-          <%@movies = Movie.paginate(page: params[:page], per_page: 3).order(sort_params)%>
-          <% @movies.each do |movie| %>
-          <ul class="business_catgnav  wow fadeInDown">
-            <li>
-              <figure class="bsbig_fig"> <a href="" class="featured_img"> <%= image_tag("featured_img2.jpg",  alt: "Film logo") %> 
-                <span class="overlay"></span> </a>
-                <figcaption> <%= link_to movie.name, movie %> </figcaption>
-
-                <p><%= movie.summary %></p>
-              </figure>
-            </li>
-            <li>
-              <hr>
-            </li>
-          </ul>
-          <% end %>
-          <%= will_paginate %>
-
-        </div>
-      </div>
-    </div>
-  </div>
-<script src="assets/js/jquery.min.js"></script> 
-<script src="assets/js/wow.min.js"></script> 
-<script src="assets/js/bootstrap.min.js"></script> 
-<script src="assets/js/slick.min.js"></script> 
-<script src="assets/js/jquery.li-scroller.1.0.js"></script> 
-<script src="assets/js/jquery.newsTicker.min.js"></script> 
-<script src="assets/js/jquery.fancybox.pack.js"></script> 
-<script src="assets/js/custom.js"></script>
-</body>
-</html>
->>>>>>> 64e6b2164ccb453cdd81ea8383dd360c392fe00d

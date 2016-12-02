@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  devise_for :users, :controllers => {:omniauth_callbacks => "omniauth_callbacks"} 
+  post '/rate' => 'rater#create', :as => 'rate'
+  devise_for :users, :controllers => {:omniauth_callbacks => "omniauth_callbacks", :registrations => "registrations"} 
   devise_scope :user do 
     get '/users/sign_out' => 'devise/sessions#destroy'
     get '/users/:id', :to => 'users#show', :as => :user
@@ -28,7 +29,7 @@ Rails.application.routes.draw do
 
 
   root 'movies#index'
-  get    '/search',   to: 'searches#new'
+  get '/search', to: 'searches#new'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
