@@ -24,7 +24,7 @@ Rails.application.routes.draw do
   end
 
   resources :movies do
-    resources :reviews, only: [:show, :create, :new]
+    resources :reviews, only: [:show, :create, :new, :index]
   end
 
 

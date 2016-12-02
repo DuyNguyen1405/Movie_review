@@ -5,7 +5,8 @@ class ReviewsController < ApplicationController
   # GET /reviews
   # GET /reviews.json
   def index
-    @reviews = Review.all
+    @movie = Movie.find(params[:movie_id])
+    @reviews = @movie.reviews
   end
 
   # GET /reviews/1
