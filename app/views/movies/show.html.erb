@@ -28,6 +28,19 @@
             <br>
           <%= @movie.summary %>
         </div>
+
+        <div class="fav">
+          <input type="hidden" id="movie_id" value="<%= @movie.id%>">
+          <input type="hidden" id="user_id" value="<%= current_user.id %>">
+          <% if not FavoriteMovie.find_by(user_id: current_user.id, movie_id: @movie.id) %>
+            <input type="hidden" id="favorited_id" value="">
+            <button class="btn btn-success" id="favorite">Favorite</button>
+          <% else %>
+            <input type="hidden" id="favorited_id" value="<%= FavoriteMovie.find_by(user_id: current_user.id, movie_id: @movie.id).id %>">
+            <button class="btn btn-success" id="favorite">Favorited</button>
+          <% end %>
+        </div>
+
       </div>
     </div>
     <div class="col-lg-4 col-md-4 col-sm-4">
@@ -120,5 +133,45 @@
   <%end%>
 </p>
 
-
 </div>
+
+
+<script>
+$("#favorite").bind("click", function() {
+  console.log("favorite clicked");
+  if($(this).text() == "Favorite") {
+    var user_id = $("#user_id").val();
+    var movie_id = $("#movie_id").val();
+    var url = movie_id+"/favorite_movies";
+    var favorite_movie = {"user_id": user_id, "movie_id": movie_id};
+    // var data = {favorite_movie["user_id"]: user_id, favorite_movie["movie_id"]: movie_id};
+    // console.log(favorite_movie);
+    $.post(url, favorite_movie, function(response) {
+
+    });
+  }
+  if($(this).text() == "Favorited") {
+    console.log("favorited clicked");
+    // var user_id = $("#user_id").val();
+    var movie_id = $("#movie_id").val();
+    var favorited_id = $("#favorited_id").val();
+    var url = movie_id+"/favorite_movies/"+ favorited_id;
+    // var favorite_movie = {"user_id": user_id, "movie_id": movie_id};
+    var favorited = {"id": favorited_id}
+    // var data = {favorite_movie["user_id"]: user_id, favorite_movie["movie_id"]: movie_id};
+    // console.log(favorite_movie);
+    // $.post(url, favorite_movie, function(response) {
+    // });
+    $.ajax({
+      url: url,
+      type: 'DELETE',
+      data: favorited,
+      success: function(result) {
+
+      }
+    });
+  }
+
+});                                                                                      
+
+</script>

@@ -20,7 +20,7 @@ Rails.application.routes.draw do
 
   # Routes for follow favorite movies
   resources :movies do 
-    resources :favorites_movies, only: [ :create, :destroy ]
+    resources :favorite_movies, only: [ :create, :destroy ]
   end
 
   resources :movies do

@@ -47,7 +47,7 @@ $("#search-box").bind("keyup", function() {
 
     var url = "/searches/live_search"; // live_search action.   
     var formData = form.serialize(); // grab the data in the form
-    console.log(q);
+    console.log(formData);
     $.get(url, formData, function(response) { // perform an AJAX get
       // console.log(response.to_string);
 

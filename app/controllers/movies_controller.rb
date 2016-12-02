@@ -33,6 +33,7 @@ class MoviesController < ApplicationController
     respond_to do |format|
       if @movie.save
        add_genres
+       add_categories
         format.html { redirect_to @movie, notice: 'Movie was successfully created.' }
         format.json { render :show, status: :created, location: @movie }
 

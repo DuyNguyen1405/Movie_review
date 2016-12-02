@@ -38,6 +38,14 @@ class UsersController < ApplicationController
     end
   end
 
+  def favorite
+    FavoriteMovie.create(user_id: @user.id, movie_id: params[:movie_id])
+    respond_to do |format|
+      format.js
+    end
+  end
+
+
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
