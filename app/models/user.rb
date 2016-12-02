@@ -10,8 +10,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :confirmable,
          :omniauthable, :omniauth_providers => [:facebook]
 	
-	has_many :favorite_actors
-	has_many :actors, :through => :favorite_actors
+	has_many :favorite_movies
+	has_many :movies, :through => :favorite_movies
 
 	def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|

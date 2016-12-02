@@ -1,4 +1,5 @@
 var count = $("#category-selected a").length;
-var url = $("#category-links a:contains('"+ "<%= @category.name%>" +"')").attr("href");
-$("#category-selected").append('<a href="'+ url +'" name="movie[categories]['+ count +']">#'+ "<%= @category.name%>"+'</a>');
+var url = "<%= category_path @category %>";
+console.log(url);
+$("#category-selected").append('[<a href="'+ url +'" name="movie[categories]'+ count +']">#'+ "<%= @category.name%>"+'</a>');
 $('<input>').attr('type', 'hidden').attr('name', 'movie[categories]['+ count +']').attr('value', "<%= @category.name%>").appendTo('form');
