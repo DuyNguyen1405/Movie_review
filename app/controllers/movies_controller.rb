@@ -48,6 +48,8 @@ class MoviesController < ApplicationController
   def update
     respond_to do |format|
       if @movie.update(movie_params)
+        add_genres
+        add_categories
         format.html { redirect_to @movie, notice: 'Movie was successfully updated.' }
         format.json { render :show, status: :ok, location: @movie }
 
@@ -81,8 +83,18 @@ class MoviesController < ApplicationController
 
     def add_genres()
       params[:movie][:genre_ids].each {|genre| 
-       MovieGenre.create(:movie_id => @movie.id, :genre_id => genre)
+        count = MovieGenre.where("movie_id = ?", @movie.id).where("genre_id = ?", genre).count
+        if count == 0 then MovieGenre.create(:movie_id => @movie.id, :genre_id => genre) 
+        end
       }
-    end   
+    end  
+
+    def add_categories()
+      params[:movie][:categories].each do |category|
+        if not @movie.categories.find_by(name: category)
+          MovieCategory.create(:movie_id => @movie.id, :category_id => Category.find_by(name: category).id)
+        end
+      end
+    end
     
 end
