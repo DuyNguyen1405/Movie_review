@@ -16,15 +16,20 @@ ActiveRecord::Schema.define(version: 20161201084622) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "actor_images", force: :cascade do |t|
+    t.integer "actor_id"
+    t.integer "image_id"
+  end
+
+  add_index "actor_images", ["actor_id"], name: "index_actor_images_on_actor_id", using: :btree
+  add_index "actor_images", ["image_id"], name: "index_actor_images_on_image_id", using: :btree
+
   create_table "actors", force: :cascade do |t|
     t.string   "name"
     t.datetime "date_of_birth"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
-    t.integer  "gallery_id"
   end
-
-  add_index "actors", ["gallery_id"], name: "index_actors_on_gallery_id", using: :btree
 
   create_table "average_caches", force: :cascade do |t|
     t.integer  "rater_id"
@@ -43,7 +48,6 @@ ActiveRecord::Schema.define(version: 20161201084622) do
 
   create_table "comments", force: :cascade do |t|
     t.text     "content"
-    t.datetime "create_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "user_id"
@@ -73,22 +77,8 @@ ActiveRecord::Schema.define(version: 20161201084622) do
   add_index "favorite_movies", ["movie_id"], name: "index_favorite_movies_on_movie_id", using: :btree
   add_index "favorite_movies", ["user_id"], name: "index_favorite_movies_on_user_id", using: :btree
 
-  create_table "films", force: :cascade do |t|
-    t.string   "name"
-    t.string   "date"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "galleries", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "genres", force: :cascade do |t|
-    t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string "name"
   end
 
   create_table "images", force: :cascade do |t|
@@ -96,10 +86,7 @@ ActiveRecord::Schema.define(version: 20161201084622) do
     t.string   "link"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer  "gallery_id"
   end
-
-  add_index "images", ["gallery_id"], name: "index_images_on_gallery_id", using: :btree
 
   create_table "movie_actors", force: :cascade do |t|
     t.integer  "movie_id"
@@ -131,6 +118,16 @@ ActiveRecord::Schema.define(version: 20161201084622) do
   add_index "movie_genres", ["genre_id"], name: "index_movie_genres_on_genre_id", using: :btree
   add_index "movie_genres", ["movie_id"], name: "index_movie_genres_on_movie_id", using: :btree
 
+  create_table "movie_images", force: :cascade do |t|
+    t.integer  "movie_id"
+    t.integer  "image_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "movie_images", ["image_id"], name: "index_movie_images_on_image_id", using: :btree
+  add_index "movie_images", ["movie_id"], name: "index_movie_images_on_movie_id", using: :btree
+
   create_table "movie_producers", force: :cascade do |t|
     t.integer  "movie_id"
     t.integer  "producer_id"
@@ -146,25 +143,21 @@ ActiveRecord::Schema.define(version: 20161201084622) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.float    "score"
-    t.integer  "ranked"
     t.integer  "episodes"
     t.string   "status"
     t.string   "rating"
     t.text     "summary"
-    t.integer  "gallery_id"
   end
-
-  add_index "movies", ["gallery_id"], name: "index_movies_on_gallery_id", using: :btree
 
   create_table "musics", force: :cascade do |t|
     t.string   "name"
     t.string   "link"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer  "gallery_id"
+    t.integer  "movie_id"
   end
 
-  add_index "musics", ["gallery_id"], name: "index_musics_on_gallery_id", using: :btree
+  add_index "musics", ["movie_id"], name: "index_musics_on_movie_id", using: :btree
 
   create_table "overall_averages", force: :cascade do |t|
     t.integer  "rateable_id"
@@ -218,11 +211,6 @@ ActiveRecord::Schema.define(version: 20161201084622) do
   add_index "reviews", ["movie_id"], name: "index_reviews_on_movie_id", using: :btree
   add_index "reviews", ["user_id"], name: "index_reviews_on_user_id", using: :btree
 
-  create_table "searches", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -258,7 +246,6 @@ ActiveRecord::Schema.define(version: 20161201084622) do
   create_table "videos", force: :cascade do |t|
     t.string   "name"
     t.string   "link"
-    t.string   "type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "movie_id"
@@ -266,12 +253,9 @@ ActiveRecord::Schema.define(version: 20161201084622) do
 
   add_index "videos", ["movie_id"], name: "index_videos_on_movie_id", using: :btree
 
-  add_foreign_key "actors", "galleries"
   add_foreign_key "comments", "reviews"
   add_foreign_key "comments", "users"
-  add_foreign_key "images", "galleries"
-  add_foreign_key "movies", "galleries"
-  add_foreign_key "musics", "galleries"
+  add_foreign_key "musics", "movies"
   add_foreign_key "reviews", "movies"
   add_foreign_key "reviews", "users"
   add_foreign_key "videos", "movies"

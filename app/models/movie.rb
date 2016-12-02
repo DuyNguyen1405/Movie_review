@@ -18,6 +18,9 @@ class Movie < ActiveRecord::Base
 	has_many :favorite_movies
 	has_many :users, :through => :favorite_movies
 
+	has_many :movie_images
+	has_many :images, :through => :movie_images
+
 	ratyrate_rateable 'score'
 
 end
