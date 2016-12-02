@@ -29,7 +29,7 @@ class SearchesController < ApplicationController
 
   # GET /searches/new
   def new
-    @search = Search.new
+    
   end
 
   # GET /searches/1/edit
