@@ -19,15 +19,14 @@
       <div class="left_content">
         <div class="single_post_content">
           <h2><span>Business</span></h2>
-          <% if params[:order_by] && params[:order_by] == 'name' && !params[:commit] %>
+           <% if params[:order_by] && params[:order_by] == 'name' && !params[:commit] %>
           <%@movies = Movie.paginate(page: params[:page], per_page: 3).order(:name)%>
           <%elsif !params[:order_by] && !params[:commit]%>
-          <%@movies = Movie.paginate(page: params[:page], per_page: 3).order(:id)%>
+          <%@movies = Movie.paginate(page: params[:page], per_page: 3).order(id: :desc)%>
           <%elsif params[:commit] == 'Search' %>
           <%@movies = Movie.joins(:movie_genres).where(movie_genres: {genre_id: params[:genre_ids] }).having('count(genre_id) >= ?', params[:genre_ids].count).group("movies.id").paginate(page: params[:page], per_page: 3).order(:id)%>
 
           <%end%>
-
           <% @movies.each do |movie| %>
           <ul class="business_catgnav  wow fadeInDown">
             <li>

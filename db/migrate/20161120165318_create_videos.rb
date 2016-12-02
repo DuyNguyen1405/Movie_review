@@ -3,7 +3,6 @@ class CreateVideos < ActiveRecord::Migration
     create_table :videos do |t|
       t.string :name
       t.string :link
-      t.string :type
 
       t.timestamps null: false
     end

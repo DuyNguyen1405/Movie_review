@@ -6,4 +6,7 @@ class Actor < ActiveRecord::Base
 
 	has_many :favorite_actors
 	has_many :users, :through => :favorite_actors
+
+	has_many :actor_images
+	has_many :images, :through => :actor_images
 end

@@ -66,11 +66,15 @@ jQuery(window).load(function() { // makes sure the whole site is loaded
     $('body').delay(100).css({
         'overflow': 'visible'
     });
+})
+
+$.ajaxSetup({
+  headers: {
+    'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+  }
 <<<<<<< HEAD
-})
-
+});
 =======
-        
+});
 
-})
->>>>>>> 64e6b2164ccb453cdd81ea8383dd360c392fe00d
+>>>>>>> son

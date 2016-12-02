@@ -1,6 +1,5 @@
 <h1>Search#new</h1>
 
-   
 <%= form_tag(root_path, :method => "get", id: "search-form") do %>
 <% Genre.all.each do |genre| %>
 <%= check_box_tag 'genre_ids[]', genre.id %>
