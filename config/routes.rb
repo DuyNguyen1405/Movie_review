@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     get '/users/sign_out' => 'devise/sessions#destroy'
     get '/users/:id', :to => 'users#show', :as => :user
   end
-  resources :users, only: [:show]
+  resources :users
   resources :movies
   resources :comments
   resources :reviews

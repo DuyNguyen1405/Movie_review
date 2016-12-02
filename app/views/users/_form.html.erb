@@ -11,6 +11,11 @@
     </div>
   <% end %>
 
+  <div class="field">
+    <%= f.label :role%>
+    <%= f.select :role, ['Regular', 'Moderator']%>
+  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>
