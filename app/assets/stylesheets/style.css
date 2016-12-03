@@ -7,6 +7,7 @@ h1, h2, h3, h4, h5, h6{font-family:'Oswald',sans-serif}
 h2{line-height:23px}
 img{border:none}
 img:hover{opacity:0.75}
+.container{background-color: #fff;}
 /*div.container {background-color: #fff;}*/
 .img-center{display:block; margin-left:auto; margin-right:auto; text-align:center}
 .img-right{display:block; margin-left:auto}
@@ -103,8 +104,8 @@ img:hover{opacity:0.75}
 .social_nav li.mail a{ background-image:url("images/socials.png"); background-position:-240px -30px; background-size:270px 60px; width:32px}
 .social_nav li.mail a:hover{background-position:-240px 0px; background-size:270px 60px; background-color:#bc75d6}
 #sliderSection{background-color:#fff; display:inline; float:left; width:100%; padding:0 30px}
-.single_iteam{display:inline; float:left; position:relative; width:100%; height:448px}
-.single_iteam img{width:100%; height:100%}
+.single_iteam{display:inline; float:left; position:relative; width:100%; min-height: 180px;}
+.single_iteam img{width:100%;}
 .single_iteam img:hover{opacity:1}
 .slider_article{ bottom:20px; left:0; position:absolute; right:0; padding:10px 15px}
 .slider_article > h2 a{ background:none repeat scroll 0 0 rgba(0,0,0,0.4); color:#fff; font-size:18px; padding:10px; display:inline-block}
@@ -125,7 +126,7 @@ img:hover{opacity:0.75}
 #prev-button{cursor:pointer; font-size:20px; left:0; position:absolute; text-align:center; top:-10px; width:100%; display:none}
 #next-button{cursor:pointer; display:none; font-size:20px; left:0; position:absolute; text-align:center; bottom:0; width:100%}
 #contentSection{float:left; display:inline; width:100%; background-color:#fff; padding:0 30px}
-.left_content{float:left; display:inline; width:100%}
+.left_content{float:left; display:inline; width:100%;}
 .single_post_content{float:left; display:inline; width:100%; margin-bottom:20px}
 .single_post_content > h2{background:none repeat scroll 0 0 #151515; color:#fff; font-family:'Oswald',sans-serif; font-size:18px; font-weight:400; margin-bottom:10px; margin-left:0; margin-top:5px; padding:0; position:relative; text-align:center; text-transform:uppercase; margin-bottom:20px}
 .single_post_content > h2 span{padding:4px 10px}
@@ -137,7 +138,7 @@ img:hover{opacity:0.75}
 .bsbig_fig > a img{width:100%}
 .bsbig_fig figcaption{color:#333; font-family:"Oswald",sans-serif; font-size:23px; font-weight:300; margin-top:10px; margin-bottom:10px}
 .single_post_content_right{float:right; display:inline; width:48%}
-.right_content{float:left; display:inline; width:100%; min-height:300px}
+.right_content{float:left; display:inline; width:100%; min-height:200px}
 .spost_nav{}
 .spost_nav li{float:left; display:block; width:100%; margin-bottom:10px}
 .spost_nav .media-left{width:100px; height:80px}
@@ -214,11 +215,13 @@ figure.effect-layla:hover figcaption::after, figure.effect-layla:hover h2, figur
 .pagination > li:last-child > a, .pagination > li:last-child > span{border-bottom-right-radius:0; border-top-right-radius:0}
 .single_page{float:left; display:inline; width:100%}
 .single_page > h1{color:#333; font-family:Oswald,arial,Georgia,serif; font-size:30px; line-height:1.4em; margin:10px 0 -10px; padding:0 0 4px; text-transform:capitalize; text-align: left;}
-.single_page .movie_header{color:#fff; font-family:Oswald,arial,Georgia,serif; font-size:30px; line-height:1.4em; margin:10px 0 -10px; padding:0 0 4px 10px; text-transform:capitalize; min-height: 200px; background-color: #303030;}
-.single_page .right_content{min-height: 200px; border-left:1px solid #383838;}
-.single_page .movie_score{padding-left: 10px;}
-.single_page .movie_title{}
-.single_page .movie_sum{font-size: 15px; text-transform: none;}
+.single_page .movie_header{color:#fff; font-family: Oswald,arial,Georgia,serif; margin:10px 0 -10px; padding:0 0 4px 10px; text-transform:capitalize; min-height: 200px; background-color: #303030;}
+.single_page .left_content{margin-top: 10px; margin-bottom: 10px;}
+.single_page .right_content{border-left:1px solid #383838; margin-top: 10px; margin-bottom: 10px;}
+.single_page .movie_score{padding-left: 14px; font-size: 20px; font-weight: bold;}
+.single_page .movie_score > a {color:white; display: block; border-radius: 4px; background-color: green; text-align: center;margin-top: 10px; padding: 5px 5px;}
+.single_page .movie_title{word-wrap: break-word; font-size:30px; line-height:1em;}
+.single_page .movie_sum{font-size: 20px; text-transform: none; margin-top: 20px;}
 .single_page .movie_gallery .right_content{border-left: 0;}
 .single_page .movie_gallery h2{text-align: left; margin-left: 7px;}
 .single_page .movie_cast h1{text-align: left; margin-left: 7px; font-size: 25px;}
@@ -229,8 +232,23 @@ figure.effect-layla:hover figcaption::after, figure.effect-layla:hover h2, figur
 .post_commentbox a > i, .post_commentbox span > i{margin-right:5px}
 .breadcrumb{background-color:#303030; border-radius:0}
 .breadcrumb li a{color:#fff}
+.breadcrumb li a:hover{background-color: inherit; text-decoration: underline; font-size: 15px;}
 .movie_full{float:left; display:inline-block; width:100%}
 .movie_sidebar{float:left; display:inline-block; width:100%; background-color: #ddd;}
 #categories_result{display: none; margin-top: -11px; max-height: 300px; overflow-y: auto; overflow-x: hidden; position: absolute; background-color: #fff; border: 1px solid #d083cf; border-top: 0; width: 197px; max-height: 300px; line-height: 2em; font-size: 14px;}
 p#category-selection{display: block; margin: 0;}
 p#category-selection:hover{background-color: #ccc;}
+img.poster {max-width: 100%; float: left;}
+.movie_sum > p {border-top:1px solid #383838; margin-top: 5px;}
+.movie_poster{padding: 0;}
+.single_review{border-top: 1px solid #383838; padding-top: 10px;}
+.single_review p {font-size: 15px; color: #000;margin-top: 5px;}
+.single_review a {color: #333; }
+.single_review a:hover{background-color: inherit; text-decoration: underline;}
+.single_review strong{font-size: 20px; margin-top: 10px; margin-bottom: 5px;}
+.review_show a{color: #000;}
+.review_show a:hover{background-color: inherit; text-decoration: underline;}
+.review_content{margin-top: 10px; border-top: 1px solid #DDD; padding-top: 10px;}
+textarea#comment_content{width: 75%; min-height: 70px; margin-left: 10%;}
+.comments{margin-top: 10px; border-top: 1px solid #ddd; padding-top: 10px;}
+.comments li {border: 1px solid #ddd; border-radius: 4px; padding: 10px 20px;}

@@ -5,19 +5,22 @@
   <ol class="breadcrumb">
     <li><%= link_to('Home', root_path) %></li>
     <li class="active"><%= @movie.name %></li>
-    <li><%= link_to('Reviews', '#') %></li>
+    <li><%= link_to('Reviews', movie_reviews_path(@movie)) %></li>
   </ol>
   <%= link_to 'Edit', edit_movie_path(@movie) if can? :edit, Movie %>
 
-  <div class="movie_header">
+  <div class="movie_header col-lg-12 col-md-12 col-sm-12">
     <div class="col-lg-8 col-md-8 col-sm-8">
       <div class="left_content">
-        <div class="movie_title">
-          <%= @movie.name %>
+        <div class="movie_title col-lg-12 col-md-12 col-sm-12">
+        <div class=" movie_poster col-lg-3 col-md-3 col-sm-3">
+            <%= image_tag("http://static1.gamespot.com/uploads/original/1557/15576725/2988068-bvs-poster.jpg", alt: "poster", class: "poster")%>
+          </div>
+          <div class="col-lg-9 col-md-9 col-sm-9"> <%= @movie.name %></div>
         </div>
         <% @array = Genre.joins(:movie_genres).where("movie_id = ?", @movie.id).all %>
-        <div class="movie_sum">
-          <% @array.each do |genre| %>
+        <div class="movie_sum col-lg-12 col-md-12 col-sm-12">
+          <p><% @array.each do |genre| %>
 
             <% if genre.name != @array.last.name %>
             <%= genre.name%>, 
@@ -25,100 +28,103 @@
             <%= genre.name%>.
             <% end %>
             <% end %>
-            <br>
-          <%= @movie.summary %>
+          </p>
+          <p><%= @movie.summary %></p>
         </div>
       </div>
     </div>
     <div class="col-lg-4 col-md-4 col-sm-4">
       <aside class="right_content">
         <div class="single_sidebar">
-            <div class="movie-score">
-              Score: <%= @movie.average("score") ? @movie.average("score").avg : "N/A"%><br>
-              <% if current_user %>
-                <% rating = Rate.find_by_rater_id_and_rateable_id_and_dimension(current_user.id, @movie.id, "score") %>
-                Your Score: 
-                <% if rating %>
-                  <%= rating_for_user @movie, current_user, "score" %>
-                <% else %>
-                  <%= rating_for @movie, "score", disable_after_rate: true, target: '#hintDiv' %>
-                <% end %>
-                <%= link_to 'Add Review', new_movie_review_path(@movie)%>
-                <div id = 'hintDiv'></div>
-              <% end %>
-            </div>
+          <div class="movie_score">
+            Score: <%= @movie.average("score") ? @movie.average("score").avg : "N/A"%><br>
+            <% if current_user %>
+            <% rating = Rate.find_by_rater_id_and_rateable_id_and_dimension(current_user.id, @movie.id, "score") %>
+            Your Score: 
+            <% if rating %>
+            <%= rating_for_user @movie, current_user, "score" %>
+            <% else %>
+            <%= rating_for @movie, "score", disable_after_rate: true, target: '#hintDiv' %>
+            <% end %>
+            <%= link_to 'Add Review', new_movie_review_path(@movie)%>
+            <div id = 'hintDiv'></div>
+            <% end %>
+          </div>
         </div>
       </aside>
     </div>
   </div>
-  <div class="movie_gallery">
+  <div class="movie_gallery col-lg-12 col-md-12 col-sm-12">
     <div class="movie_video">
       <div class="col-lg-6 col-md-6 col-sm-6">
         <div class="left_content">
          <h2>Video</h2>
-          <% if @movie.videos.count != 0 %>
-          <%@movie.videos.each do |video| %>
-          
-          <% if @movie.videos.exists? %>
-          <p><iframe width="300" height="200" src="<%= video.link %>"></iframe></p>
-            <% end %>
-            <% end %>
-            <% else %>
-            <p>This Video is unavailable</p>
-            <% end %>
-        </div>
+         <% if @movie.videos.count != 0 %>
+         <%@movie.videos.each do |video| %>
+
+         <% if @movie.videos.exists? %>
+         <p><iframe width="300" height="200" src="<%= video.link %>"></iframe></p>
+         <% end %>
+         <% end %>
+         <% else %>
+         <p>This Video is unavailable</p>
+         <% end %>
+       </div>
+     </div>
+   </div>
+   <div class="movie_pics">
+    <div class="col-lg-6 col-md-6 col-sm-6">
+      <aside class="right_content">
+       <h2>Picture</h2>
+
+
+       <div class="slick_slider">
+
+        <div class="single_iteam"> <a href="pages/single_page.html"> <img src="http://cdn1-www.musicfeeds.com.au/assets/uploads/dcefd69e9849f544b40254a349130ab2-640x360.jpg" alt="poster"></a></div>
+        <div class="single_iteam"> <a href="pages/single_page.html"> <img src="https://twistedsifter.files.wordpress.com/2016/07/dulmen_bornste_waldweg.jpg" alt="poster"></a></div>
+        <div class="single_iteam"> <a href="pages/single_page.html"> <img src="http://webneel.com/daily/sites/default/files/images/daily/05-2014/12-sunrise-picture.jpg" alt="poster"></a></div>
+        <div class="single_iteam"> <a href="pages/single_page.html"> <img src="http://combiboilersleeds.com/images/picture/picture-8.jpg" alt="poster"></a></div>
+
+
+
       </div>
-    </div>
-    <div class="movie_pics">
-      <div class="col-lg-6 col-md-6 col-sm-6">
-        <aside class="right_content">
-           <h2>Picture</h2>
-
-
-            <div class="slick_slider">
-              
-              <div class="single_iteam"> <a href="pages/single_page.html"> <img src="http://cdn1-www.musicfeeds.com.au/assets/uploads/dcefd69e9849f544b40254a349130ab2-640x360.jpg" alt="poster"></a></div>
-              <div class="single_iteam"> <a href="pages/single_page.html"> <img src="https://twistedsifter.files.wordpress.com/2016/07/dulmen_bornste_waldweg.jpg" alt="poster"></a></div>
-              <div class="single_iteam"> <a href="pages/single_page.html"> <img src="http://webneel.com/daily/sites/default/files/images/daily/05-2014/12-sunrise-picture.jpg" alt="poster"></a></div>
-              <div class="single_iteam"> <a href="pages/single_page.html"> <img src="http://combiboilersleeds.com/images/picture/picture-8.jpg" alt="poster"></a></div>
-                
-              
-              
-            </div>
-        </aside>
+    </aside>
+  </div>
+</div>
+</div>
+<div class="movie_cast col-lg-12 col-md-12 col-sm-12">
+  <h1>Cast</h1>
+  <div class="movie_actor">
+    <div class="col-lg-6 col-md-6 col-sm-6">
+      <div class="left_content">
+        <h2>Actor</h2>
+        <p>Origa</p>
       </div>
     </div>
   </div>
-  <div class="movie_cast">
-    <h1>Cast</h1>
-    <div class="movie_actor">
-      <div class="col-lg-6 col-md-6 col-sm-6">
-        <div class="left_content">
-          <h2>Actor</h2>
-          <p>Origa</p>
-        </div>
-      </div>
-    </div>
-    <div class="movie_role">
-      <div class="col-lg-6 col-md-6 col-sm-6">
-        <aside class="right_content">
-            <h2>Role</h2>
-            <p>Origa</p>
-        </aside>
-      </div>
+  <div class="movie_role">
+    <div class="col-lg-6 col-md-6 col-sm-6">
+      <aside class="right_content">
+        <h2>Role</h2>
+        <p>Origa</p>
+      </aside>
     </div>
   </div>
-  <p>
-  <strong>Reviews:</strong>
+</div>
+<% if @movie.reviews.size > 0 %>
+<div class="col-lg-12 col-md-12 col-sm-12">
+  <h3>Latest review:</h3>
   <% @movie.reviews.each do |r| %>
-    <p><%= r.id %></p>
-    <p><%= r.content %></p>
-    <%@comments = r.comments%>
-    <%@comments.each do |c|%>
-      <t><p><%= c.content%></p>
+  <p><%= r.id %></p>
+  <p><%= r.content %></p>
+  <%@comments = r.comments%>
+  <%@comments.each do |c|%>
+  <t><p><%= c.content%></p>
     <%end%>
-  <%end%>
-</p>
-
+    <%end%>
+  </div>
+<% else %>
+<h1>Deo co cai review mau cac nao</h1>
+<% end %>
 
 </div>

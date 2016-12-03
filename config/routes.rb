@@ -24,7 +24,13 @@ Rails.application.routes.draw do
   end
 
   resources :movies do
-    resources :reviews, only: [:show, :create, :new]
+    member do
+      :reviews
+    end
+  end
+
+  resources :movies do
+    resources :reviews, only: [:show, :create, :new, :index]
   end
 
 
