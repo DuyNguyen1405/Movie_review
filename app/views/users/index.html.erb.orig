@@ -2,6 +2,16 @@
 
 <h1>Listing Users</h1>
 
+<<<<<<< HEAD
+<table>
+  <tbody>
+      <tr>
+        <th>Name</th>
+        <th>Role</th>
+      </tr>
+    <% @users.each do |user| %>
+      <tr>
+=======
 
 <div class="col-lg-12 col-md-12 col-sm-12"">
 <table class="table">
@@ -23,12 +33,20 @@
     <% @role = "" %>
     <%end%>
       <tr class = "<%= @role %>">
+>>>>>>> 922d9b55cb039df4c3d362356e7ad3b969900079
         <td><%=user.name%></td>
         <td><%=user.role%></td>
         <td><%= link_to 'Show', user %></td>
         <td><%= link_to 'Edit', edit_user_path(user) %></td>
+<<<<<<< HEAD
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+=======
       </tr>      
       <%end%>
     </tbody>
   </table>
 </div>
+>>>>>>> 922d9b55cb039df4c3d362356e7ad3b969900079

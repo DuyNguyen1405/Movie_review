@@ -1,5 +1,4 @@
 <header class="navbar navbar-fixed-top navbar-inverse">
-<<<<<<< HEAD
   <div class="row">
     <div class="col-lg-12 col-md-12 col-sm-12">
       <div class="header_top">
@@ -30,6 +29,11 @@
             <% else %>
             <li><%= link_to('Log out', destroy_user_session_path) %></li>
             <li><%= link_to current_user.name, user_path(current_user) unless current_user.nil? %></li>
+<<<<<<< HEAD
+=======
+            <li><%= link_to('Add Movie', new_movie_path) if can? :create, Movie %></li>
+                <li><%= link_to('Manage Users', users_path) if can? :manage, User %></li>
+>>>>>>> 922d9b55cb039df4c3d362356e7ad3b969900079
             <% end %>
           </ul>
         </div>
@@ -48,7 +52,7 @@ $("#search-box").bind("keyup", function() {
 
     var url = "/searches/live_search"; // live_search action.   
     var formData = form.serialize(); // grab the data in the form
-    console.log(q);
+    console.log(formData);
     $.get(url, formData, function(response) { // perform an AJAX get
       // console.log(response.to_string);
 
@@ -61,22 +65,3 @@ $("#search-box").bind("keyup", function() {
   }
 });
 </script>
-=======
-    <div class="row">
-      <div class="col-lg-12 col-md-12 col-sm-12">
-        <div class="header_top">
-          <div class="header_top_left">
-            <ul class="top_nav">
-              <li><%= link_to('Home', root_path) %></li>
-              <li><%=link_to('About', '#') %></li>
-              <li><%= link_to('List by Order', root_path(:order_by => 'name'))%></li>
-            </ul>
-          </div>
-          <div class="header_top_right">
-            <p>Friday, December 05, 2045</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </header>
->>>>>>> 64e6b2164ccb453cdd81ea8383dd360c392fe00d
