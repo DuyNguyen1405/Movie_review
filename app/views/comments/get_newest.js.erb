@@ -1,4 +1,4 @@
-$('#ticker01').html("");
+// $('#ticker01').html("");
 <% @comments.each do |comment|%>
 	<% @review = Review.find(comment.review_id) %>
 	<% @user = User.find(comment.user_id) %>
