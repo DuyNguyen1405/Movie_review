@@ -20,6 +20,7 @@
         </div>
         <% @array = Genre.joins(:movie_genres).where("movie_id = ?", @movie.id).all %>
         <div class="movie_sum col-lg-12 col-md-12 col-sm-12">
+          <p><%= @movie.summary %></p>
           <p><% @array.each do |genre| %>
 
             <% if genre.name != @array.last.name %>
@@ -29,7 +30,12 @@
             <% end %>
             <% end %>
           </p>
-          <p><%= @movie.summary %></p>
+          
+          <p>
+            <% @movie.categories.each do |category| %>
+              #<%= link_to category.name, category%>
+            <%end%>
+          </p>
         </div>
 
       </div>

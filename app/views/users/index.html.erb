@@ -9,12 +9,14 @@
         <th>Role</th>
       </tr>
     <% @users.each do |user| %>
+      <% if not user.admin? %>
       <tr>
         <td><%=user.name%></td>
         <td><%=user.role%></td>
         <td><%= link_to 'Show', user %></td>
         <td><%= link_to 'Edit', edit_user_path(user) %></td>
       </tr>
+      <% end %>
     <% end %>
   </tbody>
 </table>
