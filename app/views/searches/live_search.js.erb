@@ -1,0 +1,6 @@
+$("#result-box").html('');
+$("#result-box").css('display', 'block');
+<% @movies.each do |movie| %>
+	$('#result-box').append('<%= link_to(movie.name, movie)%>');
+	console.log('<%= movie.name %>');
+<% end%>

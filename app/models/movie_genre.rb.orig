@@ -1,0 +1,9 @@
+class MovieGenre < ActiveRecord::Base
+<<<<<<< HEAD
+	belongs_to :movie
+	belongs_to :genre
+=======
+	belongs_to :genre, class_name: "Genre"
+	belongs_to :movie, class_name: "Movie" 
+>>>>>>> 64e6b2164ccb453cdd81ea8383dd360c392fe00d
+end

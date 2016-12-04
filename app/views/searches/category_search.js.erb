@@ -1,0 +1,20 @@
+$("#categories-result").html('');
+$('#category-links').html('');
+$("#categories-result").css('display', 'block');
+<% @categories.each do |category| %>
+	$('#category-links').append('<%= link_to category.name, category%>');
+	$('#categories-result').append('<p id="category-selection"><%= category.name%></p>');
+<% end%>
+
+$("#categories-result p").bind("click", function() {
+  $("#categories-result").html('');
+  $("#categories-result").css('display', 'none');
+  // console.log($(this).text());
+  var count = $("#category-selected a").length;
+  var url = $("#category-links a:contains('"+ $(this).text() +"')").attr("href");
+  if($('#category-selected a:contains("#'+$(this).text()+'")').length == 0) {
+  	$("#category-selected").append('<a href="'+ url +'" name="movie[categories]['+ count +']">#'+$(this).text()+'</a>');
+  	$('<input>').attr('type', 'hidden').attr('name', 'movie[categories]['+ count +']').attr('value',$(this).text()).appendTo('form');
+  }
+  // 
+});

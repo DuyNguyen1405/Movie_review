@@ -1,0 +1,8 @@
+<%= form_tag searches_path, :method => 'get', :id => "search-form", :class => "form-inline" do |f| %>
+  <p>
+  	 <%= select_tag 'option', options_for_select([["All", 0],["Movie", 2],["Actor", 3] , ["Genre", 4]], ["All", 0]) , class: "form-control" %>
+    <%= text_field_tag :q, params[:q], :id =>"search-box", :autocomplete => :off, class: "form-control" %>
+    <%= button_tag raw("<span class='glyphicon glyphicon-search'></span>"), :name => nil , class: "btn btn-theme" %>
+  </p>
+  <div id="result-box"></div>
+<% end %>

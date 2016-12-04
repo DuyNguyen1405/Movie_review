@@ -1,0 +1,7 @@
+// $('#ticker01').html("");
+<% @comments.each do |comment|%>
+	<% @review = Review.find(comment.review_id) %>
+	<% @user = User.find(comment.user_id) %>
+	// console.log('<li><a href="<%= review_path(@review)%>"> <%= image_tag("newfeed-icon.jpg")%> <%= @user.name%>: <%= truncate @review.content, length: 30 %>.. </a></li>');
+	$('ul#ticker01').append('<li><a href="<%= review_path(@review)%>"> <%= image_tag("newfeed-icon.jpg")%> <%= @user.name%>: <%= truncate comment.content, length: 10 %>.. </a></li>');
+<% end %>
