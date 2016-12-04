@@ -15,6 +15,10 @@
     </thead>
     <tbody>
     <% @users.each do |user| %>
+<<<<<<< HEAD
+      <% if not user.admin? %>
+      <tr>
+=======
     <% if user.role == "Admin" %>
     <% @role = "danger" %>
     <% elsif user.role == "Moderator" %>
@@ -23,12 +27,21 @@
     <% @role = "" %>
     <%end%>
       <tr class = "<%= @role %>">
+>>>>>>> Progg
         <td><%=user.name%></td>
         <td><%=user.role%></td>
         <td><%= link_to 'Show', user %></td>
         <td><%= link_to 'Edit', edit_user_path(user) %></td>
+<<<<<<< HEAD
+      </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
+=======
       </tr>      
       <%end%>
     </tbody>
   </table>
 </div>
+>>>>>>> Progg

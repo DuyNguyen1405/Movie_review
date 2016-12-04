@@ -3,6 +3,7 @@ source 'http://rubygems.org'
 gem 'bootstrap-sass', '3.3.6'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.6'
+gem 'puma', '3.4.0'
 # Use sqlite3 as the database for Active Record
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
@@ -15,12 +16,8 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'devise'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
-# Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-<<<<<<< HEAD
+# Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks<<<<<<< HEAD
 gem 'turbolinks'
-=======
-#gem 'turbolinks'
->>>>>>> 64e6b2164ccb453cdd81ea8383dd360c392fe00d
 gem 'jquery-turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
@@ -55,12 +52,19 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 end
+<<<<<<< HEAD
 
 group :production do
   gem 'pg', '0.18.4'
+=======
+gem 'pg', '0.18.4'
+group :production do
+  
+>>>>>>> 922d9b55cb039df4c3d362356e7ad3b969900079
 end
 
 gem 'coffee-script-source', '1.8.0'
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'cancancan'
+gem 'ratyrate'
