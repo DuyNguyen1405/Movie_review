@@ -91,9 +91,12 @@ class MoviesController < ApplicationController
     end  
 
     def add_categories()
-      params[:movie][:categories].each do |category|
-        if not @movie.categories.find_by(name: category)
-          MovieCategory.create(:movie_id => @movie.id, :category_id => Category.find_by(name: category).id)
+      @categoires = params[:movie][:categories]
+      if @categories
+        @categories.each do |category|
+          if not @movie.categories.find_by(name: category)
+            MovieCategory.create(:movie_id => @movie.id, :category_id => Category.find_by(name: category).id)
+          end
         end
       end
     end

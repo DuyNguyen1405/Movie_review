@@ -18,6 +18,15 @@ class CommentsController < ApplicationController
     @comment = Comment.new
   end
 
+  def get_newest
+    @comments = Comment.order(id: :asc).limit(8)
+    respond_to do |format|
+      if @comments
+        format.js
+      end
+    end
+  end
+
   # GET /comments/1/edit
   def edit
   end
@@ -30,7 +39,7 @@ class CommentsController < ApplicationController
     @comment.user_id = params[:user_id]
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to @review }
+        # format.html { redirect_to @review }
         # format.json { render :show, status: :created, location: @comment }
         format.js
       else

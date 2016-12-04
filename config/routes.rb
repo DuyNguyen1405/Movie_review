@@ -7,7 +7,9 @@ Rails.application.routes.draw do
   end
   resources :users, only: [:show]
   resources :movies
-  resources :comments
+  resources :comments do
+    get :get_newest, on: :collection
+  end
   resources :reviews
   resources :genres
   resources :actors
