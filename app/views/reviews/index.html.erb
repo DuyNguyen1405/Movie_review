@@ -1,8 +1,30 @@
-<p id="notice"><%= notice %></p>
+<div class="single_page">
+  <p id="notice"><%= notice %></p>
+  <ol class="breadcrumb">
+    <li><%= link_to('Home', root_path) %></li>
+    <% if @movie != nil%>
+    <li><%= link_to(@movie.name, @movie) %></li>
+    <% end %>
+    <li class="active">Reviews</li>
+  </ol>
+  <% if @reviews.size == 0 %>
+  <h1>Deo co cai review mau cac nao</h1>
+  <% else %>
 
-<h1>Listing Reviews</h1>
-
-<table>
+  <h1>Listing Review</h1>
+  <br>
+  <% @reviews.each do |review| %>
+  <div class="single_review">
+    <% @user= User.find(review.user_id)%>
+    <% if @movie == nil%>
+    <% @current_movie = Movie.find(review.movie_id)%>
+    <STRONG><%= link_to(@current_movie.name, @current_movie) %></STRONG>
+    <% end %>
+    <p><%= review.content.scan(/\S+/)[0..25].join(' ')%>...<%= link_to("See more", review) %> </p>
+    <p>Reviewed by <%= link_to(@user.name,  @user) + " on " + review.updated_at.to_s %></p>
+  </div>
+  <% end %>
+<!-- <table>
   <thead>
     <tr>
       <th>ID </th>
@@ -34,4 +56,6 @@
 
 <br>
 
-<%= link_to 'New Review', new_review_path %>
+<%= link_to 'New Review', new_review_path %> -->
+<% end %>
+</div>

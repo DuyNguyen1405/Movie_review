@@ -5,12 +5,20 @@ class ReviewsController < ApplicationController
   # GET /reviews
   # GET /reviews.json
   def index
-    @reviews = Review.all
+    if params[:movie_id]!= nil
+      @movie = Movie.find(params[:movie_id])
+      @reviews = @movie.reviews
+    else
+      @movie = nil
+      @reviews = Review.all
+    end  
   end
 
   # GET /reviews/1
   # GET /reviews/1.json
   def show
+    @movie = Movie.find(@review.movie_id)
+    @user = User.find(@review.user_id)
   end
 
   # GET /reviews/new
@@ -20,6 +28,7 @@ class ReviewsController < ApplicationController
 
   # GET /reviews/1/edit
   def edit
+    @movie = Movie.find(@review.movie_id)
   end
 
   # POST /reviews
