@@ -10,6 +10,8 @@ class Ability
     elsif user.moderator?
       can :read, :all  
       can :manage, Comment
+      can :manage, Movie
+      can :manage, Review
     else
       can :read, :all
       can :create, Comment
