@@ -2,8 +2,12 @@
 
 one:
   name: MyString
-  date_of_birth: 2016-11-20 23:56:16
+  date_of_birth: MyString
+  datetime: MyString
+  avatar: MyString
 
 two:
   name: MyString
-  date_of_birth: 2016-11-20 23:56:16
+  date_of_birth: MyString
+  datetime: MyString
+  avatar: MyString

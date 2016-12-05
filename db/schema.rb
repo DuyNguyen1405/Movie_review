@@ -11,22 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161201084622) do
+ActiveRecord::Schema.define(version: 20161205164541) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "actor_images", force: :cascade do |t|
-    t.integer "actor_id"
-    t.integer "image_id"
-  end
-
-  add_index "actor_images", ["actor_id"], name: "index_actor_images_on_actor_id", using: :btree
-  add_index "actor_images", ["image_id"], name: "index_actor_images_on_image_id", using: :btree
-
   create_table "actors", force: :cascade do |t|
     t.string   "name"
-    t.datetime "date_of_birth"
+    t.string   "date_of_birth"
+    t.string   "avatar"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
   end
@@ -82,8 +75,9 @@ ActiveRecord::Schema.define(version: 20161201084622) do
   end
 
   create_table "images", force: :cascade do |t|
-    t.string   "name"
     t.string   "link"
+    t.integer  "movie_id"
+    t.integer  "actor_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -93,6 +87,7 @@ ActiveRecord::Schema.define(version: 20161201084622) do
     t.integer  "actor_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "role"
   end
 
   add_index "movie_actors", ["actor_id"], name: "index_movie_actors_on_actor_id", using: :btree
@@ -118,16 +113,6 @@ ActiveRecord::Schema.define(version: 20161201084622) do
   add_index "movie_genres", ["genre_id"], name: "index_movie_genres_on_genre_id", using: :btree
   add_index "movie_genres", ["movie_id"], name: "index_movie_genres_on_movie_id", using: :btree
 
-  create_table "movie_images", force: :cascade do |t|
-    t.integer  "movie_id"
-    t.integer  "image_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  add_index "movie_images", ["image_id"], name: "index_movie_images_on_image_id", using: :btree
-  add_index "movie_images", ["movie_id"], name: "index_movie_images_on_movie_id", using: :btree
-
   create_table "movie_producers", force: :cascade do |t|
     t.integer  "movie_id"
     t.integer  "producer_id"
@@ -142,22 +127,18 @@ ActiveRecord::Schema.define(version: 20161201084622) do
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.float    "score"
     t.integer  "episodes"
     t.string   "status"
-    t.string   "rating"
     t.text     "summary"
+    t.string   "poster"
   end
 
   create_table "musics", force: :cascade do |t|
-    t.string   "name"
     t.string   "link"
+    t.integer  "movie_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer  "movie_id"
   end
-
-  add_index "musics", ["movie_id"], name: "index_musics_on_movie_id", using: :btree
 
   create_table "overall_averages", force: :cascade do |t|
     t.integer  "rateable_id"
@@ -200,8 +181,6 @@ ActiveRecord::Schema.define(version: 20161201084622) do
 
   create_table "reviews", force: :cascade do |t|
     t.text     "content"
-    t.datetime "add_at"
-    t.integer  "score"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "user_id"
@@ -244,19 +223,14 @@ ActiveRecord::Schema.define(version: 20161201084622) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   create_table "videos", force: :cascade do |t|
-    t.string   "name"
     t.string   "link"
+    t.integer  "movie_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer  "movie_id"
   end
-
-  add_index "videos", ["movie_id"], name: "index_videos_on_movie_id", using: :btree
 
   add_foreign_key "comments", "reviews"
   add_foreign_key "comments", "users"
-  add_foreign_key "musics", "movies"
   add_foreign_key "reviews", "movies"
   add_foreign_key "reviews", "users"
-  add_foreign_key "videos", "movies"
 end

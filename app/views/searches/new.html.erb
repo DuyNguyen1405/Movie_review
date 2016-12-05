@@ -1,10 +1,15 @@
-<h1>Search#new</h1>
+<h1>Advanced Search by Genre</h1>
 
 <%= form_tag(root_path, :method => "get", id: "search-form") do %>
-<% Genre.all.each do |genre| %>
-<%= check_box_tag 'genre_ids[]', genre.id %>
-  <%= genre.name %>
-  <% end %>
+     <div class="row">
+    <% Genre.all.each do |genre| %>
+    <div class="col-md-3" align="left">
+      <%= check_box_tag 'genre_ids[]', genre.id %>
+      <%= genre.name %>
+      </div>
+      <% end %>
+    </div>
+
   <br><br>
 <%= submit_tag "Search" %>
 <% end %>

@@ -1,0 +1,21 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Link:</strong>
+  <%= @image.link %>
+</p>
+<% if params[:imgtype] == "movie"%>
+<p>
+  <strong>Movie:</strong>
+  <%= @image.movie_id %>
+</p>
+<% end %>
+<% if params[:imgtype] == "actor"%>
+<p>
+  <strong>Actor:</strong>
+  <%= @image.actor_id %>
+</p>
+<% end %>
+
+<%= link_to 'Edit', edit_image_path(@image) %> |
+<%= link_to 'Back', images_path %>

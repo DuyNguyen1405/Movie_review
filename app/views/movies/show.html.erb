@@ -14,11 +14,12 @@
       <div class="left_content">
         <div class="movie_title col-lg-12 col-md-12 col-sm-12">
         <div class=" movie_poster col-lg-3 col-md-3 col-sm-3">
-            <%= image_tag("http://static1.gamespot.com/uploads/original/1557/15576725/2988068-bvs-poster.jpg", alt: "poster", class: "poster")%>
+             <%= link_to (image_tag(@movie.poster, alt: "poster", class: "poster")), @movie  %>
+        
           </div>
           <div class="col-lg-9 col-md-9 col-sm-9"> <%= @movie.name %></div>
         </div>
-        <% @array = Genre.joins(:movie_genres).where("movie_id = ?", @movie.id).all %>
+        <% @array = @movie.genres.all %>
         <div class="movie_sum col-lg-12 col-md-12 col-sm-12">
           <p><%= @movie.summary %></p>
           <p><% @array.each do |genre| %>
@@ -44,7 +45,7 @@
       <aside class="right_content">
         <div class="single_sidebar">
           <div class="movie_score">
-            Score: <%= @movie.average("score") ? @movie.average("score").avg : "N/A"%><br>
+            Score: <%= @movie.average("score") ? number_with_precision(@movie.average("score").avg, :precision => 1) : "N/A"%><br>
             <% if current_user %>
             <% rating = Rate.find_by_rater_id_and_rateable_id_and_dimension(current_user.id, @movie.id, "score") %>
             Your Score: 
@@ -80,16 +81,21 @@
       <div class="col-lg-6 col-md-6 col-sm-6">
         <div class="left_content">
          <h2>Video</h2>
-         <% if @movie.videos.count != 0 %>
-         <%@movie.videos.each do |video| %>
+          <%= link_to "Add new video", new_video_path(@movie) if can? :create, Movie %>
 
-         <% if @movie.videos.exists? %>
-         <p><iframe width="300" height="200" src="<%= video.link %>"></iframe></p>
+         <div class="slick_slider">
+         <% if @movie.videos.count != 0 %>
+           <%@movie.videos.each do |video| %>
+             <% if @movie.videos.exists? %>
+               <div class="single_iteam">
+               <p><iframe width="300" height="200" src="<%= video.link %>"></iframe></p>
+                </div>
+             <% end %>
+           <% end %>
+           <% else %>
+           <p>This Video is unavailable</p>  
          <% end %>
-         <% end %>
-         <% else %>
-         <p>This Video is unavailable</p>
-         <% end %>
+         </div>
        </div>
      </div>
    </div>
@@ -97,17 +103,20 @@
     <div class="col-lg-6 col-md-6 col-sm-6">
       <aside class="right_content">
        <h2>Picture</h2>
-
+       <%= link_to "Add new image", new_image_path(@movie, :imgtype => 'movie') if can? :create, Movie %>
 
        <div class="slick_slider">
-
-        <div class="single_iteam"> <a href="pages/single_page.html"> <img src="http://cdn1-www.musicfeeds.com.au/assets/uploads/dcefd69e9849f544b40254a349130ab2-640x360.jpg" alt="poster"></a></div>
-        <div class="single_iteam"> <a href="pages/single_page.html"> <img src="https://twistedsifter.files.wordpress.com/2016/07/dulmen_bornste_waldweg.jpg" alt="poster"></a></div>
-        <div class="single_iteam"> <a href="pages/single_page.html"> <img src="http://webneel.com/daily/sites/default/files/images/daily/05-2014/12-sunrise-picture.jpg" alt="poster"></a></div>
-        <div class="single_iteam"> <a href="pages/single_page.html"> <img src="http://combiboilersleeds.com/images/picture/picture-8.jpg" alt="poster"></a></div>
-
-
-
+        <% if @movie.images.count != 0 %>
+           <%@movie.images.each do |image| %>
+             <% if @movie.images.exists? %>
+               <div class="single_iteam">
+               <%= image_tag(image.link, alt: "image", height:200, width:300) %>
+                </div>
+             <% end %>
+           <% end %>
+           <% else %>
+           <p>This Image is unavailable</p>  
+         <% end %>
       </div>
     </aside>
   </div>
@@ -119,15 +128,25 @@
     <div class="col-lg-6 col-md-6 col-sm-6">
       <div class="left_content">
         <h2>Actor</h2>
-        <p>Origa</p>
+        <%= link_to "Add new actor", new_actor_path(@movie, :type => "add_role") if can? :create, Movie %>
+        <br>
+        <% @actor = @movie.actors.all %>
+        <% @actor.each do |actor| %>
+        <%= actor.name %>
+        <br>
+        <% end %>
       </div>
     </div>
   </div>
   <div class="movie_role">
     <div class="col-lg-6 col-md-6 col-sm-6">
       <aside class="right_content">
+      <br>
         <h2>Role</h2>
-        <p>Origa</p>
+       <% @role = MovieActor.where("movie_id = ?", @movie.id).all.each do |role| %>
+       <%= role.role %>
+       <br>
+       <% end %>
       </aside>
     </div>
   </div>
@@ -138,16 +157,22 @@
   <% @movie.reviews.each do |r| %>
   <p><%= r.id %></p>
   <p><%= r.content %></p>
-  <%@comments = r.comments%>
-  <%@comments.each do |c|%>
-  <t><p><%= c.content%></p>
+ <% @comments = r.comments%>
+ <% @comments.each do |c|%>
+  <t><p>+ <%= c.content%></p>
     <%end%>
     <%end%>
   </div>
 <% else %>
-<h1>Deo co cai review mau cac nao</h1>
+<h1>Don't have any review</h1>
 <% end %>
 
+<div class="movie_cast">
+  <h1>Categories</h1>
+  <% @movie.categories.all.each do |categories| %>
+    <button class="btn btn-theme"><%= categories.name  %></button>
+    <% end %>
+  </div>
 </div>
 
 

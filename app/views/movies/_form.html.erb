@@ -43,13 +43,22 @@
     <br>
     <div class="row">
       <div class="col-sm-2">
+        <%= label_tag :poster, nil, class: "control-label col-sm-2" %>
+      </div>
+      <div class="col-sm-6">
+        <%= f.text_field :poster , class: "form-control col-sm-10"%>
+      </div>
+    </div>
+
+    <br>
+    <div class="row">
+      <div class="col-sm-2">
         <%= label_tag :status, nil, class: "control-label col-sm-2" %>
       </div>
       <div class="col-sm-6">
         <%= f.text_field :status , class: "form-control col-sm-10"%>
       </div>
     </div>
-
     <br>
     <div class="row">
       <div class="col-sm-2">

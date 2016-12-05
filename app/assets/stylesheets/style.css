@@ -51,7 +51,7 @@ img:hover{opacity:0.75}
 .top_nav form input{border-radius: 0; box-sizing: border-box; width: 197px;}
 .top_nav form button{margin-bottom: 0px; border-radius: 0px 4px 4px 0px; background-color: #d083cf; border-color: #d083cf; margin-left: -5px;}
 .top_nav form button:hover{background-color: #ce39cc; border-color:#ce39cc;}
-.top_nav form div#result-box{display: none; margin-top: -11px; max-height: 300px; overflow-y: auto; overflow-x: hidden; position: absolute; background-color: #fff; border: 1px solid #d083cf; border-top: 0; width: 197px; max-height: 300px; line-height: 2em; font-size: 14px;}
+.top_nav form div#result-box{display: none; margin-top: -11px; max-height: 300px; overflow-y: auto; overflow-x: hidden; position: absolute; background-color: #fff; border: 1px solid #d083cf; border-top: 0; width: 197px; max-height: 300px; line-height: 2em; font-size: 14px; margin-left: 62px;}
 .top_nav form div#result-box > a {color: black; display: block; padding-left: 10px;}
 .top_nav form div#result-box > a:hover {color: black; line-height: 1em, font-size: 10px; background-color: #ccc;}
 .header_top_right{float:left; display:inline; width:50%; text-align:right}
@@ -104,8 +104,8 @@ img:hover{opacity:0.75}
 .social_nav li.mail a{ background-image:url("images/socials.png"); background-position:-240px -30px; background-size:270px 60px; width:32px}
 .social_nav li.mail a:hover{background-position:-240px 0px; background-size:270px 60px; background-color:#bc75d6}
 #sliderSection{background-color:#fff; display:inline; float:left; width:100%; padding:0 30px}
-.single_iteam{display:inline; float:left; position:relative; width:100%; min-height: 180px;}
-.single_iteam img{width:100%;}
+.single_iteam{display:inline; float:left; position:relative; width:100%; height:448px;}
+.single_iteam img{max-height: 100%; max-width:100%; margin: auto;}
 .single_iteam img:hover{opacity:1}
 .slider_article{ bottom:20px; left:0; position:absolute; right:0; padding:10px 15px}
 .slider_article > h2 a{ background:none repeat scroll 0 0 rgba(0,0,0,0.4); color:#fff; font-size:18px; padding:10px; display:inline-block}
@@ -254,3 +254,6 @@ textarea#comment_content{width: 75%; min-height: 70px; margin-left: 10%;}
 .comments li {border: 1px solid #ddd; border-radius: 4px; padding: 10px 20px;}
 button#favorite{border-radius: 4px; margin-left: 17px; font-weight: bold;}
 p a {color: white;}
+img.raty-cancel {
+   display: none;
+ }

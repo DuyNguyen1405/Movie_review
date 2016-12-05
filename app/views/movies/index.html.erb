@@ -3,10 +3,10 @@
   <div class="col-lg-12 col-md-12 col-sm-12">
     <div class="slick_slider">
       <% @movies = Movie.order('RANDOM()').first(5).each do |movie| %>
-      <div class="single_iteam"> <a href="pages/single_page.html"> <img src="images/slider_img4.jpg" alt="poster"></a>
+      <div class="single_iteam">   <%= link_to (image_tag(movie.poster, alt: "poster")), movie  %>
         <div class="slider_article">
-          <h2><a class="slider_tittle" href="pages/single_page.html"><%= movie.name %></a></h2>
-          <p><%= movie.summary %></p>
+          <h2><%= link_to movie.name, movie, class: "slider_tittle"%></h2>
+          <p><%= truncate(movie.summary, :length => 200) %></p>
         </div>
       </div>
       <% end %>
@@ -18,7 +18,7 @@
     <div class="col-lg-12 col-md-12 col-sm-12">
       <div class="left_content">
         <div class="single_post_content">
-          <h2><span>Business</span></h2>
+          <h2><span>Movie</span></h2>
            <% if params[:order_by] && params[:order_by] == 'name' && !params[:commit] %>
           <%@movies = Movie.paginate(page: params[:page], per_page: 3).order(:name)%>
           <%elsif !params[:order_by] && !params[:commit]%>
@@ -30,11 +30,11 @@
           <% @movies.each do |movie| %>
           <ul class="business_catgnav  wow fadeInDown">
             <li>
-              <figure class="bsbig_fig"> <a href="" class="featured_img"> <%= image_tag("featured_img2.jpg",  alt: "Film logo") %> 
+              <figure class="bsbig_fig"> <a href="<%= movie %>" class="featured_img">  <%= link_to (image_tag(movie.poster, alt: "poster", height: "500")), movie  %>
                 <span class="overlay"></span> </a>
                 <figcaption> <%= link_to(movie.name, movie) %></figcaption>
 
-                <p><%= movie.summary %></p>
+                <p><%= truncate(movie.summary, :length => 200) %></p>
               </figure>
             </li>
             <li>
