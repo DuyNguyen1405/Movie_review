@@ -66,7 +66,13 @@
       <div class="col-sm-2">
       </div>
       <div class="col-sm-6">
-        <div id="category-selected"></div>
+        <div id="category-selected">
+          <% if @movie %>
+            <% @movie.categories.each do |category|%>
+              #<%= link_to category.name, category%>
+            <% end%>
+          <% end%>
+        </div>
       </div>
     </div>
 
@@ -82,13 +88,19 @@
       <div class="col-sm-2" id="category-addNew">Add New</div>
     </div>
 
-  <div class="actions">
 
+  <div class="actions">
     <%= f.submit %>
   </div>
 
 </div>
 </div>
+
+  <% if @movie %>
+    <% @movie.categories.each do |category|%>
+      <input type="hidden" name="movie[category_ids][]" value="<%= category.id%>">
+    <% end%>
+  <% end%>
 <% end %>
 
 
