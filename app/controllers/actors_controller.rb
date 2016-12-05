@@ -14,7 +14,9 @@ class ActorsController < ApplicationController
 
   # GET /actors/new
   def new
+    if params[:commit] == "Add"
     @actor = Actor.new
+    end
   end
 
   # GET /actors/1/edit
@@ -24,18 +26,34 @@ class ActorsController < ApplicationController
   # POST /actors
   # POST /actors.json
   def create
-    @actor = Actor.new(actor_params)
-
-    respond_to do |format|
-      if @actor.save
-        format.html { redirect_to @actor, notice: 'Actor was successfully created.' }
-        format.json { render :show, status: :created, location: @actor }
+    if params[:commit] != "Add"  
+      @actor = Actor.new(actor_params)
+       respond_to do |format|
+          if @actor.save
+            format.html { redirect_to @actor, notice: 'Actor was successfully created.' }
+            format.json { render :show, status: :created, location: @actor }
+          else
+            format.html { render :new }
+            format.json { render json: @actor.errors, status: :unprocessable_entity }
+          end
+        end
+    else   
+      @info = Actor.find_by("name = ?", params[:name])
+      if !@info
+        redirect_to "/movies/#{params[:movie_id]}", notice: 'Actor not found.'
       else
-        format.html { render :new }
-        format.json { render json: @actor.errors, status: :unprocessable_entity }
+        @id = @info.id
+        @actor = MovieActor.new(:actor_id => @id, :movie_id => params[:movie_id], :role => params[:role])
+      if @actor.save
+       redirect_to "/movies/#{params[:movie_id]}", notice: 'Role was successfully added.'
+
       end
+      end
+      
     end
-  end
+       
+    end
+
 
   # PATCH/PUT /actors/1
   # PATCH/PUT /actors/1.json
@@ -69,6 +87,8 @@ class ActorsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def actor_params
-      params.require(:actor).permit(:name, :date_of_birth)
+      params.require(:actor).permit(:name, :date_of_birth, :avatar)
     end
+
+   
 end

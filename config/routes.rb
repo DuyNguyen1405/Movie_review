@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :actors
+  resources :images
+  resources :musics
+  resources :videos
   post '/rate' => 'rater#create', :as => 'rate'
   devise_for :users, :controllers => {:omniauth_callbacks => "omniauth_callbacks", :registrations => "registrations"} 
   devise_scope :user do 
@@ -6,7 +10,7 @@ Rails.application.routes.draw do
     get '/users/:id', :to => 'users#show', :as => :user
   end
   resources :users
-  resources :movies
+  # resources :movies
   resources :comments do
     get :get_newest, on: :collection
   end
@@ -21,20 +25,14 @@ Rails.application.routes.draw do
   end
 
   # Routes for follow favorite movies
-  resources :movies do 
-    resources :favorite_movies, only: [ :create, :destroy ]
-  end
 
   resources :movies do
+    resources :favorite_movies, only: [ :create, :destroy ]
+    resources :reviews, only: [:show, :create, :new, :index]
     member do
       :reviews
     end
   end
-
-  resources :movies do
-    resources :reviews, only: [:show, :create, :new, :index]
-  end
-
 
   root 'movies#index'
   get '/search', to: 'searches#new'

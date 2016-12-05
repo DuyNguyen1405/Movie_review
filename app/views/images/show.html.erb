@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Link:</strong>
+  <%= @image.link %>
+</p>
+
+<p>
+  <strong>Movie:</strong>
+  <%= @image.movie_id %>
+</p>
+
+<p>
+  <strong>Actor:</strong>
+  <%= @image.actor_id %>
+</p>
+
+<%= link_to 'Edit', edit_image_path(@image) %> |
+<%= link_to 'Back', images_path %>

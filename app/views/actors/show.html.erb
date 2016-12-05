@@ -1,13 +1,19 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>ID:</strong>
-  <%= @actor.id %>
+  <strong>Name:</strong>
+  <%= @actor.name %>
 </p>
 
 <p>
-  <strong>Name:</strong>
-  <%= @actor.name %>
+  <strong>Date of birth:</strong>
+  <%= @actor.date_of_birth %>
+</p>
+
+
+<p>
+  <strong>Avatar:</strong>
+  <%= @actor.avatar %>
 </p>
 
 <%= link_to 'Edit', edit_actor_path(@actor) %> |

@@ -1,4 +1,7 @@
-<%= form_for(@actor) do |f| %>
+ <% if params[:type] != "add_role" %>
+ <% then %>
+  
+    <%= form_for(@actor) do |f| %>
   <% if @actor.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@actor.errors.count, "error") %> prohibited this actor from being saved:</h2>
@@ -10,13 +13,42 @@
       </ul>
     </div>
   <% end %>
+      <div class="field">
+        <%= f.label :name %><br>
+        <%= f.text_field :name %>
+      </div>
+      <div class="field">
+        <%= f.label :date_of_birth %><br>
+        <%= f.text_field :date_of_birth %>
+      </div>
+      <div class="field">
+        <%= f.label :avatar %><br>
+        <%= f.text_field :avatar %>
+      </div>
+      <div class="actions">
+        <%= f.submit %>
+      </div>
+      <% end %>
+  }
+    <% else %>
+    
+      <%= form_tag(controller: "actors", action: "create", method: "get")do %>
+      <div class="field">
+        <%= label_tag(:name, "Name") %><br>
+        <%= text_field_tag(:name) %>
+      </div>
+      <div class="field">
+        <%= label_tag(:movie_id, "Movie") %><br>
+        <%= text_field_tag(:movie_id, params[:format]) %>
+      </div>
+      <div class="field">
+        <%= label_tag(:role, "Role") %><br>
+        <%= text_field_tag(:role) %>
+      </div>
+      <%= submit_tag "Add" %>
+        <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
+    
 
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+  <% end %>
+

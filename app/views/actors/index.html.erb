@@ -5,8 +5,9 @@
 <table>
   <thead>
     <tr>
-      <th> ID </th>
-      <th> Name </th>
+      <th>Name</th>
+      <th>Date of birth</th>
+      <th>Avatar</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -14,8 +15,9 @@
   <tbody>
     <% @actors.each do |actor| %>
       <tr>
-        <td><%= actor.id %> </td>
         <td><%= actor.name %></td>
+        <td><%= actor.date_of_birth %></td>
+        <td><%= actor.avatar %></td>
         <td><%= link_to 'Show', actor %></td>
         <td><%= link_to 'Edit', edit_actor_path(actor) %></td>
         <td><%= link_to 'Destroy', actor, method: :delete, data: { confirm: 'Are you sure?' } %></td>
