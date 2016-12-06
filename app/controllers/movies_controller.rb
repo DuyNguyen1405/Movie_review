@@ -79,7 +79,8 @@ class MoviesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def movie_params
-      params.require(:movie).permit(:name, :score, :ranked, :episodes, :status, :rating, :poster, :summary, :genre_ids => [], :categories => [])
+      #params.require(:movie).permit(:name, :score, :ranked, :episodes, :status, :rating, :poster, :summary, :genre_ids => [])
+      params.require(:movie).permit(:name, :score, :ranked, :episodes, :status, :rating, :poster, :summary, :genre_ids => [], :category_ids => [])
     end
 
     def add_genres()
@@ -90,15 +91,15 @@ class MoviesController < ApplicationController
       }
     end  
 
-    def add_categories()
-      @categoires = params[:movie][:categories]
-      if @categories
-        @categories.each do |category|
-          if not @movie.categories.find_by(name: category)
-            MovieCategory.create(:movie_id => @movie.id, :category_id => Category.find_by(name: category).id)
-          end
-        end
-      end
-    end
+       def add_categories()
+    # @categories = params[:movie][:categories_name]
+       if params[:movie][:category_ids]
+       params[:movie][:category_ids].each do |c|
+           if not @movie.categories.find(c)
+             MovieCategory.create(:movie_id => @movie.id, :category_id => c)
+           end
+         end
+       end
+     end
     
 end

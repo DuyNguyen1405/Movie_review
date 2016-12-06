@@ -98,6 +98,12 @@
 
 </div>
 </div>
+
+  <% if @movie %>
+    <% @movie.categories.each do |category|%>
+      <input type="hidden" name="movie[category_ids][]" value="<%= category.id%>">
+    <% end%>
+  <% end%>
 <% end %>
 
 
@@ -122,7 +128,6 @@ $("div#category-addNew").bind("click", function() {
       // console.log("click");
       var url = "/categories";
       $.post(url, {"category[name]": query}, function(response) {
-
       });
     }
   }
