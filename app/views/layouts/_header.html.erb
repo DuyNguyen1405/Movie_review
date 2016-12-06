@@ -1,0 +1,69 @@
+<header class="navbar navbar-fixed-top navbar-inverse">
+  <div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12">
+      <div class="header_top">
+        <div class="header_top_left">
+          <ul class="top_nav">
+            <li><%= link_to('Home', root_path) %></li>
+            <li><%= link_to('List by Order', root_path(:order_by => 'name'))%></li>
+            <!-- <li>
+              <form class="form-inline" id="search-form" action="<%= searches_path%>" method="GET">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-box" name="q">
+                  <button type="button" class="btn btn-info">
+                    <span class="glyphicon glyphicon-search"></span> Search
+                  </button>
+                </div>
+              </form>
+              <div id="search-result"></div>
+            </li> -->
+            <li><%=link_to('A.Search', '/search') %></li>
+            <li><%= render 'layouts/search_form'%></li>
+
+          </ul>
+        </div>
+        <div class="header_top_right">
+          <ul class="top_nav">
+            <% if current_user == nil%>
+            <li><%= link_to('Sign up', new_user_registration_path) %></li>
+            <li><%= link_to('Sign in', new_user_session_path) %></li>
+            <% else %>
+            <li><%= link_to('Log out', destroy_user_session_path) %></li>
+              <li> <%= link_to current_user.name, user_path(current_user) unless current_user.nil? %></li>
+                <li><%= link_to('Add Movie', new_movie_path) if can? :create, Movie %></li>
+                <li><%= link_to('Manage Users', users_path) if can? :manage, User %></li>
+              
+            
+
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+
+<script>
+  $("#search-box").bind("keyup", function() {
+    var q = $("#search-box").val();
+    if(q) {
+   $("#search-box").addClass("loading"); // show the spinner
+    var form = $("#search-form"); // grab the form wrapping the search bar.
+
+    var url = "/searches/live_search"; // live_search action.   
+    var formData = form.serialize(); // grab the data in the form
+    console.log(q);
+    $.get(url, formData, function(response) { // perform an AJAX get
+      // console.log(response.to_string);
+
+      // $("#search-box").removeClass("loading"); // hide the spinner
+
+      // $("#search-results").html(response); // replace the "results" div with the results
+    }); 
+  } else {
+    $("#result-box").css("display", "none");
+  }
+});
+</script>

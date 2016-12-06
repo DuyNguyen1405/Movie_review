@@ -1,0 +1,63 @@
+<!-- <a class="scrollToTop" href="#"><i class="fa fa-angle-up"></i></a> -->
+  <% if !params[:order_by]%>
+  <div class="col-lg-12 col-md-12 col-sm-12">
+    <div class="slick_slider">
+      <% @movies = Movie.order('RANDOM()').first(5).each do |movie| %>
+      <div class="single_iteam"> <a href="pages/single_page.html"> <img src="images/slider_img4.jpg" alt="poster"></a>
+        <div class="slider_article">
+          <h2><a class="slider_tittle" href="pages/single_page.html"><%= movie.name %></a></h2>
+          <p><%= movie.summary %></p>
+        </div>
+      </div>
+      <% end %>
+
+    </div>
+  </div>
+  <% end %>
+  <div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12">
+      <div class="left_content">
+        <div class="single_post_content">
+          <h2><span>Business</span></h2>
+<<<<<<< HEAD
+          <% if params[:order_by] && params[:order_by] == 'name' && !params[:commit] %>
+          <%@movies = Movie.paginate(page: params[:page], per_page: 3).order(:name)%>
+          <%elsif !params[:order_by] && !params[:commit]%>
+          <%@movies = Movie.paginate(page: params[:page], per_page: 3).order(:id)%>
+=======
+           <% if params[:order_by] && params[:order_by] == 'name' && !params[:commit] %>
+          <%@movies = Movie.paginate(page: params[:page], per_page: 3).order(:name)%>
+          <%elsif !params[:order_by] && !params[:commit]%>
+          <%@movies = Movie.paginate(page: params[:page], per_page: 3).order(id: :desc)%>
+>>>>>>> son
+          <%elsif params[:commit] == 'Search' %>
+          <%@movies = Movie.joins(:movie_genres).where(movie_genres: {genre_id: params[:genre_ids] }).having('count(genre_id) >= ?', params[:genre_ids].count).group("movies.id").paginate(page: params[:page], per_page: 3).order(:id)%>
+
+          <%end%>
+<<<<<<< HEAD
+
+=======
+          
+>>>>>>> son
+          <% @movies.each do |movie| %>
+          <ul class="business_catgnav  wow fadeInDown">
+            <li>
+              <figure class="bsbig_fig"> <a href="" class="featured_img"> <%= image_tag("featured_img2.jpg",  alt: "Film logo") %> 
+                <span class="overlay"></span> </a>
+                <figcaption> <%= link_to(movie.name, movie) %></figcaption>
+
+                <p><%= movie.summary %></p>
+              </figure>
+            </li>
+            <li>
+              <hr>
+            </li>
+          </ul>
+          <% end %>
+          <%= will_paginate %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  

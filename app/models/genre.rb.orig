@@ -1,0 +1,10 @@
+class Genre < ActiveRecord::Base
+<<<<<<< HEAD
+	has_many :movie_genres
+	has_many :movie, :through => :movie_genres
+=======
+	def index
+		@genres = Genre.all
+	end
+>>>>>>> 64e6b2164ccb453cdd81ea8383dd360c392fe00d
+end

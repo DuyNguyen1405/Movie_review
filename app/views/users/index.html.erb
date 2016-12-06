@@ -1,0 +1,36 @@
+
+
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Users</h1>
+
+
+<div class="col-lg-12 col-md-12 col-sm-12">
+<table class="table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Role</th>
+        
+      </tr>
+    </thead>
+    <tbody>
+    <% @users.each do |user| %>
+    <% if user.role == "Admin" %>
+    <% @role = "danger" %>
+    <% elsif user.role == "Moderator" %>
+    <% @role = "info" %>
+    <% else %>
+    <% @role = "" %>
+    <%end%>
+      <tr class = "<%= @role %>">
+      <td><%= link_to user.name, user %></td>
+        
+        <td><%=user.role%></td>
+        
+        
+      </tr>      
+      <%end%>
+    </tbody>
+  </table>
+</div>

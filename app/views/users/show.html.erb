@@ -1,0 +1,65 @@
+<h1>User Information</h1>
+
+<form class="col-lg-12 col-md-12 col-sm-12">
+    <div class="form-group">
+      <label for="pwd">Name:</label>
+      <%= @user.name%>
+    </div>
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <%= @user.email%>
+    </div>
+    
+    <div class="form-group">
+      <label for="pwd">Date of Birth:</label>
+      <%= @user.date_of_birth%>
+    </div>
+    <div class="form-group">
+      <label for="pwd">Sex:</label>
+      <%= @user.sex%>
+    </div>
+    <div class="form-group">
+      <label for="pwd">Address:</label>
+      <%= @user.addresss %>
+    </div>
+    <div class="form-group">
+      <label for="pwd">Workplace:</label>
+      <%= @user.workplace%>
+    </div>
+    <div class="form-group">
+      <label for="pwd">Role:</label>
+      <% if @user.role.nil? %>
+      Normal User
+      <% else %>
+      <%= @user.role%>
+      <%end%>
+    </div>
+    <div class="form-group">
+      <label for="pwd">Introduce:</label>
+      <%= @user.introduce%>
+    </div>
+    
+    <div class="form-group">
+    <label for="pwd">Favorited Movie(s):</label>
+    <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Name</th>
+        
+        
+      </tr>
+    </thead>
+    	<tbody>
+    	<% @user.movies.each do |movie| %>
+    		<tr>
+        
+        <td><%= link_to movie.name, movie %></td>
+      </tr>   
+      <%end%>  
+    	</tbody>
+    </table>
+  </div>
+  </form>
+
+<%= link_to 'Edit profile', edit_user_registration_path(@user) if current_user.name == @user.name %>
+<%= link_to 'Back', users_path if current_user.admin? %>
