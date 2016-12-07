@@ -1,4 +1,8 @@
 <p id="notice"><%= notice %></p>
 
+<% @movies.each do |movie|%>
+	<p><%= link_to movie.name, movie%></p>
+<% end%>
+
 <%= link_to 'Edit', edit_genre_path(@genre) %> |
 <%= link_to 'Back', genres_path %>

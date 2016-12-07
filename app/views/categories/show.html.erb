@@ -1,4 +1,9 @@
 <p id="notice"><%= notice %></p>
 
+<% @movies.each do |movie|%>
+	<p><%= link_to movie.name, movie%></p>
+<% end%>
+
+
 <%= link_to 'Edit', edit_category_path(@category) %> |
 <%= link_to 'Back', categories_path %>

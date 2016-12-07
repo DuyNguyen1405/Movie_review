@@ -2,17 +2,17 @@
  <% then %>
   
     <%= form_for(@actor) do |f| %>
-  <% if @actor.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@actor.errors.count, "error") %> prohibited this actor from being saved:</h2>
-
-      <ul>
-      <% @actor.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+      <% if @actor.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@actor.errors.count, "error") %> prohibited this actor from being saved:</h2>
+          <ul>
+          <% @actor.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
       <% end %>
-      </ul>
-    </div>
-  <% end %>
+
       <div class="field">
         <%= f.label :name %><br>
         <%= f.text_field :name %>
@@ -28,27 +28,42 @@
       <div class="actions">
         <%= f.submit %>
       </div>
-      <% end %>
-  }
-    <% else %>
-    
-      <%= form_tag(controller: "actors", action: "create", method: "get")do %>
-      <div class="field">
-        <%= label_tag(:name, "Name") %><br>
-        <%= text_field_tag(:name) %>
-      </div>
-      <div class="field">
-        <%= label_tag(:movie_id, "Movie") %><br>
-        <%= text_field_tag(:movie_id, params[:format]) %>
-      </div>
-      <div class="field">
-        <%= label_tag(:role, "Role") %><br>
-        <%= text_field_tag(:role) %>
-      </div>
-      <%= submit_tag "Add" %>
-        <% end %>
-
-    
-
   <% end %>
+
+<% else %>
+  
+  <%= form_tag(controller: "actors", action: "create", method: "get") do %>
+  
+  <div class="field">
+    <p>
+    <%= label_tag(:name, "Name") %><br>
+    <%= text_field_tag :name, nil,  :autocomplete => :off %>
+    </p>
+    <div id="actor-result"></div>
+  </div>
+
+  <div class="field">
+    <%= label_tag(:movie_id, "Movie") %><br>
+    <%= text_field_tag(:movie_id, params[:format]) %>
+  </div>
+  <div class="field">
+    <%= label_tag(:role, "Role") %><br>
+    <%= text_field_tag(:role) %>
+  </div>
+  <%= submit_tag "Add" %>
+  <% end %>
+
+  <script>
+    $('#name').bind("keyup", function() {
+      if($(this).val()) {
+        var url = "/searches/actor_search";
+        var data = $(this).val();
+        $.get(url, {"q": data}, function(response) {
+
+        });
+      }
+    });
+  </script>
+
+<% end %>
 

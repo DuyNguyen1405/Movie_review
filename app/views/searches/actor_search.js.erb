@@ -1,0 +1,10 @@
+$("#actor-result").html('');
+$("#actor-result").css('display', 'block');
+<% @actors.each do |actor| %>
+	$('#actor-result').append('<p><%= actor.name%></p>');
+<% end%>
+
+$('#actor-result p').bind("click", function() {
+	$('#name').val($(this).text());
+	$('#actor-result').html('');
+});

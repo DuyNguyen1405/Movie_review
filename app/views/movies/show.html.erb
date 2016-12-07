@@ -25,9 +25,9 @@
           <p><% @array.each do |genre| %>
 
             <% if genre.name != @array.last.name %>
-            <%= genre.name%>, 
+            <%= link_to genre.name, genre%>, 
             <% else %>
-            <%= genre.name%>.
+            <%= link_to genre.name, genre%>.
             <% end %>
             <% end %>
           </p>
@@ -130,8 +130,8 @@
         <h2>Actor</h2>
         <%= link_to "Add new actor", new_actor_path(@movie, :type => "add_role") if can? :create, Movie %>
         <br>
-        <% @actor = @movie.actors.all %>
-        <% @actor.each do |actor| %>
+        <% @actors = @movie.actors.all %>
+        <% @actors.each do |actor| %>
         <%= actor.name %>
         <br>
         <% end %>
@@ -169,8 +169,8 @@
 
 <div class="movie_cast">
   <h1>Categories</h1>
-  <% @movie.categories.all.each do |categories| %>
-    <button class="btn btn-theme"><%= categories.name  %></button>
+  <% @movie.categories.all.each do |category| %>
+    <button class="btn btn-theme"><%= link_to category.name, category %></button>
     <% end %>
   </div>
 </div>

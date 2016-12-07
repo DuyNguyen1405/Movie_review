@@ -14,7 +14,7 @@ class ActorsController < ApplicationController
 
   # GET /actors/new
   def new
-    if params[:commit] == "Add"
+    if params[:commit] != "Add"
     @actor = Actor.new
     end
   end
