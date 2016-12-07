@@ -20,7 +20,7 @@
     <% @current_movie = Movie.find(review.movie_id)%>
     <STRONG><%= link_to(@current_movie.name, @current_movie) %></STRONG>
     <% end %>
-    <p><%= review.content.scan(/\S+/)[0..25].join(' ')%>...<%= link_to("See more", review) %> </p>
+    <p><%= review.content.scan(/\S+/)[0..25].join(' ').html_safe%>...<%= link_to("See more", review) %> </p>
     <p>Reviewed by <%= link_to(@user.name,  @user) + " on " + review.updated_at.to_s %></p>
   </div>
   <% end %>

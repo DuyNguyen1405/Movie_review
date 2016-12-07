@@ -21,7 +21,10 @@
     <div class="review_content col-lg-12 col-md-12 col-sm-12">
     <p>Reviewed by <%= link_to(@user.name,  @user) + " on " + @review.updated_at.to_s %></p>
     <hr>
-    <span><%= @review.content %></span>
+    <html>
+    <%= @review.content.html_safe %>
+    </html>
+    
       <div class="comments col-lg-12 col-md-12 col-sm-12">
         <p>
           <strong>Comment:</strong>

@@ -12,8 +12,10 @@
   <% end %>
 
   <div class="field">
+  <%= tinymce_assets %>
     <%= f.label :content %><br>
-    <%= f.text_area :content %>
+    <%= f.text_area :content, class: "tinymce" %>
+    <%= tinymce %>
   </div>
 
   <div class="actions">
