@@ -256,3 +256,10 @@ p a {color: white;}
 img.raty-cancel {
    display: none;
  }
+button#favorite{border-radius: 4px; margin-left: 14px; font-weight: bold;}
+.field textarea{width: 80%; min-height: 150px; }
+.user_index table {width: 100%; border-collapse: collapse;}
+.user_index tr:nth-child(even){background-color: #dddddd;}
+.user_index td, th{text-align: left; padding: 8px; color: #000; font-weight: bold;}
+.user_index td a{color: black; font-weight: normal;}
+.user_index td a:hover {background-color: white; text-decoration: underline;}

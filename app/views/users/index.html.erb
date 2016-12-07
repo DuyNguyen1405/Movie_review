@@ -1,20 +1,58 @@
-<p id="notice"><%= notice %></p>
+<div class="user_index">
+  <p id="notice"><%= notice %></p>
+  <% @admins = [] %>
+  <% @mods = [] %>
+  <% @normals = [] %>
+  <h1>Listing Users</h1>
+  <% @users.each do |user|%>
+  <% if user.role == "Admin" %>
+  <% @admins << user %>
+  <% elsif user.role == "Moderator" %>
+  <% @mods << user %>
+  <% elsif user.role == "User" %>
+  <% @normals << user %>
+  <% end %>
+  <% end %>
 
-<h1>Listing Users</h1>
-
-<table>
-  <tbody>
-      <tr>
-        <th>Name</th>
-        <th>Role</th>
-      </tr>
-    <% @users.each do |user| %>
+  <!-- <table>
+    <tbody>
+      <% @users.each do |user| %>
       <tr>
         <td><%=user.name%></td>
         <td><%=user.role%></td>
         <td><%= link_to 'Show', user %></td>
         <td><%= link_to 'Edit', edit_user_path(user) %></td>
       </tr>
+      <% end %>
+    </tbody>
+  </table> -->
+  <h3>Admin</h3>
+  <table>
+    <% @admins.each do |admin| %>
+    <tr>
+      <td class="user_index_name"><%=admin.name%></td>
+      <td><%= link_to 'Show', admin %></td>
+    </tr>
     <% end %>
-  </tbody>
-</table>
+  </table>
+  <h3>Moderator</h3>
+  <table>
+    <% @mods.each do |mod| %>
+    <tr>
+      <td class="user_index_name"><%=mod.name%></td>
+      <td><%= link_to 'Show', mod %></td>
+      <td><%= link_to 'Edit', edit_user_path(mod) %></td>
+    </tr>
+    <% end %>
+  </table>
+  <h3>Normal User</h3>
+  <table>
+    <% @normals.each do |normal| %>
+    <tr>
+      <td class="user_index_name"><%=normal.name%></td>
+      <td><%= link_to 'Show', normal %></td>
+      <td><%= link_to 'Edit', edit_user_path(normal) %></td>
+    </tr>
+    <% end %>
+  </table>
+</div>
