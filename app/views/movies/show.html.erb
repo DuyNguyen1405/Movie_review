@@ -18,9 +18,12 @@
          </div>
          <div class="col-lg-9 col-md-9 col-sm-9"> <%= @movie.name %></div>
        </div>
-       <% @array = @movie.genres.all %>
        <div class="movie_sum col-lg-12 col-md-12 col-sm-12">
-        <p><%= @movie.summary %></p>
+        <p><% @movie.summary.split(/\n/).each do |paragraph| %>
+        <%= paragraph %><br>
+        <% end %>
+        </p>
+        <% @array = @movie.genres.all %>
         <p><% @array.each do |genre| %>
           <% if genre.name != @array.last.name %>
           <%= link_to genre.name, genre%>, 
@@ -32,7 +35,7 @@
 
         <p>
           <% @movie.categories.each do |category| %>
-          #<%= link_to category.name, category%>
+          <%= link_to '#'+category.name, category%>
           <%end%>
         </p>
       </div>
@@ -152,10 +155,17 @@
 <% rs = @movie.reviews.last(3) %>
 <% rs.each do |r| %>
 <div class="single_review col-lg-12 col-md-12 col-sm-12">
-  <p>Reviewed by <%= link_to(User.find(r.user_id).name,  User.find(r.user_id)) + " on " + r.updated_at.to_s %></p>
   <% rating = Rate.find_by_rater_id_and_rateable_id_and_dimension(r.user_id, @movie.id, "score") %> 
   <%= rating_for_user @movie, User.find(r.user_id), "score" %>
-  <p><%= r.content %></p>
+  <br>
+  <p><% r.content.split(/\n/).each do |paragraph| %>
+        <%= paragraph %><br>
+        <% end %>
+  </p>
+  <br>
+  <p>Reviewed by <%= link_to(User.find(r.user_id).name,  User.find(r.user_id)) + " on " + r.updated_at.to_s %></p>
+  <p><%= link_to("View all comments >>", r) %></p>
+  <br>
 </div>
 <% end %>
 <% else %>
