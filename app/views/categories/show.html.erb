@@ -1,9 +1,33 @@
 <p id="notice"><%= notice %></p>
 
+
+<p id="notice"><%= notice %></p>
+<h1><%= '#' + @category.name %></h1>
 <% @movies.each do |movie|%>
-	<p><%= link_to movie.name, movie%></p>
+<div class="movies_short_index col-lg-12 col-md-12 col-sm-12">
+	<div class=" movie_poster col-lg-2 col-md-2 col-sm-2">
+        <%=image_tag(movie.poster, alt: "poster", class: "poster")%>
+      </div>
+      <div class="col-lg-10 col-md-10 col-sm-10"> 
+        <h3><%= link_to(movie.name, movie) %></h3>
+        <p><%= movie.summary.scan(/\S+/)[0..25].join(' ') + '...'%>
+        </p>
+        <% @array = movie.genres.all %>
+        <p><% @array.each do |genre| %>
+          <% if genre.name != @array.last.name %>
+          <%= link_to genre.name, genre%>, 
+          <% else %>
+          <%= link_to genre.name, genre%>.
+          <% end %>
+          <% end %>
+        </p>
+        <p>
+          <% movie.categories.each do |category| %>
+          <%= link_to '#'+category.name, category%>
+          <%end%>
+        </p>
+      </div>
+</div>
 <% end%>
 
 
-<%= link_to 'Edit', edit_category_path(@category) %> |
-<%= link_to 'Back', categories_path %>

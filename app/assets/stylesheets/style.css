@@ -264,3 +264,6 @@ button#favorite{border-radius: 4px; margin-left: 14px; font-weight: bold;}
 .user_index td, th{text-align: left; padding: 8px; color: #000; font-weight: bold;}
 .user_index td a{color: black; font-weight: normal;}
 .user_index td a:hover {background-color: white; text-decoration: underline;}
+.movies_short_index{border: 1px solid #ddd; border-radius: 10px; margin: 10px 0px;}
+.movies_short_index a{color: black;}
+.movies_short_index a:hover{background-color: #666; }
