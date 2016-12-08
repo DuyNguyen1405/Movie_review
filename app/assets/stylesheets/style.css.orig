@@ -252,12 +252,18 @@ img.poster {max-width: 100%; float: left;}
 textarea#comment_content{width: 75%; min-height: 70px; margin-left: 10%;}
 .comments{margin-top: 10px; border-top: 1px solid #ddd; padding-top: 10px;}
 .comments li {border: 1px solid #ddd; border-radius: 4px; padding: 10px 20px;}
-<<<<<<< HEAD
 button#favorite{border-radius: 4px; margin-left: 17px; font-weight: bold;}
-p a {color: white;}
-=======
 p a {color: white;}
 img.raty-cancel {
    display: none;
  }
->>>>>>> d2fe1fd3a0f7cc359cd35ff32288ef7370138acb
+<<<<<<< HEAD
+=======
+button#favorite{border-radius: 4px; margin-left: 14px; font-weight: bold;}
+.field textarea{width: 80%; min-height: 150px; }
+.user_index table {width: 100%; border-collapse: collapse;}
+.user_index tr:nth-child(even){background-color: #dddddd;}
+.user_index td, th{text-align: left; padding: 8px; color: #000; font-weight: bold;}
+.user_index td a{color: black; font-weight: normal;}
+.user_index td a:hover {background-color: white; text-decoration: underline;}
+>>>>>>> e942d498facf6812b6ac09f44cea4767762e8fec

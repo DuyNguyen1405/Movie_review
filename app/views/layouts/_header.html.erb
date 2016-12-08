@@ -32,6 +32,15 @@
               <li> <%= link_to current_user.name, user_path(current_user) unless current_user.nil? %></li>
                 <li><%= link_to('Add Movie', new_movie_path) if can? :create, Movie %></li>
                 <li><%= link_to('Manage Users', users_path) if can? :manage, User %></li>
+            <li>
+            <% if current_user.name.empty? %>
+            <%= link_to current_user.email, user_path(current_user) unless current_user.nil? %>
+            <% else %>
+            <%= link_to current_user.name, user_path(current_user) unless current_user.nil? %>
+            <% end %>
+            </li>
+            <li><%= link_to('Add Movie', new_movie_path) if can? :create, Movie %></li>
+            <li><%= link_to('Manage Users', users_path) if can? :manage, User %></li>
             <% end %>
           </ul>
         </div>

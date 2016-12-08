@@ -1,5 +1,20 @@
-<p id="notice"><%= notice %></p>
+<div class="user_index">
+  <p id="notice"><%= notice %></p>
+  <% @admins = [] %>
+  <% @mods = [] %>
+  <% @normals = [] %>
+  <h1>Listing Users</h1>
+  <% @users.each do |user|%>
+  <% if user.role == "Admin" %>
+  <% @admins << user %>
+  <% elsif user.role == "Moderator" %>
+  <% @mods << user %>
+  <% elsif user.role == "User" %>
+  <% @normals << user %>
+  <% end %>
+  <% end %>
 
+<<<<<<< HEAD
 <h1>Listing Users</h1>
 
 
@@ -15,10 +30,6 @@
     </thead>
     <tbody>
     <% @users.each do |user| %>
-<<<<<<< HEAD
-      <% if not user.admin? %>
-      <tr>
-=======
     <% if user.role == "Admin" %>
     <% @role = "danger" %>
     <% elsif user.role == "Moderator" %>
@@ -27,21 +38,55 @@
     <% @role = "" %>
     <%end%>
       <tr class = "<%= @role %>">
->>>>>>> Progg
+=======
+  <!-- <table>
+    <tbody>
+      <% @users.each do |user| %>
+      <tr>
+>>>>>>> e942d498facf6812b6ac09f44cea4767762e8fec
         <td><%=user.name%></td>
         <td><%=user.role%></td>
         <td><%= link_to 'Show', user %></td>
         <td><%= link_to 'Edit', edit_user_path(user) %></td>
 <<<<<<< HEAD
-      </tr>
-      <% end %>
-    <% end %>
-  </tbody>
-</table>
-=======
       </tr>      
       <%end%>
     </tbody>
   </table>
 </div>
->>>>>>> Progg
+=======
+      </tr>
+      <% end %>
+    </tbody>
+  </table> -->
+  <h3>Admin</h3>
+  <table>
+    <% @admins.each do |admin| %>
+    <tr>
+      <td class="user_index_name"><%=admin.name%></td>
+      <td><%= link_to 'Show', admin %></td>
+    </tr>
+    <% end %>
+  </table>
+  <h3>Moderator</h3>
+  <table>
+    <% @mods.each do |mod| %>
+    <tr>
+      <td class="user_index_name"><%=mod.name%></td>
+      <td><%= link_to 'Show', mod %></td>
+      <td><%= link_to 'Edit', edit_user_path(mod) %></td>
+    </tr>
+    <% end %>
+  </table>
+  <h3>Normal User</h3>
+  <table>
+    <% @normals.each do |normal| %>
+    <tr>
+      <td class="user_index_name"><%=normal.name%></td>
+      <td><%= link_to 'Show', normal %></td>
+      <td><%= link_to 'Edit', edit_user_path(normal) %></td>
+    </tr>
+    <% end %>
+  </table>
+</div>
+>>>>>>> e942d498facf6812b6ac09f44cea4767762e8fec

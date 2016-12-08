@@ -1,4 +1,18 @@
-<p id="notice"><%= notice %></p>
+<div class="user_index">
+  <p id="notice"><%= notice %></p>
+  <% @admins = [] %>
+  <% @mods = [] %>
+  <% @normals = [] %>
+  <h1>Listing Users</h1>
+  <% @users.each do |user|%>
+  <% if user.role == "Admin" %>
+  <% @admins << user %>
+  <% elsif user.role == "Moderator" %>
+  <% @mods << user %>
+  <% elsif user.role == "User" %>
+  <% @normals << user %>
+  <% end %>
+  <% end %>
 
 <h1>Listing Users</h1>
 
