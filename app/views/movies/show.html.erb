@@ -25,13 +25,16 @@
 
             <% if genre.name != @array.last.name %>
 
-            <%= link_to genre.name, root_path(:commit => 'Search', :genre_ids => [genre.id])%>,
+            <%= link_to genre.name, genre%>,
             <% else %>
-            <%= link_to genre.name, root_path(:commit => 'Search', :genre_ids => [genre.id])%>.
+            <%= link_to genre.name, genre%>.
             <% end %>
             <% end %>
           </p>
-          <p><%= @movie.summary %></p>
+          <p><% @movie.summary.split(/\n/).each do |paragraph| %>
+         <%= paragraph %><br>
+        <% end %>
+         </p>
         </div>
 
       </div>
@@ -71,6 +74,7 @@
       </aside>
     </div>
   </div>
+
   <div class="movie_gallery col-lg-12 col-md-12 col-sm-12">
     <div class="movie_video">
       <div class="col-lg-6 col-md-6 col-sm-6">
@@ -117,6 +121,11 @@
   </div>
 </div>
 </div>
+  <h1>Categories</h1><br><br>
+ <% @movie.categories.all.each do |category| %>
+  <button class="btn btn-theme"><%= link_to category.name, category %></button>
+    <% end %>
+    <br><br>
 <div class="movie_cast col-lg-12 col-md-12 col-sm-12">
   <h1>Cast</h1>
   <div class="movie_actor">
@@ -125,7 +134,7 @@
         <h2>Actor</h2>
         <%= link_to "Add new actor", new_actor_path(@movie, :type => "add_role") if can? :create, Movie %>
         <br>
-        <% @actor = @movie.actors.all %>
+        <% @actor = @movie.actors.order(:id).all %>
         <% @actor.each do |actor| %>
         <%= link_to actor.name, actor %>
         <br>
@@ -138,7 +147,7 @@
       <aside class="right_content">
       <br>
         <h2>Role</h2>
-       <% @role = MovieActor.where("movie_id = ?", @movie.id).all.each do |role| %>
+       <% @role = MovieActor.where("movie_id = ?", @movie.id).order(:actor_id).all.each do |role| %>
        <%= role.role %>
        <br>
        <% end %>
@@ -152,10 +161,21 @@
 <% rs = @movie.reviews.last(3) %>
 <% rs.each do |r| %>
 <div class="single_review col-lg-12 col-md-12 col-sm-12">
-  <p>Reviewed by <%= link_to(User.find(r.user_id).name,  User.find(r.user_id)) + " on " + r.updated_at.to_s %></p>
+  
   <% rating = Rate.find_by_rater_id_and_rateable_id_and_dimension(r.user_id, @movie.id, "score") %> 
   <%= rating_for_user @movie, User.find(r.user_id), "score" %>
-  <p><%= r.content.scan(/\S+/)[0..100].join(' ').html_safe%>...<%= link_to("See more", r) %></p>
+   <p><% r.content.scan(/\S+/)[0..100].join(' ').split(/\n/).each do |paragraph| %>
+         <%= paragraph.html_safe %><br>
+         <% end %>
+   </p>
+   <% @curr = User.find(r.user_id) %>
+   <% if @curr.name.empty? %>
+    <% @name = @curr.email %>
+      <% else %>
+        <% @name = @curr.name %>
+      <% end %>
+  <p>Reviewed by <%= link_to(@name,  @curr) + " on " + r.updated_at.to_s %></p>
+  <p><%= link_to("See more", r) %></p>
 </div>
 <% end %>
 <% else %>
@@ -163,13 +183,7 @@
 <% end %>
 
 <%= link_to 'Add Review', new_movie_review_path(@movie)%>
-<br><br>
-<div class="movie_cast">
-  <h1>Categories</h1>
- <% @movie.categories.all.each do |category| %>
-  <button class="btn btn-theme"><%= link_to category.name, category %></button>
-    <% end %>
-  </div>
+
 </div>
 
 

@@ -7,11 +7,11 @@ class SearchesController < ApplicationController
     @option = params[:option].to_i
     case @option
     when 0
-      @searches = Movie.where("lower(name) LIKE ?", '%' + params[:q].downcase + '%')
+      @searches = Movie.where("lower(name) LIKE ?", '%' + params[:q].downcase + '%').paginate(page: params[:page], per_page: 10).order(:id)
     when 1
-      @searches = Actor.where("lower(name) LIKE ?", '%' + params[:q].downcase + '%')
+      @searches = Actor.where("lower(name) LIKE ?", '%' + params[:q].downcase + '%').paginate(page: params[:page], per_page: 10).order(:id)
     else 
-      @searches = Search.all
+      @searches = Search.all.paginate(page: params[:page], per_page: 2)
     end
   end
 

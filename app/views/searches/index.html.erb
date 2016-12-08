@@ -1,28 +1,66 @@
 <p id="notice"><%= notice %></p>
-
-<h1>Listing Searches</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th></th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    
-  </tbody>
-</table>
-
-<% @searches.each do |search| %>
-      
-        <p><%= link_to search.name, search %></p>
-        <!-- <td><%= link_to 'Show', search %></td>
-        <td><%= link_to 'Edit', edit_comment_path(search) %></td>
-        <td><%= link_to 'Destroy', search, method: :delete, data: { confirm: 'Are you sure?' } %></td> -->
-      
+  
+  <% if params[:option] == '0'%>
+    <% if @searches.exists? %>
+    <div class="row">
+      <div class="col-lg-12 col-md-12 col-sm-12">
+        <div class="left_content">
+          <div class="single_post_content">
+            <h2><span>Movie</span></h2>
+            <% @searches.each do |search| %>
+            <ul class="business_catgnav  wow fadeInDown">
+                <li>
+                    <figure class="bsbig_fig"> <a href="<%= search %>" class="featured_img">  <%= link_to (image_tag(search.poster, alt: "poster", height: "500")), search  %>
+                      <span class="overlay"></span> </a>
+                      <figcaption> <%= link_to(search.name, search) %></figcaption>
+                      <p><%= truncate(search.summary, :length => 200) %></p>
+                    </figure>
+                </li>
+                <li>
+                  <hr>
+                </li>
+            </ul>
+            <% end %>
+            <%= will_paginate @movies%>
+          </div>
+        </div>
+      </div>
+    </div>
+    <%else %>
+          <h1>Movie '<%= params[:q] %>' not found</h1>
+    <% end %>
+<% end %>
+<% if params[:option] == '1' %>
+      <% if @searches.exists? %>
+      <div class="col-lg-12 col-md-6 col-sm-6">
+      <% @searches.each do |actor| %>
+    <h1><%= link_to actor.name,actor %></h1>
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+            <th>Filmography</th>
+            <th>Role</th>
+            </tr>
+          </thead>
+          <tbody>
+              <% actor.movies.each do |movie| %>
+              <tr>
+              <td>
+                <%= link_to movie.name, movie %></td>
+                <% @role = MovieActor.where("movie_id = ?", movie.id).where("actor_id = ?", actor.id).each do |role| %>
+       
+              <td><%= role.role %></td>
+              <% end %>
+              </tr>
+              <% end %>
+          </tbody>
+        </table>
+        <% end %>
+    <%= will_paginate @actor %>
+    </div>
+      <%else %>
+          <h1>Actor '<%= params[:q] %>'' not found</h1>
     <% end %>
 
-<br>
+<% end %>
 

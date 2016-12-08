@@ -20,7 +20,9 @@
     <% @current_movie = Movie.find(review.movie_id)%>
     <STRONG><%= link_to(@current_movie.name, @current_movie) %></STRONG>
     <% end %>
-    <p><%= review.content.scan(/\S+/)[0..25].join(' ').html_safe%>...<%= link_to("See more", review) %> </p>
+    <% rating = Rate.find_by_rater_id_and_rateable_id_and_dimension(review.user_id, @movie.id, "score") %> 
+  <%= rating_for_user @movie, User.find(review.user_id), "score" %>
+    <p><%= review.content.scan(/\S+/)[0..100].join(' ').html_safe%>...<%= link_to("See more", review) %> </p>
     <p>Reviewed by <%= link_to(@user.name,  @user) + " on " + review.updated_at.to_s %></p>
   </div>
   <% end %>
