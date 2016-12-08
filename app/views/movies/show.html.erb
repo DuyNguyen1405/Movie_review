@@ -185,22 +185,11 @@
 <h1>Don't have any review</h1>
 <% end %>
 <div class="movie_cast">
-<<<<<<< HEAD
-  <h1>Categories</h1>
-  <% @movie.categories.all.each do |category| %>
-    <button class="btn btn-theme"><%= link_to category.name, category %></button>
-    <% end %>
-  </div>
-=======
   <h3>Categories</h3>
   <% @movie.categories.each do |category| %>
   <button class="btn btn-theme"><%= category.name  %></button>
   <% end %>
 </div>
->>>>>>> e942d498facf6812b6ac09f44cea4767762e8fec
-</div>
-
-
 <script>
   $("#favorite").bind("click", function() {
     console.log("favorite clicked");
