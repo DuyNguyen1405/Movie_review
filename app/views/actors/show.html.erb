@@ -1,20 +1,31 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @actor.name %>
-</p>
-
-<p>
-  <strong>Date of birth:</strong>
-  <%= @actor.date_of_birth %>
-</p>
 
 
-<p>
-  <strong>Avatar:</strong>
-  <%= @actor.avatar %>
-</p>
+ <%= link_to 'Edit', edit_actor_path(@actor) %> | <%= link_to 'Back', actors_path %>
+<br><br>
+<div class="col-lg-6 col-md-6 col-sm-6" align="center">
+ <%= image_tag(@actor.avatar, alt: "Avatar", class: "img-thumbnail", height: "100", width: "300") %>
 
-<%= link_to 'Edit', edit_actor_path(@actor) %> |
-<%= link_to 'Back', actors_path %>
+
+</div>
+<div class="col-lg-6 col-md-6 col-sm-6">
+	<h1><%= @actor.name %></h1>
+	<div class="form-group">
+      <label for="pwd">Date of birth:</label>
+      <%= @actor.date_of_birth%>
+    </div>
+	<table class="table table-bordered">
+		<thead>
+			<tr>
+			<th>Filmography</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% @actor.movies.each do |movie| %>
+			<tr>
+			<td><%= link_to movie.name, movie %></td>
+				
+			</tr>
+			<% end %>
+		</tbody>
+	</table>
+</div>

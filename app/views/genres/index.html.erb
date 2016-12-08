@@ -2,7 +2,7 @@
 
 <h1>Listing Genres</h1>
 
-<table>
+<table class="table">
   <thead>
     <tr>
       <th> ID </th>
@@ -21,9 +21,11 @@
         <td><%= link_to 'Destroy', genre, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
+
   </tbody>
 </table>
 
-<br>
 
+ <%= will_paginate %>
+<br>
 <%= link_to 'New Genre', new_genre_path %>

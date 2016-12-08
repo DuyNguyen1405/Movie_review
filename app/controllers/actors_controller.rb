@@ -4,7 +4,7 @@ class ActorsController < ApplicationController
   # GET /actors
   # GET /actors.json
   def index
-    @actors = Actor.all
+    @actors = Actor.all.order(:id).paginate(page: params[:page], per_page: 10)
   end
 
   # GET /actors/1
@@ -14,7 +14,7 @@ class ActorsController < ApplicationController
 
   # GET /actors/new
   def new
-    if params[:commit] == "Add"
+    if params[:commit] != "Add"
     @actor = Actor.new
     end
   end

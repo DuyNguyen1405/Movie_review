@@ -2,7 +2,7 @@
 
 <h1>Listing Categories</h1>
 
-<table>
+<table class="table">
   <thead>
     <tr>
       <th> ID </th>
@@ -23,7 +23,7 @@
     <% end %>
   </tbody>
 </table>
-
+ <%= will_paginate %>
 <br>
 
 <%= link_to 'New Category', new_category_path %>

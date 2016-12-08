@@ -45,20 +45,18 @@
     <thead>
       <tr>
         <th>Name</th>
-        <th>ID</th>
-        <th>Show</th>
+        
         
       </tr>
     </thead>
-    	<tbody>
-    	<% @user.movies.each do |movie| %>
-    		<tr>
-        <td><%=movie.name%></td>
-        <td><%=movie.id%></td>
-        <td><%= link_to 'Show', movie %></td>
+      <tbody>
+      <% @user.movies.each do |movie| %>
+        <tr>
+        
+        <td><%= link_to movie.name, movie %></td>
       </tr>   
       <%end%>  
-    	</tbody>
+      </tbody>
     </table>
   </div>
   </form>

@@ -14,14 +14,16 @@
       <div class="col-lg-9 col-md-9 col-sm-9"> 
         <h3><%= link_to(@movie.name, @movie) %></h3>
         <% if @current_user == @user %>
-        <p><%= link_to 'Edit', edit_review_path(@review) %></p>
+        <p><%= link_to 'Edit', edit_movie_review_path(@review, @movie) %></p>
         <% end %>
       </div>
     </div>
     <div class="review_content col-lg-12 col-md-12 col-sm-12">
     <p>Reviewed by <%= link_to(@user.name,  @user) + " on " + @review.updated_at.to_s %></p>
     <hr>
-    <span><%= @review.content %></span>
+     
+    <span><%= @review.content.html_safe %></span>
+     
       <div class="comments col-lg-12 col-md-12 col-sm-12">
         <p>
           <strong>Comment:</strong>

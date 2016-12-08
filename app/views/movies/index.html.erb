@@ -35,6 +35,12 @@
                 <figcaption> <%= link_to(movie.name, movie) %></figcaption>
 
                 <p><%= truncate(movie.summary, :length => 200) %></p>
+                
+                <% @review = movie.reviews.last %>
+                <% if @review %>
+                <p>Latest Review</p>
+                 <%= @review.content.scan(/\S+/)[0..100].join(' ').html_safe%>...<%= link_to("See more", @review) %>
+                  <% end %>
               </figure>
             </li>
             <li>

@@ -28,3 +28,4 @@
 //= require_tree  .
 //= require jquery.raty.js
 //= require ratyrate
+//= require tinymce

@@ -24,9 +24,10 @@
           <p><% @array.each do |genre| %>
 
             <% if genre.name != @array.last.name %>
-            <%= genre.name%>, 
+
+            <%= link_to genre.name, root_path(:commit => 'Search', :genre_ids => [genre.id])%>,
             <% else %>
-            <%= genre.name%>.
+            <%= link_to genre.name, root_path(:commit => 'Search', :genre_ids => [genre.id])%>.
             <% end %>
             <% end %>
           </p>
@@ -126,7 +127,7 @@
         <br>
         <% @actor = @movie.actors.all %>
         <% @actor.each do |actor| %>
-        <%= actor.name %>
+        <%= link_to actor.name, actor %>
         <br>
         <% end %>
       </div>
@@ -145,26 +146,28 @@
     </div>
   </div>
 </div>
-<% if @movie.reviews.size > 0 %>
-<div class="col-lg-12 col-md-12 col-sm-12">
-  <h3>Latest review:</h3>
-  <% @movie.reviews.each do |r| %>
-  <p><%= r.id %></p>
-  <p><%= r.content %></p>
- <% @comments = r.comments%>
- <% @comments.each do |c|%>
-  <t><p>+ <%= c.content%></p>
-    <%end%>
-    <%end%>
-  </div>
+
+<% if !@movie.reviews.empty? %>
+<h3>Latest reviews</h3>
+<% rs = @movie.reviews.last(3) %>
+<% rs.each do |r| %>
+<div class="single_review col-lg-12 col-md-12 col-sm-12">
+  <p>Reviewed by <%= link_to(User.find(r.user_id).name,  User.find(r.user_id)) + " on " + r.updated_at.to_s %></p>
+  <% rating = Rate.find_by_rater_id_and_rateable_id_and_dimension(r.user_id, @movie.id, "score") %> 
+  <%= rating_for_user @movie, User.find(r.user_id), "score" %>
+  <p><%= r.content.scan(/\S+/)[0..100].join(' ').html_safe%>...<%= link_to("See more", r) %></p>
+</div>
+<% end %>
 <% else %>
 <h1>Don't have any review</h1>
 <% end %>
 
+<%= link_to 'Add Review', new_movie_review_path(@movie)%>
+<br><br>
 <div class="movie_cast">
   <h1>Categories</h1>
-  <% @movie.categories.all.each do |categories| %>
-    <button class="btn btn-theme"><%= categories.name  %></button>
+ <% @movie.categories.all.each do |category| %>
+  <button class="btn btn-theme"><%= link_to category.name, category %></button>
     <% end %>
   </div>
 </div>

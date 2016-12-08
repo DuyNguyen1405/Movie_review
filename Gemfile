@@ -26,7 +26,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'will_paginate',           '3.1.0'
 gem 'bootstrap-will_paginate', '0.0.10'
-
+gem 'tinymce-rails'
 
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw]

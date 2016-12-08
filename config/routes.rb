@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :actors
+
   resources :images
   resources :musics
   resources :videos
@@ -22,13 +22,14 @@ Rails.application.routes.draw do
   resources :searches do
     get :live_search, on: :collection
     get :category_search, on: :collection
+    get :actor_search, on: :collection
   end
 
   # Routes for follow favorite movies
 
   resources :movies do
     resources :favorite_movies, only: [ :create, :destroy ]
-    resources :reviews, only: [:show, :create, :new, :index]
+    resources :reviews
     member do
       :reviews
     end
