@@ -13,51 +13,29 @@
     <div class="col-lg-8 col-md-8 col-sm-8">
       <div class="left_content">
         <div class="movie_title col-lg-12 col-md-12 col-sm-12">
-        <div class=" movie_poster col-lg-3 col-md-3 col-sm-3">
-             <%= link_to (image_tag(@movie.poster, alt: "poster", class: "poster")), @movie  %>
-        
-          </div>
-          <div class="col-lg-9 col-md-9 col-sm-9"> <%= @movie.name %></div>
-        </div>
-        <% @array = @movie.genres.all %>
-        <div class="movie_sum col-lg-12 col-md-12 col-sm-12">
-          <p><%= @movie.summary %></p>
-          <p><% @array.each do |genre| %>
-
-            <% if genre.name != @array.last.name %>
-            <%= link_to genre.name, genre%>, 
-            <% else %>
-            <%= link_to genre.name, genre%>.
-            <% end %>
-            <% end %>
-          </p>
-          
-          <p>
-            <% @movie.categories.each do |category| %>
-              #<%= link_to category.name, category%>
-            <%end%>
-          </p>
-        </div>
           <div class=" movie_poster col-lg-3 col-md-3 col-sm-3">
            <%= link_to (image_tag(@movie.poster, alt: "poster", class: "poster")), @movie  %>
-
          </div>
          <div class="col-lg-9 col-md-9 col-sm-9"> <%= @movie.name %></div>
        </div>
        <% @array = @movie.genres.all %>
        <div class="movie_sum col-lg-12 col-md-12 col-sm-12">
+        <p><%= @movie.summary %></p>
         <p><% @array.each do |genre| %>
-
           <% if genre.name != @array.last.name %>
-          <%= genre.name%>, 
+          <%= link_to genre.name, genre%>, 
           <% else %>
-          <%= genre.name%>.
+          <%= link_to genre.name, genre%>.
           <% end %>
           <% end %>
         </p>
-        <p><%= @movie.summary %></p>
-      </div>
 
+        <p>
+          <% @movie.categories.each do |category| %>
+          #<%= link_to category.name, category%>
+          <%end%>
+        </p>
+      </div>
     </div>
   </div>
   <div class="col-lg-4 col-md-4 col-sm-4">
@@ -160,7 +138,6 @@
   <div class="movie_role">
     <div class="col-lg-6 col-md-6 col-sm-6">
       <aside class="right_content">
-        <br>
         <h2>Role</h2>
         <% @role = MovieActor.where("movie_id = ?", @movie.id).all.each do |role| %>
         <%= role.role %>
@@ -189,6 +166,7 @@
   <% @movie.categories.each do |category| %>
   <button class="btn btn-theme"><%= category.name  %></button>
   <% end %>
+</div>
 </div>
 <script>
   $("#favorite").bind("click", function() {
