@@ -19,7 +19,7 @@ class CommentsController < ApplicationController
   end
 
   def get_newest
-    @comments = Comment.order(id: :asc).limit(8)
+    @comments = Comment.order(id: :desc).limit(8)
     respond_to do |format|
       if @comments
         format.js

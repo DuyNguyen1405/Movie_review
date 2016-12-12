@@ -82,5 +82,5 @@
   </div>
   </form>
 
-<%= link_to 'Edit profile', edit_user_registration_path(@user) if current_user.name == @user.name %>
-<%= link_to 'Back', users_path if current_user.admin? %>
+<%= link_to 'Edit profile', edit_user_registration_path(@user) if (current_user) && (current_user.name == @user.name) %>
+<%= link_to 'Back', users_path if current_user && current_user.admin? %>

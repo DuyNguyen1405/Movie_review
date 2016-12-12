@@ -1,3 +1,6 @@
+<% if current_user %>
+   <%     link_to "/movies"%>
+    <%  end %>
 <div class="user_index">
   <p id="notice"><%= notice %></p>
   <% @admins = [] %>

@@ -23,7 +23,11 @@ class ReviewsController < ApplicationController
 
   # GET /reviews/new
   def new
+    if (!params[:movie_id])
+      redirect_to root_path, notice: "Access denied"
+    else
     @movie = Movie.find(params[:movie_id])
+    end
   end
 
   # GET /reviews/1/edit

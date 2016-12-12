@@ -16,6 +16,7 @@ class GenresController < ApplicationController
 
   # GET /genres/new
   def new
+    check_access
     @genre = Genre.new
   end
 
@@ -72,5 +73,11 @@ class GenresController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def genre_params
       params.require(:genre).permit(:name)
+    end
+
+    def check_access
+        if !current_user || current_user.role == "Regular"
+        redirect_to root_path, notice: "Access denied"
+      end
     end
 end

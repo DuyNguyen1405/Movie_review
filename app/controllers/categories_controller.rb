@@ -16,6 +16,7 @@ class CategoriesController < ApplicationController
 
   # GET /categories/new
   def new
+    check_access
     @category = Category.new
   end
 
@@ -73,5 +74,11 @@ class CategoriesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def category_params
       params.require(:category).permit(:name)
+    end
+
+        def check_access
+        if !current_user || current_user.role == "Regular"
+        redirect_to root_path, notice: "Access denied"
+      end
     end
 end

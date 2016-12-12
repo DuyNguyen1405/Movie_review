@@ -12,10 +12,15 @@ class Ability
       can :manage, Comment
       can :manage, Movie
       can :manage, Review
-    else
+    elsif user.regular?
       can :read, :all
       can :create, Comment
       can :create, Review
+    else
+      can :read, Movie
+      can :read, Review
+      can :read, Comment
+      can :show, User
     end
     #
     # The first argument to `can` is the action you are giving the user

@@ -14,9 +14,11 @@ class ActorsController < ApplicationController
 
   # GET /actors/new
   def new
-    if params[:commit] != "Add"
-    @actor = Actor.new
-    end
+     
+    check_access
+      if params[:commit] != "Add"
+      @actor = Actor.new
+      end
   end
 
   # GET /actors/1/edit
@@ -90,5 +92,9 @@ class ActorsController < ApplicationController
       params.require(:actor).permit(:name, :date_of_birth, :avatar)
     end
 
-   
+       def check_access
+        if !current_user || current_user.role == "Regular"
+        redirect_to root_path, notice: "Access denied"
+      end
+    end
 end

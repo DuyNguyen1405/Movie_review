@@ -24,5 +24,5 @@
       </div>
     </div>
   </div>
-<%= link_to 'Edit', edit_genre_path(@genre) %> |
+<%= link_to 'Edit', edit_genre_path(@genre) if can? :manage, Movie%> 
 <%= link_to 'Back', genres_path %>
