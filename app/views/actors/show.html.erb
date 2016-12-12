@@ -12,6 +12,19 @@
 	<div class="form-group">
       <label for="pwd">Date of birth:</label>
       <%= @actor.date_of_birth%>
+      <% if current_user%>	<!--favorite-->
+       <div class="fav">
+         <input type="hidden" id="actor_id" value="<%= @actor.id%>">
+         <input type="hidden" id="user_id" value="<%= current_user.id %>">
+         <% if not FavoriteActor.find_by(user_id: current_user.id, actor_id: @actor.id) %>
+           <input type="hidden" id="favorited_id" value="">
+           <button class="btn btn-success" id="favorite">Favorite</button>
+         <% else %>
+           <input type="hidden" id="favorited_id" value="<%= FavoriteActor.find_by(user_id: current_user.id, actor_id: @actor.id).id %>">
+           <button class="btn btn-success" id="favorite">Favorited</button>
+         <% end %>
+       </div>
+       <%end%>		<!-- end favorite-->
     </div>
 	<table class="table table-bordered">
 		<thead>
@@ -29,3 +42,39 @@
 		</tbody>
 	</table>
 </div>
+
+<script>
+$("#favorite").bind("click", function() {
+  console.log("favorite clicked");
+  if($(this).text() == "Favorite") {
+    var user_id = $("#user_id").val();
+    var actor_id = $("#actor_id").val();
+    var url = actor_id+"/favorite_actors";
+    var favorite_actor = {"user_id": user_id, "actor_id": actor_id};
+    // var data = {favorite_actor["user_id"]: user_id, favorite_actor["actor_id"]: actor_id};
+    // console.log(favorite_actor);
+    $.post(url, favorite_actor, function(response) {
+    });
+  }
+  if($(this).text() == "Favorited") {
+    console.log("favorited clicked");
+    // var user_id = $("#user_id").val();
+    var actor_id = $("#actor_id").val();
+    var favorited_id = $("#favorited_id").val();
+    var url = actor_id+"/favorite_actors/"+ favorited_id;
+    // var favorite_actor = {"user_id": user_id, "actor_id": actor_id};
+    var favorited = {"id": favorited_id}
+    // var data = {favorite_actor["user_id"]: user_id, favorite_actor["actor_id"]: actor_id};
+    // console.log(favorite_actor);
+    // $.post(url, favorite_actor, function(response) {
+    // });
+    $.ajax({
+      url: url,
+      type: 'DELETE',
+      data: favorited,
+      success: function(result) {
+      }
+    });
+  }
+});                                                                                      
+</script>

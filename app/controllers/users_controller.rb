@@ -70,6 +70,7 @@ class UsersController < ApplicationController
     end
   end
 
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
@@ -85,4 +86,6 @@ class UsersController < ApplicationController
     def update_role_param
       params.require(:user).permit(:role)
     end
+
+
 end

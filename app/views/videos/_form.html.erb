@@ -11,13 +11,18 @@
     </div>
   <% end %>
 
+      <% @movie = Movie.find(params[:format])%>
+      <div class="field">
+        <h2><%= link_to @movie.name, @movie %></h2>
+      </div>
+
   <div class="field">
     <%= f.label :link %><br>
     <%= f.text_field :link %>
   </div>
   <div class="field">
-    <%= f.label :movie_id %><br>
-    <%= f.number_field :movie_id, :value => params[:format]%>
+  
+    <%= f.hidden_field :movie_id, :value => params[:format]%>
   </div>
   <div class="actions">
     <%= f.submit %>

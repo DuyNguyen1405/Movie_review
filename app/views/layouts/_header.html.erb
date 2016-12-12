@@ -42,7 +42,7 @@
   $("#search-box").bind("keyup", function() {
     var q = $("#search-box").val();
     var option = $('#option').find(":selected").val();
-    if(q && option == 0) {
+    if(q) {
       var form = $("#search-form"); // grab the form wrapping the search bar.
       var url = "/searches/live_search"; // live_search action.   
       var formData = form.serialize(); // grab the data in the form

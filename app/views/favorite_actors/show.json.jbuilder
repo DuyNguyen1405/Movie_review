@@ -1,0 +1,1 @@
+json.partial! "favorite_actors/favorite_actor", favorite_actor: @favorite_actor

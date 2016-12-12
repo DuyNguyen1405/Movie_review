@@ -1,0 +1,1 @@
+json.array! @favorite_actors, partial: 'favorite_actors/favorite_actor', as: :favorite_actor

@@ -32,7 +32,8 @@
       </div>
     </div>
     <div class="review_content col-lg-12 col-md-12 col-sm-12">
-    <p>Reviewed by <%= link_to(@user.name,  @user) + " on " + @review.updated_at.to_s %></p>
+
+  <p>Reviewed by <%= link_to(get_user_name(@user.id),  @curr) + " on " + @user.updated_at.to_s %></p>
     <hr>
      <% rating = Rate.find_by_rater_id_and_rateable_id_and_dimension(@review.user_id, @movie.id, "score") %> 
        <%= rating_for_user @movie, User.find(@review.user_id), "score" %>

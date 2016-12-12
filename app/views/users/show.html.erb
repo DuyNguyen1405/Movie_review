@@ -50,10 +50,31 @@
       </tr>
     </thead>
       <tbody>
-      <% @user.movies.each do |movie| %>
+      <% @user.movies.order(:id).each do |movie| %>
         <tr>
         
         <td><%= link_to movie.name, movie %></td>
+      </tr>   
+      <%end%>  
+      </tbody>
+    </table>
+  </div>
+
+  <div class="form-group">
+    <label for="pwd">Favorited Actor(s):</label>
+    <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Name</th>
+        
+        
+      </tr>
+    </thead>
+      <tbody>
+      <% @user.actors.order(:id).each do |actor| %>
+        <tr>
+        
+        <td><%= link_to actor.name, actor %></td>
       </tr>   
       <%end%>  
       </tbody>

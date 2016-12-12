@@ -1,7 +1,10 @@
 <%= form_for(@review.comments.build, :'data-update-target' => 'new_comment', remote: true) do |f| %>
   
   <div><%= hidden_field_tag :review_id, @review.id %></div>
+   <% if current_user %>
   <div><%= hidden_field_tag :user_id, @current_user.id %></div>
+
   <%= f.text_area :content%>
   <%= f.submit "Comment", class: "btn btn-primary" %>
+    	<% end %>
 <% end %>

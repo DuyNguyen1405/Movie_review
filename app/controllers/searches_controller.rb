@@ -70,7 +70,15 @@ class SearchesController < ApplicationController
   end
 
   def live_search
-    @movies = Movie.where("lower(name) LIKE ?", '%' + params[:q].downcase + '%')
+    @option = params[:option].to_i
+    case @option
+    when 0
+      @searches = Movie.where("lower(name) LIKE ?", '%' + params[:q].downcase + '%')
+    when 1
+      @searches = Actor.where("lower(name) LIKE ?", '%' + params[:q].downcase + '%')
+    else 
+      @searches = Search.all.paginate(page: params[:page], per_page: 2)
+    end
     respond_to do |format|
       format.js
     end

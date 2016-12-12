@@ -1,0 +1,17 @@
+<%= form_for(@favorite_actor) do |f| %>
+  <% if @favorite_actor.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@favorite_actor.errors.count, "error") %> prohibited this favorite_actor from being saved:</h2>
+
+      <ul>
+      <% @favorite_actor.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

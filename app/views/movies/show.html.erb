@@ -168,22 +168,17 @@
          <%= paragraph.html_safe %><br>
          <% end %>
    </p>
-   <% @curr = User.find(r.user_id) %>
-   <% if @curr.name.empty? %>
-    <% @name = @curr.email %>
-      <% else %>
-        <% @name = @curr.name %>
-      <% end %>
-  <p>Reviewed by <%= link_to(@name,  @curr) + " on " + r.updated_at.to_s %></p>
+  
+  <p>Reviewed by <%= link_to(get_user_name(r.user_id),  @curr) + " on " + r.updated_at.to_s %></p>
   <p><%= link_to("See more", r) %></p>
 </div>
 <% end %>
 <% else %>
 <h1>Don't have any review</h1>
 <% end %>
-
+ <% if current_user %>
 <%= link_to 'Add Review', new_movie_review_path(@movie)%>
-
+<% end %>
 </div>
 
 

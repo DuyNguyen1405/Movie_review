@@ -7,8 +7,6 @@
     <tr>
       <th>Name</th>
       
-      <th>Edit</th>
-      <th>Destroy</th>
     </tr>
   </thead>
 
@@ -16,9 +14,11 @@
     <% @actors.each do |actor| %>
       <tr>
         
-        <td><%= link_to actor.name, actor %></td>
-        <td><%= link_to 'Edit', edit_actor_path(actor) %></td>
-        <td><%= link_to 'Destroy', actor, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td> <%= actor.id%></td>
+        <td> <%= actor.name%></td>
+        <td><%= link_to 'Show', actor %></td>
+        <td><%= link_to 'Edit', edit_actor_path(actor) if can? :create, Movie%></td>
+        <td><%= link_to 'Destroy', actor, method: :delete, data: { confirm: 'Are you sure?' } if can? :create, Movie%></td>
       </tr>
     <% end %>
   </tbody>
@@ -27,4 +27,4 @@
 <%= will_paginate %>
 <br>
 
-<%= link_to 'New Actor', new_actor_path %>
+<%= link_to 'New Actor', new_actor_path if can? :create, Movie%>

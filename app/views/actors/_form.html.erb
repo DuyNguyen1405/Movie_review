@@ -33,15 +33,21 @@
     <% else %>
 
       <%= form_tag(controller: "actors", action: "create", method: "get")do %>
+
+      <% @movie = Movie.find(params[:format])%>
+      <div class="field">
+        <h2><%= link_to @movie.name, @movie %></h2>
+      </div>
+
       <div class="field">
         <%= label_tag(:name, "Name") %><br>
         <%= text_field_tag(:name, nil,  :autocomplete => :off) %>
         <div id="actor-result"></div>
       </div>
-      <div class="field">
-        <%= label_tag(:movie_id, "Movie") %><br>
-        <%= text_field_tag(:movie_id, params[:format]) %>
-      </div>
+
+   
+        <%= hidden_field_tag(:movie_id, params[:format]) %>
+
       <div class="field">
         <%= label_tag(:role, "Role") %><br>
         <%= text_field_tag(:role) %>
