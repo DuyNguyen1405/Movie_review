@@ -19,9 +19,9 @@
       <div id="navbar" class="navbar-collapse collapse">
         <ul class="nav navbar-nav main_nav">
          
-          <li><%= link_to "Category List", categories_path if can? :read, Category%></li>
-          <li><%= link_to "Genre List", genres_path if can? :read, Genre%></li>
-          <li><%= link_to "Actor List", actors_path if can? :read, Actor%></li>
+          <li><%= link_to "Category List", categories_path %></li>
+          <li><%= link_to "Genre List", genres_path %></li>
+          <li><%= link_to "Actor List", actors_path %></li>
           <li><%= link_to('Add Movie', new_movie_path) if can? :create, Movie %></li>
           <li><%= link_to('Add Actor', new_actor_path) if can? :create, Movie %></li>
           <li><%= link_to('Manage Users', users_path) if can? :manage, User %></li>
