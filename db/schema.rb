@@ -1,4 +1,3 @@
-# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -26,8 +25,8 @@ ActiveRecord::Schema.define(version: 20161205164541) do
 
   create_table "average_caches", force: :cascade do |t|
     t.integer  "rater_id"
-    t.integer  "rateable_id"
     t.string   "rateable_type"
+    t.integer  "rateable_id"
     t.float    "avg",           null: false
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -45,30 +44,27 @@ ActiveRecord::Schema.define(version: 20161205164541) do
     t.datetime "updated_at", null: false
     t.integer  "user_id"
     t.integer  "review_id"
+    t.index ["review_id"], name: "index_comments_on_review_id", using: :btree
+    t.index ["user_id"], name: "index_comments_on_user_id", using: :btree
   end
-
-  add_index "comments", ["review_id"], name: "index_comments_on_review_id", using: :btree
-  add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
   create_table "favorite_actors", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "actor_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["actor_id"], name: "index_favorite_actors_on_actor_id", using: :btree
+    t.index ["user_id"], name: "index_favorite_actors_on_user_id", using: :btree
   end
-
-  add_index "favorite_actors", ["actor_id"], name: "index_favorite_actors_on_actor_id", using: :btree
-  add_index "favorite_actors", ["user_id"], name: "index_favorite_actors_on_user_id", using: :btree
 
   create_table "favorite_movies", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "movie_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["movie_id"], name: "index_favorite_movies_on_movie_id", using: :btree
+    t.index ["user_id"], name: "index_favorite_movies_on_user_id", using: :btree
   end
-
-  add_index "favorite_movies", ["movie_id"], name: "index_favorite_movies_on_movie_id", using: :btree
-  add_index "favorite_movies", ["user_id"], name: "index_favorite_movies_on_user_id", using: :btree
 
   create_table "genres", force: :cascade do |t|
     t.string "name"
@@ -88,40 +84,36 @@ ActiveRecord::Schema.define(version: 20161205164541) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string   "role"
+    t.index ["actor_id"], name: "index_movie_actors_on_actor_id", using: :btree
+    t.index ["movie_id"], name: "index_movie_actors_on_movie_id", using: :btree
   end
-
-  add_index "movie_actors", ["actor_id"], name: "index_movie_actors_on_actor_id", using: :btree
-  add_index "movie_actors", ["movie_id"], name: "index_movie_actors_on_movie_id", using: :btree
 
   create_table "movie_categories", force: :cascade do |t|
     t.integer  "movie_id"
     t.integer  "category_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.index ["category_id"], name: "index_movie_categories_on_category_id", using: :btree
+    t.index ["movie_id"], name: "index_movie_categories_on_movie_id", using: :btree
   end
-
-  add_index "movie_categories", ["category_id"], name: "index_movie_categories_on_category_id", using: :btree
-  add_index "movie_categories", ["movie_id"], name: "index_movie_categories_on_movie_id", using: :btree
 
   create_table "movie_genres", force: :cascade do |t|
     t.integer  "movie_id"
     t.integer  "genre_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["genre_id"], name: "index_movie_genres_on_genre_id", using: :btree
+    t.index ["movie_id"], name: "index_movie_genres_on_movie_id", using: :btree
   end
-
-  add_index "movie_genres", ["genre_id"], name: "index_movie_genres_on_genre_id", using: :btree
-  add_index "movie_genres", ["movie_id"], name: "index_movie_genres_on_movie_id", using: :btree
 
   create_table "movie_producers", force: :cascade do |t|
     t.integer  "movie_id"
     t.integer  "producer_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.index ["movie_id"], name: "index_movie_producers_on_movie_id", using: :btree
+    t.index ["producer_id"], name: "index_movie_producers_on_producer_id", using: :btree
   end
-
-  add_index "movie_producers", ["movie_id"], name: "index_movie_producers_on_movie_id", using: :btree
-  add_index "movie_producers", ["producer_id"], name: "index_movie_producers_on_producer_id", using: :btree
 
   create_table "movies", force: :cascade do |t|
     t.string   "name"
@@ -141,8 +133,8 @@ ActiveRecord::Schema.define(version: 20161205164541) do
   end
 
   create_table "overall_averages", force: :cascade do |t|
-    t.integer  "rateable_id"
     t.string   "rateable_type"
+    t.integer  "rateable_id"
     t.float    "overall_avg",   null: false
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -156,28 +148,26 @@ ActiveRecord::Schema.define(version: 20161205164541) do
 
   create_table "rates", force: :cascade do |t|
     t.integer  "rater_id"
-    t.integer  "rateable_id"
     t.string   "rateable_type"
+    t.integer  "rateable_id"
     t.float    "stars",         null: false
     t.string   "dimension"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.index ["rateable_id", "rateable_type"], name: "index_rates_on_rateable_id_and_rateable_type", using: :btree
+    t.index ["rater_id"], name: "index_rates_on_rater_id", using: :btree
   end
 
-  add_index "rates", ["rateable_id", "rateable_type"], name: "index_rates_on_rateable_id_and_rateable_type", using: :btree
-  add_index "rates", ["rater_id"], name: "index_rates_on_rater_id", using: :btree
-
   create_table "rating_caches", force: :cascade do |t|
-    t.integer  "cacheable_id"
     t.string   "cacheable_type"
+    t.integer  "cacheable_id"
     t.float    "avg",            null: false
     t.integer  "qty",            null: false
     t.string   "dimension"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.index ["cacheable_id", "cacheable_type"], name: "index_rating_caches_on_cacheable_id_and_cacheable_type", using: :btree
   end
-
-  add_index "rating_caches", ["cacheable_id", "cacheable_type"], name: "index_rating_caches_on_cacheable_id_and_cacheable_type", using: :btree
 
   create_table "reviews", force: :cascade do |t|
     t.text     "content"
@@ -185,10 +175,9 @@ ActiveRecord::Schema.define(version: 20161205164541) do
     t.datetime "updated_at", null: false
     t.integer  "user_id"
     t.integer  "movie_id"
+    t.index ["movie_id"], name: "index_reviews_on_movie_id", using: :btree
+    t.index ["user_id"], name: "index_reviews_on_user_id", using: :btree
   end
-
-  add_index "reviews", ["movie_id"], name: "index_reviews_on_movie_id", using: :btree
-  add_index "reviews", ["user_id"], name: "index_reviews_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -216,11 +205,10 @@ ActiveRecord::Schema.define(version: 20161205164541) do
     t.string   "unconfirmed_email"
     t.string   "provider"
     t.string   "uid"
+    t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
+    t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
-
-  #add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
-  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   create_table "videos", force: :cascade do |t|
     t.string   "link"
